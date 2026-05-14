@@ -4,24 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hansel Vela Vega — Media Kit</title>
-  <meta name="description" content="Professional ballet dancer & cinematic content creator. Media kit for brand collaborations." />
+  <meta name="description" content="Ballet dancer & cinematic content creator. 278K monthly views. Brand collaboration media kit." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:   #080808;
-      --dark:    #111111;
-      --card:    #161616;
-      --border:  #252525;
-      --gold:    #C9A84C;
-      --gold-lt: #E8C878;
-      --white:   #F5F0E8;
-      --muted:   #7A7A7A;
-      --serif:   'Playfair Display', Georgia, serif;
-      --sans:    'Inter', system-ui, sans-serif;
+      --black:    #050505;
+      --deep:     #0a0a0a;
+      --dark:     #0f0f0f;
+      --card:     #141414;
+      --card2:    #181818;
+      --border:   #222222;
+      --border2:  #2e2e2e;
+      --gold:     #C9A84C;
+      --gold-lt:  #E4C76B;
+      --gold-dim: #8a6f30;
+      --gold-glow:rgba(201,168,76,0.18);
+      --gold-glow2:rgba(201,168,76,0.08);
+      --white:    #F2EDE3;
+      --muted:    #666666;
+      --muted2:   #888888;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+      --thin:     'Montserrat', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -33,9 +41,81 @@
       font-weight: 300;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ── HERO ── */
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.6;
+    }
+
+    /* ─── ANIMATED ORBS ─── */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: orb-drift 20s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%); top: -150px; right: -100px; animation-duration: 18s; }
+    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); bottom: 10%; left: -100px; animation-duration: 25s; animation-delay: -8s; }
+    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%); top: 40%; right: 5%; animation-duration: 30s; animation-delay: -4s; }
+
+    @keyframes orb-drift {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(30px, -20px) scale(1.05); }
+      100% { transform: translate(-20px, 15px) scale(0.97); }
+    }
+
+    /* ─── GOLD LINE ─── */
+    .gold-line {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.4rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(5,5,5,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-family: var(--thin);
+      font-weight: 300;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -43,642 +123,1154 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 6rem 2rem 4rem;
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 80% 100%, rgba(201,168,76,0.04) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-tag {
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
+    .hero-eyebrow {
+      font-family: var(--thin);
+      font-weight: 200;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
     }
 
-    .hero h1 {
+    .hero-name {
       font-family: var(--serif);
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      font-weight: 400;
-      line-height: 1.05;
+      font-size: clamp(4.5rem, 13vw, 10rem);
+      font-weight: 300;
+      line-height: 0.9;
       letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
     }
-
-    .hero h1 em {
+    .hero-name em {
       font-style: italic;
-      color: var(--gold-lt);
-    }
-
-    .hero-sub {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      color: var(--muted);
-      margin-top: 1rem;
-      margin-bottom: 3rem;
+      color: var(--gold);
+      display: block;
     }
 
     .hero-divider {
-      width: 48px;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 2rem auto;
+      width: min(400px, 90%);
+    }
+    .hero-divider::before,
+    .hero-divider::after {
+      content: '';
+      flex: 1;
       height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim));
+    }
+    .hero-divider::after {
+      background: linear-gradient(90deg, var(--gold-dim), transparent);
+    }
+    .hero-divider-diamond {
+      width: 6px; height: 6px;
       background: var(--gold);
-      margin: 0 auto 3rem;
-      opacity: 0.6;
+      transform: rotate(45deg);
+      flex-shrink: 0;
     }
 
-    .hero-bio {
-      max-width: 560px;
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #9A9490;
+    .hero-subtitle {
+      font-family: var(--thin);
+      font-weight: 200;
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted2);
       margin-bottom: 3rem;
     }
 
-    .hero-cta {
-      display: inline-block;
-      padding: 0.85rem 2.5rem;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      text-decoration: none;
-      font-size: 0.75rem;
-      font-weight: 500;
+    .hero-tags {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3.5rem;
+    }
+    .hero-tag {
+      font-family: var(--thin);
+      font-size: 0.6rem;
+      font-weight: 300;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      transition: all 0.3s ease;
-    }
-    .hero-cta:hover {
-      background: var(--gold);
-      color: var(--black);
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.25);
+      color: var(--gold);
+      background: rgba(201,168,76,0.04);
+      border-radius: 1px;
     }
 
-    /* ── SECTION ── */
-    section {
-      padding: 5rem 2rem;
-      max-width: 1100px;
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 50%, var(--gold) 100%);
+      background-size: 200% 200%;
+      color: #050505;
+      font-family: var(--thin);
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 1px;
+      position: relative;
+      overflow: hidden;
+      transition: background-position 0.5s, box-shadow 0.3s;
+      box-shadow: 0 0 30px rgba(201,168,76,0.25), 0 0 60px rgba(201,168,76,0.1);
+      animation: shimmer 3s ease infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero-cta:hover {
+      box-shadow: 0 0 40px rgba(201,168,76,0.4), 0 0 80px rgba(201,168,76,0.15);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      animation: float 2s ease-in-out infinite;
+    }
+    .scroll-indicator span {
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-family: var(--thin);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      padding: 7rem 2rem;
+      max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    .section-full {
+      padding: 7rem 2rem;
+      position: relative;
     }
 
     .section-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.35em;
+      font-family: var(--thin);
+      font-weight: 200;
+      font-size: 0.6rem;
+      letter-spacing: 0.45em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 1rem;
+      text-align: center;
     }
 
     .section-title {
       font-family: var(--serif);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 1rem;
     }
-
     .section-title em {
       font-style: italic;
-      color: var(--gold-lt);
+      color: var(--gold);
+    }
+    .section-desc {
+      text-align: center;
+      color: var(--muted2);
+      font-size: 0.9rem;
+      max-width: 500px;
+      margin: 0 auto 4rem;
+      line-height: 1.8;
     }
 
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin: 0 auto;
+    /* ─── STATS ─── */
+    .stats-bg {
+      background: linear-gradient(180deg, var(--black) 0%, var(--deep) 50%, var(--black) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
     }
 
-    /* ── STATS ── */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
     }
 
-    .stat-card {
-      background: var(--card);
-      padding: 2.5rem 2rem;
+    .stat-item {
+      padding: 3.5rem 2rem;
       text-align: center;
+      position: relative;
       transition: background 0.3s;
     }
-    .stat-card:hover { background: #1a1a1a; }
+    .stat-item::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--border2), transparent);
+    }
+    .stat-item:last-child::after,
+    .stat-item:nth-child(3)::after { display: none; }
+    .stat-item:hover { background: rgba(201,168,76,0.03); }
 
     .stat-number {
       font-family: var(--serif);
-      font-size: 2.8rem;
-      font-weight: 600;
-      color: var(--gold);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--gold-lt);
       line-height: 1;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .stat-number sup {
+      font-size: 0.5em;
+      vertical-align: super;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-family: var(--thin);
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted2);
       margin-bottom: 0.5rem;
     }
-
-    .stat-label {
+    .stat-sub {
       font-size: 0.7rem;
-      font-weight: 500;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ─── ACHIEVEMENT BADGES ─── */
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+    }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.7rem 1.4rem;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(201,168,76,0.04);
+      border-radius: 1px;
+    }
+    .badge-icon { font-size: 1rem; }
+    .badge-text {
+      font-family: var(--thin);
+      font-size: 0.62rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+    .badge-text strong {
+      display: block;
+      color: var(--gold);
+      font-weight: 400;
+      font-size: 0.7rem;
+    }
+
+    /* ─── AUDIENCE ─── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+    }
+    .audience-card {
+      background: var(--card);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .audience-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .audience-card:hover { transform: translateY(-3px); }
+    .audience-card:hover::before { opacity: 1; }
+    .audience-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .audience-card-value {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold-lt);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .audience-card-label {
+      font-family: var(--thin);
+      font-size: 0.6rem;
+      font-weight: 300;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--muted2);
+    }
+    .audience-card-note {
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
+      line-height: 1.5;
     }
 
-    .stat-platform {
-      font-size: 0.65rem;
-      color: #444;
-      margin-top: 0.25rem;
+    /* ─── PLATFORM BAR ─── */
+    .platforms {
+      display: flex;
+      gap: 2px;
+      margin-top: 2px;
+      max-width: 900px;
+      margin: 2px auto 0;
     }
+    .platform-bar {
+      flex: 1;
+      background: var(--card2);
+      padding: 1.8rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .platform-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .platform-info { flex: 1; }
+    .platform-name {
+      font-family: var(--thin);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+    .platform-stat {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--gold-lt);
+    }
+    .platform-detail { font-size: 0.7rem; color: var(--muted); }
 
-    /* ── CONTENT PILLARS ── */
+    /* ─── CONTENT PILLARS ─── */
+    .pillars-bg {
+      background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
+    }
     .pillars-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
     }
-
-    .pillar-card {
+    .pillar {
       background: var(--card);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      transition: border-color 0.3s, transform 0.3s;
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: background 0.4s;
     }
-    .pillar-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-2px);
+    .pillar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .pillar:hover { background: var(--card2); }
+    .pillar:hover::after { opacity: 1; }
+    .pillar-number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.12);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      transition: color 0.4s;
+    }
+    .pillar:hover .pillar-number { color: rgba(201,168,76,0.25); }
+    .pillar-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .pillar-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .pillar-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .pillar-desc {
+      font-size: 0.78rem;
+      color: var(--muted2);
+      line-height: 1.7;
+    }
+    .pillar-tags {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .pillar-tag {
+      font-family: var(--thin);
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      border-radius: 1px;
     }
 
-    .pillar-emoji {
-      font-size: 1.8rem;
+    /* ─── DELIVERABLES ─── */
+    .deliverables-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .deliverable {
+      display: grid;
+      grid-template-columns: 3rem 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--card);
+      padding: 1.5rem 2rem;
+      transition: background 0.3s, border-left 0.3s;
+      border-left: 2px solid transparent;
+    }
+    .deliverable:hover {
+      background: var(--card2);
+      border-left-color: var(--gold-dim);
+    }
+    .del-icon { font-size: 1.4rem; text-align: center; }
+    .del-name {
+      font-size: 0.9rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .del-desc { font-size: 0.75rem; color: var(--muted2); }
+    .del-badge {
+      font-family: var(--thin);
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      background: rgba(201,168,76,0.05);
+      white-space: nowrap;
+    }
+
+    /* ─── WHY MICRO ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 0;
+    }
+    .why-card {
+      background: var(--card);
+      padding: 3rem 2rem;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-num {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.1);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .why-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .why-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .why-title em { font-style: italic; color: var(--gold); }
+    .why-text { font-size: 0.78rem; color: var(--muted2); line-height: 1.8; }
+    .why-stat {
+      margin-top: 1rem;
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold-lt);
+    }
+    .why-stat-label { font-size: 0.65rem; color: var(--muted); }
+
+    /* ─── QUOTE ─── */
+    .quote-section {
+      text-align: center;
+      padding: 7rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 8rem;
+      color: rgba(201,168,76,0.08);
+      line-height: 0.5;
       margin-bottom: 1rem;
       display: block;
     }
-
-    .pillar-title {
+    .quote-text {
       font-family: var(--serif);
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pillar-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── WHAT I OFFER ── */
-    .offer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 3rem;
-    }
-
-    .offer-item {
-      background: var(--card);
-      padding: 2rem 1.5rem;
-    }
-
-    .offer-icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .offer-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
       color: var(--white);
+      margin-bottom: 2rem;
     }
-
-    .offer-desc {
-      font-size: 0.78rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ── AUDIENCE ── */
-    .audience-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .audience-item {}
-
-    .audience-bar-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .audience-bar-label span:last-child {
-      color: var(--gold);
-      font-weight: 500;
-    }
-
-    .bar-track {
-      height: 3px;
-      background: var(--border);
-      border-radius: 2px;
-      margin-bottom: 1rem;
-    }
-
-    .bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
-      border-radius: 2px;
-    }
-
-    /* ── PAST WORK / BRANDS ── */
-    .brands-note {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-top: 2rem;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-    }
-
-    .brand-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 2rem;
-    }
-
-    .brand-tag {
-      padding: 0.4rem 1rem;
-      border: 1px solid var(--border);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
+    .quote-text em { color: var(--gold); font-style: normal; }
+    .quote-author {
+      font-family: var(--thin);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      font-weight: 500;
+      color: var(--muted2);
     }
 
-    /* ── CONTACT ── */
-    .contact-section {
-      background: var(--dark);
+    /* ─── CONTACT ─── */
+    .contact-bg {
+      background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
       border-top: 1px solid var(--border);
-      padding: 6rem 2rem;
-      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .contact-section .section-title {
-      margin-bottom: 1rem;
-    }
-
-    .contact-desc {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 3rem;
-      line-height: 1.8;
+    .contact-bg::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.1) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .contact-links {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+      gap: 2px;
+      max-width: 600px;
+      margin: 0 auto;
     }
-
     .contact-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: space-between;
+      padding: 1.4rem 2rem;
+      background: var(--card);
       text-decoration: none;
       color: var(--white);
-      font-size: 0.9rem;
-      padding: 0.75rem 2rem;
-      border: 1px solid var(--border);
-      width: 100%;
-      max-width: 320px;
-      justify-content: center;
-      transition: border-color 0.3s, color 0.3s;
+      border-left: 2px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
     }
     .contact-link:hover {
-      border-color: var(--gold);
-      color: var(--gold);
+      background: var(--card2);
+      border-left-color: var(--gold);
     }
-
-    .contact-link .cl-icon { font-size: 1.1rem; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.7rem;
-      color: #333;
-      letter-spacing: 0.1em;
+    .contact-link-left { display: flex; align-items: center; gap: 1.2rem; }
+    .contact-link-icon { font-size: 1.2rem; }
+    .contact-link-label {
+      font-family: var(--thin);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--muted2);
+      margin-bottom: 0.2rem;
+    }
+    .contact-link-value { font-size: 0.85rem; color: var(--white); }
+    .contact-link-arrow { color: var(--gold); font-size: 0.9rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 100px; height: 1px;
+      background: var(--gold-dim);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .footer-copy {
+      font-family: var(--thin);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .offer-grid { grid-template-columns: 1fr 1fr; }
+    /* ─── DIVIDER ORNAMENT ─── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+    .ornament-line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2));
+    }
+    .ornament-line.r { background: linear-gradient(90deg, var(--border2), transparent); }
+    .ornament-diamond {
+      width: 5px; height: 5px;
+      background: var(--gold-dim);
+      transform: rotate(45deg);
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-up {
+    /* ─── FADE IN ANIMATIONS ─── */
+    .fade-in {
       opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .fade-up:nth-child(1) { animation-delay: 0.1s; }
-    .fade-up:nth-child(2) { animation-delay: 0.25s; }
-    .fade-up:nth-child(3) { animation-delay: 0.4s; }
-    .fade-up:nth-child(4) { animation-delay: 0.55s; }
-    .fade-up:nth-child(5) { animation-delay: 0.7s; }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── GLOW TEXT ─── */
+    .glow {
+      text-shadow: 0 0 40px rgba(201,168,76,0.3);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(3)::after { display: block; }
+      .stat-item:nth-child(2)::after { display: none; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .platforms { flex-direction: column; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .deliverable { grid-template-columns: 2.5rem 1fr; }
+      .del-badge { display: none; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════════ HERO ══════════════════ -->
-  <section class="hero">
-    <p class="hero-tag fade-up">Media Kit · 2026</p>
-    <h1 class="fade-up">Hansel<br /><em>Vela Vega</em></h1>
-    <p class="hero-sub fade-up">Ballet Dancer · Cinematic Content Creator</p>
-    <div class="hero-divider fade-up"></div>
-    <p class="hero-bio fade-up">
-      Professional ballet dancer and visual storyteller based in Mexico.
-      I create cinematic, aesthetically driven content that sits at the intersection
-      of movement, design, and lifestyle — turning everyday products into
-      aspirational moments.
-    </p>
-    <a href="#contact" class="hero-cta fade-up">Let's Work Together</a>
-  </section>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">HVV</a>
+    <div class="nav-links">
+      <a href="#stats">Stats</a>
+      <a href="#content">Content</a>
+      <a href="#deliverables">Deliverables</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-  <div class="divider"></div>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-  <!-- ══════════════════ STATS ══════════════════ -->
-  <section id="stats">
-    <p class="section-label">By the numbers</p>
-    <h2 class="section-title">Reach &amp; <em>Engagement</em></h2>
+    <p class="hero-eyebrow fade-in">Media Kit · 2026</p>
 
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-number">3.2K</div>
-        <div class="stat-label">Followers</div>
-        <div class="stat-platform">Instagram</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">2.8K</div>
-        <div class="stat-label">Followers</div>
-        <div class="stat-platform">TikTok</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">8.4%</div>
-        <div class="stat-label">Engagement Rate</div>
-        <div class="stat-platform">Above industry avg (1–3%)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">12K</div>
-        <div class="stat-label">Avg Monthly Reach</div>
-        <div class="stat-platform">Organic</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">85%</div>
-        <div class="stat-label">Female Audience</div>
-        <div class="stat-platform">18 – 34 yrs</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Countries</div>
-        <div class="stat-platform">MX · US · ES</div>
-      </div>
+    <h1 class="hero-name fade-in">
+      Hansel
+      <em>Vela Vega</em>
+    </h1>
+
+    <div class="hero-divider fade-in">
+      <div class="hero-divider-diamond"></div>
     </div>
 
-    <!-- NOTE: update these numbers with your real stats -->
-  </section>
+    <p class="hero-subtitle fade-in">Ballet Dancer &ensp;·&ensp; Cinematic Content Creator &ensp;·&ensp; Hybrid Aesthetic</p>
 
-  <div class="divider"></div>
+    <div class="hero-tags fade-in">
+      <span class="hero-tag">Dance & Movement</span>
+      <span class="hero-tag">Wellness</span>
+      <span class="hero-tag">Fashion</span>
+      <span class="hero-tag">Lifestyle</span>
+      <span class="hero-tag">UGC</span>
+    </div>
 
-  <!-- ══════════════════ AUDIENCE ══════════════════ -->
-  <section id="audience">
-    <p class="section-label">Who I reach</p>
-    <h2 class="section-title">Audience <em>Profile</em></h2>
+    <a href="#contact" class="hero-cta fade-in">
+      ✦ &nbsp; Let's Collaborate &nbsp; ✦
+    </a>
 
-    <div class="audience-row">
-      <div>
-        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.15em;font-weight:500;">Age</p>
-        <div class="audience-bar-label"><span>18 – 24</span><span>38%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
-        <div class="audience-bar-label"><span>25 – 34</span><span>47%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:47%"></div></div>
-        <div class="audience-bar-label"><span>35 – 44</span><span>12%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:12%"></div></div>
-        <div class="audience-bar-label"><span>45+</span><span>3%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:3%"></div></div>
-      </div>
-
-      <div>
-        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.15em;font-weight:500;">Top Locations</p>
-        <div class="audience-bar-label"><span>México</span><span>52%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:52%"></div></div>
-        <div class="audience-bar-label"><span>United States</span><span>28%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:28%"></div></div>
-        <div class="audience-bar-label"><span>Spain</span><span>9%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:9%"></div></div>
-        <div class="audience-bar-label"><span>Other</span><span>11%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:11%"></div></div>
-      </div>
-
-      <div>
-        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:0.15em;font-weight:500;">Interests</p>
-        <div class="audience-bar-label"><span>Lifestyle & Wellness</span><span>71%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:71%"></div></div>
-        <div class="audience-bar-label"><span>Dance & Fitness</span><span>64%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:64%"></div></div>
-        <div class="audience-bar-label"><span>Fashion & Beauty</span><span>58%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:58%"></div></div>
-        <div class="audience-bar-label"><span>Art & Culture</span><span>45%</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width:45%"></div></div>
-      </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <!-- STATS -->
+  <section class="stats-bg section-full" id="stats">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+      <p class="section-label fade-in">By the numbers</p>
+      <h2 class="section-title fade-in">Real <em>Reach &amp; Impact</em></h2>
+      <p class="section-desc fade-in">Organic growth. No paid followers. Numbers pulled directly from Instagram Insights — 25 Mar – 23 Apr 2026.</p>
 
-  <!-- ══════════════════ CONTENT PILLARS ══════════════════ -->
-  <section id="content">
-    <p class="section-label">What I create</p>
-    <h2 class="section-title">Content <em>Pillars</em></h2>
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <div class="stat-number glow">278<sup>K</sup></div>
+          <div class="stat-label">Monthly Views</div>
+          <div class="stat-sub">Instagram · Last 30 days</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number glow">165<sup>K</sup></div>
+          <div class="stat-label">Accounts Reached</div>
+          <div class="stat-sub">Unique people / month</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number glow">25.8<sup>K</sup></div>
+          <div class="stat-label">Interactions</div>
+          <div class="stat-sub">Likes, saves, comments, shares</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number glow">95.8<sup>%</sup></div>
+          <div class="stat-label">Non-Follower Reach</div>
+          <div class="stat-sub">Viral distribution</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number glow">1.9<sup>K</sup></div>
+          <div class="stat-label">Instagram Followers</div>
+          <div class="stat-sub">@hanselvelavega</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number glow">2.1<sup>K</sup></div>
+          <div class="stat-label">TikTok Followers</div>
+          <div class="stat-sub">@hanselvelavega</div>
+        </div>
+      </div>
 
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <span class="pillar-emoji">🩰</span>
-        <h3 class="pillar-title">Ballet & Movement</h3>
-        <p class="pillar-desc">Cinematic footage of training, rehearsal, and performance. Raw elegance that stops the scroll.</p>
-      </div>
-      <div class="pillar-card">
-        <span class="pillar-emoji">💊</span>
-        <h3 class="pillar-title">Wellness & Recovery</h3>
-        <p class="pillar-desc">Athletic recovery, nutrition, and performance optimization — from the perspective of a professional dancer.</p>
-      </div>
-      <div class="pillar-card">
-        <span class="pillar-emoji">✨</span>
-        <h3 class="pillar-title">Skincare & Grooming</h3>
-        <p class="pillar-desc">Minimalist, aesthetic routines. High production value. Authentic integration into daily dancer life.</p>
-      </div>
-      <div class="pillar-card">
-        <span class="pillar-emoji">👕</span>
-        <h3 class="pillar-title">Fashion & Activewear</h3>
-        <p class="pillar-desc">Movement-forward styling. Dance as fashion. Functional aesthetics for the modern athlete.</p>
-      </div>
-      <div class="pillar-card">
-        <span class="pillar-emoji">🎭</span>
-        <h3 class="pillar-title">Art & Creative</h3>
-        <p class="pillar-desc">Behind-the-scenes of the artistic process. Collaboration with visual artists, photographers, directors.</p>
-      </div>
-      <div class="pillar-card">
-        <span class="pillar-emoji">🏠</span>
-        <h3 class="pillar-title">Lifestyle & Home</h3>
-        <p class="pillar-desc">Aspirational daily life. Morning rituals, spaces, objects — curated with a dancer's eye for beauty.</p>
+      <div class="badges fade-in">
+        <div class="badge">
+          <span class="badge-icon">🎬</span>
+          <div class="badge-text">
+            <strong>98.2% via Reels</strong>
+            Content format
+          </div>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">📍</span>
+          <div class="badge-text">
+            <strong>Multi-country</strong>
+            US · MX · LAT
+          </div>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">✦</span>
+          <div class="badge-text">
+            <strong>278K views</strong>
+            Only 1.9K followers
+          </div>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🩰</span>
+          <div class="badge-text">
+            <strong>Professional Athlete</strong>
+            Ballet Dancer
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line r"></div>
+  </div>
 
-  <!-- ══════════════════ WHAT I OFFER ══════════════════ -->
-  <section id="offer">
-    <p class="section-label">Deliverables</p>
-    <h2 class="section-title">What I <em>Offer</em></h2>
+  <!-- AUDIENCE -->
+  <section class="section" id="audience">
+    <p class="section-label fade-in">Who's watching</p>
+    <h2 class="section-title fade-in">Audience <em>Profile</em></h2>
+    <p class="section-desc fade-in">A niche, high-intent audience that responds — not just watches. Most engagement comes from outside my follower base.</p>
 
-    <div class="offer-grid">
-      <div class="offer-item">
-        <div class="offer-icon">🎬</div>
-        <div class="offer-title">Reels / TikToks</div>
-        <div class="offer-desc">15–60 sec cinematic short-form video. Scripted or lifestyle-integrated. Full edit included.</div>
+    <div class="audience-grid fade-in">
+      <div class="audience-card">
+        <div class="audience-card-icon">🎯</div>
+        <div class="audience-card-value">95.8%</div>
+        <div class="audience-card-label">Non-Follower Reach</div>
+        <p class="audience-card-note">Content reaches far beyond followers — algorithm-driven discovery, ideal for brand awareness campaigns.</p>
       </div>
-      <div class="offer-item">
-        <div class="offer-icon">📸</div>
-        <div class="offer-title">Photography</div>
-        <div class="offer-desc">High-quality stills for Feed, Stories, or brand use. Dark aesthetic or natural light — your choice.</div>
+      <div class="audience-card">
+        <div class="audience-card-icon">🎬</div>
+        <div class="audience-card-value">98.2%</div>
+        <div class="audience-card-label">Reels Performance</div>
+        <p class="audience-card-note">Almost all views come through Reels — the highest-reach format on Instagram. Optimized for virality.</p>
       </div>
-      <div class="offer-item">
-        <div class="offer-icon">📱</div>
-        <div class="offer-title">Instagram Stories</div>
-        <div class="offer-desc">Authentic product placement in daily life. Swipe-ups, polls, countdowns. 24h or permanent Highlight.</div>
+      <div class="audience-card">
+        <div class="audience-card-icon">🌎</div>
+        <div class="audience-card-value">3+</div>
+        <div class="audience-card-label">Countries Reached</div>
+        <p class="audience-card-note">Bilingual creator (EN/ES). Audience spans Mexico, USA, and Latin America — ideal for cross-market campaigns.</p>
       </div>
-      <div class="offer-item">
-        <div class="offer-icon">🤝</div>
-        <div class="offer-title">UGC Content</div>
-        <div class="offer-desc">Content created for your brand to use in ads, website, or social — no posting required on my end.</div>
+      <div class="audience-card">
+        <div class="audience-card-icon">⚡</div>
+        <div class="audience-card-value">15.6%</div>
+        <div class="audience-card-label">Engagement Rate</div>
+        <p class="audience-card-note">25.8K interactions over 165K reached. Industry average for micro-creators: 3–6%. This is 3× above average.</p>
       </div>
-      <div class="offer-item">
-        <div class="offer-icon">📣</div>
-        <div class="offer-title">Brand Ambassador</div>
-        <div class="offer-desc">Long-term partnership. Monthly deliverables, exclusive rights negotiable, affiliate codes.</div>
+    </div>
+
+    <div class="platforms fade-in">
+      <div class="platform-bar">
+        <div class="platform-icon">📸</div>
+        <div class="platform-info">
+          <div class="platform-name">Instagram</div>
+          <div class="platform-stat">1.9K</div>
+          <div class="platform-detail">278K views/month · @hanselvelavega</div>
+        </div>
       </div>
-      <div class="offer-item">
-        <div class="offer-icon">✍️</div>
-        <div class="offer-title">Custom Packages</div>
-        <div class="offer-desc">Bundles of the above. Cross-platform campaigns. Let's build something that fits your goals exactly.</div>
+      <div class="platform-bar">
+        <div class="platform-icon">🎵</div>
+        <div class="platform-info">
+          <div class="platform-name">TikTok</div>
+          <div class="platform-stat">2.1K</div>
+          <div class="platform-detail">Cinematic dance & lifestyle · @hanselvelavega</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ══════════════════ WHY MICRO ══════════════════ -->
-  <section id="why">
-    <p class="section-label">Why micro-influencer</p>
-    <h2 class="section-title">Quality over <em>Quantity</em></h2>
-
-    <div style="max-width:680px;margin-top:2rem;">
-      <p style="color:var(--muted);line-height:1.9;font-size:0.95rem;margin-bottom:1.5rem;">
-        Micro-influencers (1K–10K) consistently outperform mega accounts in the metrics that actually drive sales:
-        higher engagement rate, deeper trust, more targeted audiences, and lower cost per authentic action.
+  <!-- QUOTE -->
+  <div style="background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="quote-section fade-in">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">
+        I don't create content about products —
+        I create <em>moments</em> that happen to feature them.
+        That's the difference between an ad and a story.
       </p>
-      <p style="color:var(--muted);line-height:1.9;font-size:0.95rem;">
-        My audience follows me because of genuine passion for ballet, movement, and elevated aesthetics —
-        not because of a viral moment. When I recommend something, they listen.
-      </p>
+      <p class="quote-author">— Hansel Vela Vega</p>
     </div>
+  </div>
 
-    <div class="stats-grid" style="margin-top:2.5rem;max-width:680px;">
-      <div class="stat-card">
-        <div class="stat-number" style="font-size:2rem;">8.4%</div>
-        <div class="stat-label">My Engagement</div>
-        <div class="stat-platform">vs 1–3% industry avg</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" style="font-size:2rem;">60%</div>
-        <div class="stat-label">Audience Trust</div>
-        <div class="stat-platform">micro vs macro influencers</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number" style="font-size:2rem;">Niche</div>
-        <div class="stat-label">Ballet × Lifestyle</div>
-        <div class="stat-platform">Unique positioning</div>
+  <!-- CONTENT PILLARS -->
+  <section class="pillars-bg section-full" id="content">
+    <div class="section" style="padding-top:0;padding-bottom:3rem;">
+      <p class="section-label fade-in">What I create</p>
+      <h2 class="section-title fade-in">Content <em>Pillars</em></h2>
+      <p class="section-desc fade-in">Six areas where storytelling, aesthetics, and performance meet.</p>
+    </div>
+    <div style="max-width:1200px; margin: 0 auto; padding: 0 2rem;">
+      <div class="pillars-grid fade-in">
+        <div class="pillar">
+          <div class="pillar-number">01</div>
+          <div class="pillar-icon">🩰</div>
+          <div class="pillar-title">Ballet &amp; <em>Movement</em></div>
+          <p class="pillar-desc">Cinematic training footage, audition prep, technique breakdowns, and the raw discipline behind professional dance.</p>
+          <div class="pillar-tags">
+            <span class="pillar-tag">Performance</span>
+            <span class="pillar-tag">Athlete</span>
+            <span class="pillar-tag">Training</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">02</div>
+          <div class="pillar-icon">🧘</div>
+          <div class="pillar-title">Wellness &amp; <em>Recovery</em></div>
+          <p class="pillar-desc">Recovery routines, mobility work, mental performance, and the habits that keep an athlete at peak condition.</p>
+          <div class="pillar-tags">
+            <span class="pillar-tag">Health</span>
+            <span class="pillar-tag">Routine</span>
+            <span class="pillar-tag">Mindset</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">03</div>
+          <div class="pillar-icon">✨</div>
+          <div class="pillar-title">Skincare &amp; <em>Grooming</em></div>
+          <p class="pillar-desc">Male grooming as an art form. Minimalist skincare, fragrance, and the attention to detail that defines presence.</p>
+          <div class="pillar-tags">
+            <span class="pillar-tag">Skincare</span>
+            <span class="pillar-tag">Grooming</span>
+            <span class="pillar-tag">Fragrance</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">04</div>
+          <div class="pillar-icon">👔</div>
+          <div class="pillar-title">Fashion &amp; <em>Activewear</em></div>
+          <p class="pillar-desc">Where athletic performance meets editorial style. Activewear, streetwear, and how aesthetic intention shapes identity.</p>
+          <div class="pillar-tags">
+            <span class="pillar-tag">Activewear</span>
+            <span class="pillar-tag">Style</span>
+            <span class="pillar-tag">Editorial</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">05</div>
+          <div class="pillar-icon">🎨</div>
+          <div class="pillar-title">Art &amp; <em>Creative</em></div>
+          <p class="pillar-desc">Cinematic storytelling, visual direction, and the creative process of crafting content that feels like film, not social media.</p>
+          <div class="pillar-tags">
+            <span class="pillar-tag">Cinematic</span>
+            <span class="pillar-tag">Visual</span>
+            <span class="pillar-tag">Direction</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">06</div>
+          <div class="pillar-icon">🏡</div>
+          <div class="pillar-title">Lifestyle &amp; <em>Home</em></div>
+          <p class="pillar-desc">The environments that shape performance: morning routines, space design, nutrition, and intentional living as a system.</p>
+          <div class="pillar-tags">
+            <span class="pillar-tag">Lifestyle</span>
+            <span class="pillar-tag">Routine</span>
+            <span class="pillar-tag">Nutrition</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line r"></div>
+  </div>
 
-  <!-- ══════════════════ CONTACT ══════════════════ -->
-  <div class="contact-section" id="contact">
-    <div class="contact-inner">
-      <p class="section-label">Get in touch</p>
-      <h2 class="section-title">Let's <em>Create</em> Together</h2>
-      <p class="contact-desc">
-        Open to collaborations, ambassadorships, UGC, and long-term brand partnerships.
-        I respond within 24 hours.
-      </p>
+  <!-- DELIVERABLES -->
+  <section class="section" id="deliverables">
+    <p class="section-label fade-in">What you get</p>
+    <h2 class="section-title fade-in">Collaboration <em>Deliverables</em></h2>
+    <p class="section-desc fade-in">Every partnership is tailored. Below is what's typically included — custom scopes welcome.</p>
 
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:hanselvelavega@gmail.com">
-          <span class="cl-icon">✉️</span>
-          hanselvelavega@gmail.com
-        </a>
-        <a class="contact-link" href="https://instagram.com/hanselvelavega" target="_blank" rel="noopener">
-          <span class="cl-icon">📷</span>
-          @hanselvelavega · Instagram
-        </a>
-        <a class="contact-link" href="https://tiktok.com/@hanselvelavega" target="_blank" rel="noopener">
-          <span class="cl-icon">🎵</span>
-          @hanselvelavega · TikTok
-        </a>
+    <div class="deliverables-list fade-in">
+      <div class="deliverable">
+        <div class="del-icon">🎬</div>
+        <div>
+          <div class="del-name">Cinematic Reel</div>
+          <div class="del-desc">15–60 sec vertical video, branded, color graded. Optimized for Reels &amp; TikTok algorithm.</div>
+        </div>
+        <span class="del-badge">Primary</span>
+      </div>
+      <div class="deliverable">
+        <div class="del-icon">📸</div>
+        <div>
+          <div class="del-name">Editorial Photo Set</div>
+          <div class="del-desc">3–5 high-quality stills for feed posts, stories, or brand asset library.</div>
+        </div>
+        <span class="del-badge">Add-on</span>
+      </div>
+      <div class="deliverable">
+        <div class="del-icon">💬</div>
+        <div>
+          <div class="del-name">Stories Sequence</div>
+          <div class="del-desc">3–5 authentic story frames with swipe-up or link functionality.</div>
+        </div>
+        <span class="del-badge">Add-on</span>
+      </div>
+      <div class="deliverable">
+        <div class="del-icon">📝</div>
+        <div>
+          <div class="del-name">UGC Package (Raw)</div>
+          <div class="del-desc">Unedited footage delivered for brand's own use — licensed for 12 months.</div>
+        </div>
+        <span class="del-badge">Available</span>
+      </div>
+      <div class="deliverable">
+        <div class="del-icon">🔄</div>
+        <div>
+          <div class="del-name">Long-Term Ambassador</div>
+          <div class="del-desc">Monthly content cadence, exclusive in-category, whitelisting rights available.</div>
+        </div>
+        <span class="del-badge">Preferred</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MICRO -->
+  <div style="background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 7rem 2rem;">
+    <div class="section" style="padding:0;">
+      <p class="section-label fade-in">The micro advantage</p>
+      <h2 class="section-title fade-in">Why <em>Micro-Creators</em> Win</h2>
+      <p class="section-desc fade-in">278K monthly views from 1.9K followers. That's not a following — that's a distribution machine.</p>
+
+      <div class="why-grid fade-in">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <div class="why-icon">🎯</div>
+          <h3 class="why-title">Algorithm <em>Reach</em></h3>
+          <p class="why-text">95.8% of views come from non-followers. The algorithm pushes the content — not the follower count.</p>
+          <div class="why-stat">145×</div>
+          <div class="why-stat-label">Views vs. Follower count</div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <div class="why-icon">💬</div>
+          <h3 class="why-title">Real <em>Trust</em></h3>
+          <p class="why-text">Micro-creators have tighter communities. Recommendations feel personal — not like advertising.</p>
+          <div class="why-stat">3×</div>
+          <div class="why-stat-label">Above avg. engagement rate</div>
+        </div>
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <div class="why-icon">⚡</div>
+          <h3 class="why-title">Production <em>Quality</em></h3>
+          <p class="why-text">Cinematic aesthetics, intentional direction, and bilingual reach — without macro-creator price tags.</p>
+          <div class="why-stat">EN/ES</div>
+          <div class="why-stat-label">Bilingual content</div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- CONTACT -->
+  <section class="contact-bg section-full" id="contact">
+    <div class="section" style="text-align:center;">
+      <p class="section-label fade-in">Ready to create</p>
+      <h2 class="section-title fade-in">Let's Build <em>Something</em></h2>
+      <p class="section-desc fade-in">Open to product collabs, ambassadorships, UGC, and long-term brand partnerships. Response within 24h.</p>
+
+      <div class="contact-links fade-in">
+        <a href="mailto:hanselvelavega@gmail.com" class="contact-link">
+          <div class="contact-link-left">
+            <span class="contact-link-icon">✉️</span>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">hanselvelavega@gmail.com</div>
+            </div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://instagram.com/hanselvelavega" target="_blank" class="contact-link">
+          <div class="contact-link-left">
+            <span class="contact-link-icon">📸</span>
+            <div>
+              <div class="contact-link-label">Instagram</div>
+              <div class="contact-link-value">@hanselvelavega</div>
+            </div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="https://tiktok.com/@hanselvelavega" target="_blank" class="contact-link">
+          <div class="contact-link-left">
+            <span class="contact-link-icon">🎵</span>
+            <div>
+              <div class="contact-link-label">TikTok</div>
+              <div class="contact-link-value">@hanselvelavega</div>
+            </div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    © 2026 Hansel Vela Vega &nbsp;·&nbsp; hanselvelavega@gmail.com &nbsp;·&nbsp; All rights reserved
+    <div class="footer-logo">Hansel Vela Vega</div>
+    <p class="footer-copy">© 2026 &ensp;·&ensp; hanselvelavega@gmail.com &ensp;·&ensp; All Rights Reserved</p>
   </footer>
 
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          // Stagger children
+          const kids = e.target.querySelectorAll('.fade-in');
+          kids.forEach((k, i) => setTimeout(() => k.classList.add('visible'), i * 100));
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Hero stagger on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .fade-in').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 200 + i * 180);
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hansel Vela Vega — Media Kit</title>
-  <meta name="description" content="Ballet dancer & cinematic content creator. 278K monthly views. Brand collaboration media kit." />
+  <title>Hansel Vela Vega — Media Kit UGC 2026</title>
+  <meta name="description" content="Bailarín de ballet & creador UGC cinematográfico. 278K vistas mensuales. Colaboraciones de marca." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet" />
@@ -12,24 +12,24 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:    #050505;
-      --deep:     #0a0a0a;
-      --dark:     #0f0f0f;
-      --card:     #141414;
-      --card2:    #181818;
-      --border:   #222222;
-      --border2:  #2e2e2e;
-      --gold:     #C9A84C;
-      --gold-lt:  #E4C76B;
-      --gold-dim: #8a6f30;
-      --gold-glow:rgba(201,168,76,0.18);
-      --gold-glow2:rgba(201,168,76,0.08);
-      --white:    #F2EDE3;
-      --muted:    #666666;
-      --muted2:   #888888;
-      --serif:    'Cormorant Garamond', Georgia, serif;
-      --sans:     'Inter', system-ui, sans-serif;
-      --thin:     'Montserrat', sans-serif;
+      --black:     #050505;
+      --deep:      #0a0a0a;
+      --dark:      #0f0f0f;
+      --card:      #141414;
+      --card2:     #181818;
+      --border:    #222222;
+      --border2:   #2e2e2e;
+      --gold:      #C9A84C;
+      --gold-lt:   #E4C76B;
+      --gold-dim:  #8a6f30;
+      --gold-glow: rgba(201,168,76,0.18);
+      --gold-glow2:rgba(201,168,76,0.06);
+      --white:     #F2EDE3;
+      --muted:     #555555;
+      --muted2:    #888888;
+      --serif:     'Cormorant Garamond', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+      --thin:      'Montserrat', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -44,188 +44,260 @@
       overflow-x: hidden;
     }
 
-    /* ─── NOISE TEXTURE OVERLAY ─── */
+    /* ─── NOISE OVERLAY ─── */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
-      z-index: 999;
-      opacity: 0.6;
+      z-index: 998;
+      opacity: 0.5;
     }
 
-    /* ─── ANIMATED ORBS ─── */
+    /* ─── SCROLL PROGRESS BAR ─── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-lt));
+      z-index: 1001;
+      transition: width 0.08s linear;
+    }
+
+    /* ─── ORBS ─── */
     .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(80px);
+      filter: blur(90px);
       pointer-events: none;
-      animation: orb-drift 20s ease-in-out infinite alternate;
+      animation: orb-drift 22s ease-in-out infinite alternate;
     }
-    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%); top: -150px; right: -100px; animation-duration: 18s; }
-    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); bottom: 10%; left: -100px; animation-duration: 25s; animation-delay: -8s; }
-    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%); top: 40%; right: 5%; animation-duration: 30s; animation-delay: -4s; }
-
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%); top: -200px; right: -150px; animation-duration: 20s; }
+    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); bottom: 5%; left: -100px; animation-duration: 28s; animation-delay: -10s; }
+    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%); top: 45%; right: 5%; animation-duration: 35s; animation-delay: -5s; }
     @keyframes orb-drift {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(30px, -20px) scale(1.05); }
-      100% { transform: translate(-20px, 15px) scale(0.97); }
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(30px,-20px) scale(1.06); }
+      100% { transform: translate(-20px,15px) scale(0.96); }
     }
 
-    /* ─── GOLD LINE ─── */
-    .gold-line {
-      display: block;
-      width: 60px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 auto;
+    /* ─── MOBILE OVERLAY ─── */
+    .mobile-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+      backdrop-filter: blur(4px);
     }
+    .mobile-overlay.visible { opacity: 1; pointer-events: all; }
+
+    /* ─── MOBILE MENU ─── */
+    .mobile-menu {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 75vw; max-width: 300px;
+      height: 100dvh;
+      background: var(--deep);
+      border-left: 1px solid var(--border2);
+      z-index: 200;
+      transition: right 0.4s cubic-bezier(0.76,0,0.24,1);
+      display: flex;
+      flex-direction: column;
+      padding: 5rem 2rem 2rem;
+    }
+    .mobile-menu.open { right: 0; }
+    .mobile-menu-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+    .mobile-menu a {
+      font-family: var(--thin);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.3s, padding-left 0.3s;
+      display: block;
+    }
+    .mobile-menu a:hover { color: var(--gold); padding-left: 0.5rem; }
+    .mobile-menu-cta {
+      margin-top: auto;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: #050505 !important;
+      text-align: center;
+      font-weight: 500 !important;
+      border-bottom: none !important;
+      border-radius: 1px;
+    }
+    .mobile-menu-cta:hover { padding-left: 0 !important; opacity: 0.9; }
 
     /* ─── NAV ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.4rem 3rem;
+      padding: 1.3rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(180deg, rgba(5,5,5,0.95) 0%, transparent 100%);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(201,168,76,0.08);
+      background: linear-gradient(180deg, rgba(5,5,5,0.97) 0%, transparent 100%);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.07);
+      transition: padding 0.3s;
     }
     .nav-logo {
       font-family: var(--serif);
       font-size: 1.1rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--gold);
       text-decoration: none;
     }
-    .nav-links { display: flex; gap: 2rem; }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
     .nav-links a {
       font-family: var(--thin);
       font-weight: 300;
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted2);
       text-decoration: none;
       transition: color 0.3s;
     }
     .nav-links a:hover { color: var(--gold); }
+    .nav-cta-link {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold) !important;
+      transition: background 0.3s, border-color 0.3s !important;
+    }
+    .nav-cta-link:hover { background: rgba(201,168,76,0.08) !important; border-color: var(--gold) !important; }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+      transition: all 0.3s cubic-bezier(0.76,0,0.24,1);
+      transform-origin: center;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     /* ─── HERO ─── */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
+      gap: 4rem;
+      padding: 8rem 5rem 5rem;
       position: relative;
       overflow: hidden;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-
+    .hero-content { position: relative; z-index: 2; }
     .hero-eyebrow {
       font-family: var(--thin);
       font-weight: 200;
-      font-size: 0.65rem;
-      letter-spacing: 0.4em;
+      font-size: 0.62rem;
+      letter-spacing: 0.45em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 2rem;
-      opacity: 0.9;
+      margin-bottom: 1.8rem;
+      opacity: 0.85;
     }
-
     .hero-name {
       font-family: var(--serif);
-      font-size: clamp(4.5rem, 13vw, 10rem);
+      font-size: clamp(4rem, 8vw, 7.5rem);
       font-weight: 300;
-      line-height: 0.9;
+      line-height: 0.88;
       letter-spacing: -0.02em;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
     }
-    .hero-name em {
-      font-style: italic;
-      color: var(--gold);
-      display: block;
-    }
-
+    .hero-name em { font-style: italic; color: var(--gold); display: block; }
     .hero-divider {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      margin: 2rem auto;
-      width: min(400px, 90%);
+      gap: 1.2rem;
+      margin: 2rem 0;
+      width: min(360px, 100%);
     }
-    .hero-divider::before,
-    .hero-divider::after {
+    .hero-divider::before, .hero-divider::after {
       content: '';
       flex: 1;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold-dim));
     }
-    .hero-divider::after {
-      background: linear-gradient(90deg, var(--gold-dim), transparent);
-    }
-    .hero-divider-diamond {
-      width: 6px; height: 6px;
-      background: var(--gold);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
-
+    .hero-divider::after { background: linear-gradient(90deg, var(--gold-dim), transparent); }
+    .hero-divider-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
     .hero-subtitle {
       font-family: var(--thin);
       font-weight: 200;
-      font-size: clamp(0.7rem, 2vw, 0.85rem);
-      letter-spacing: 0.3em;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--muted2);
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
     }
-
     .hero-tags {
       display: flex;
-      gap: 0.8rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
     }
     .hero-tag {
       font-family: var(--thin);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 300;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 0.5rem 1.2rem;
-      border: 1px solid rgba(201,168,76,0.25);
+      padding: 0.45rem 1rem;
+      border: 1px solid rgba(201,168,76,0.22);
       color: var(--gold);
       background: rgba(201,168,76,0.04);
       border-radius: 1px;
     }
-
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
     .hero-cta {
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
-      padding: 1rem 2.5rem;
+      padding: 1rem 2.4rem;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 50%, var(--gold) 100%);
       background-size: 200% 200%;
       color: #050505;
       font-family: var(--thin);
       font-weight: 400;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       text-decoration: none;
       border-radius: 1px;
-      position: relative;
-      overflow: hidden;
-      transition: background-position 0.5s, box-shadow 0.3s;
-      box-shadow: 0 0 30px rgba(201,168,76,0.25), 0 0 60px rgba(201,168,76,0.1);
+      box-shadow: 0 0 30px rgba(201,168,76,0.28), 0 0 60px rgba(201,168,76,0.1);
       animation: shimmer 3s ease infinite;
     }
     @keyframes shimmer {
@@ -233,87 +305,206 @@
       50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    .hero-cta:hover {
-      box-shadow: 0 0 40px rgba(201,168,76,0.4), 0 0 80px rgba(201,168,76,0.15);
+    .hero-cta:hover { box-shadow: 0 0 45px rgba(201,168,76,0.45), 0 0 90px rgba(201,168,76,0.15); }
+    .hero-download {
+      font-family: var(--thin);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border2);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .hero-download:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ─── HERO PHOTO ─── */
+    .hero-photo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-photo-frame {
+      position: relative;
+      width: min(420px, 100%);
+      aspect-ratio: 3/4;
+    }
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
+      z-index: -1;
+    }
+    .hero-photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      border: 1px solid rgba(201,168,76,0.08);
+      border-radius: 2px;
+      z-index: -1;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(15%) contrast(1.05);
+      display: block;
+      border-radius: 1px;
+    }
+    .hero-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(5,5,5,0.5) 0%, transparent 50%);
+      border-radius: 1px;
+    }
+    .hero-stat-bubble {
+      position: absolute;
+      background: rgba(10,10,10,0.9);
+      border: 1px solid rgba(201,168,76,0.25);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1.2rem;
+      border-radius: 2px;
+    }
+    .hero-stat-bubble.bubble-1 { bottom: 2rem; left: -2.5rem; }
+    .hero-stat-bubble.bubble-2 { top: 3rem; right: -2.5rem; }
+    .bubble-value {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold-lt);
+      line-height: 1;
+    }
+    .bubble-label {
+      font-family: var(--thin);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin-top: 0.2rem;
+    }
+    .hero-corner-deco {
+      position: absolute;
+      width: 30px; height: 30px;
+      border-color: var(--gold);
+      border-style: solid;
+      opacity: 0.4;
+    }
+    .corner-tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+    .corner-br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+    /* ─── HERO FULL WRAP ─── */
+    .hero-outer {
+      position: relative;
+      overflow: hidden;
     }
 
+    /* ─── SCROLL INDICATOR ─── */
     .scroll-indicator {
       position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 2rem;
+      left: 5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      opacity: 0.4;
-      animation: float 2s ease-in-out infinite;
+      opacity: 0.35;
+      animation: float 2.5s ease-in-out infinite;
     }
-    .scroll-indicator span {
-      font-size: 0.55rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      font-family: var(--thin);
-    }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(180deg, var(--gold), transparent);
-      animation: scroll-pulse 2s ease-in-out infinite;
-    }
-    @keyframes scroll-pulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.1); }
-    }
+    .scroll-indicator span { font-size: 0.52rem; letter-spacing: 0.3em; text-transform: uppercase; font-family: var(--thin); }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(180deg, var(--gold), transparent); }
     @keyframes float {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
     }
 
-    /* ─── SECTION WRAPPER ─── */
-    .section {
-      padding: 7rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .section-full {
-      padding: 7rem 2rem;
-      position: relative;
-    }
-
+    /* ─── SHARED SECTION ─── */
+    .section { padding: 7rem 2rem; max-width: 1200px; margin: 0 auto; position: relative; }
+    .section-full { padding: 7rem 2rem; position: relative; }
     .section-label {
       font-family: var(--thin);
       font-weight: 200;
-      font-size: 0.6rem;
-      letter-spacing: 0.45em;
+      font-size: 0.58rem;
+      letter-spacing: 0.48em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       text-align: center;
     }
-
     .section-title {
       font-family: var(--serif);
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
       font-weight: 300;
       text-align: center;
-      line-height: 1.1;
-      margin-bottom: 1rem;
+      line-height: 1.08;
+      margin-bottom: 0.8rem;
     }
-    .section-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
+    .section-title em { font-style: italic; color: var(--gold); }
     .section-desc {
       text-align: center;
       color: var(--muted2);
-      font-size: 0.9rem;
+      font-size: 0.87rem;
       max-width: 500px;
       margin: 0 auto 4rem;
-      line-height: 1.8;
+      line-height: 1.85;
     }
+
+    /* ─── GOLD LINE ─── */
+    .gold-line { display: block; width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto; }
+
+    /* ─── BRAND FIT ─── */
+    .brand-fit-bg {
+      background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .brand-fit-card {
+      background: var(--card);
+      padding: 2.5rem;
+    }
+    .brand-fit-card-title {
+      font-family: var(--thin);
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .brand-fit-card-title.yes { color: var(--gold); }
+    .brand-fit-card-title.no  { color: var(--muted2); }
+    .brand-fit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 0.82rem;
+      color: var(--white);
+    }
+    .brand-fit-item:last-child { margin-bottom: 0; }
+    .fit-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.42rem;
+    }
+    .fit-dot.yes { background: var(--gold); }
+    .fit-dot.no  { background: var(--muted); }
+    .brand-fit-item.no-fit { color: var(--muted2); }
+    .fit-note { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; display: block; }
 
     /* ─── STATS ─── */
     .stats-bg {
@@ -325,20 +516,17 @@
     }
     .stats-bg::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
         radial-gradient(ellipse 60% 40% at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
         radial-gradient(ellipse 60% 40% at 80% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
     }
-
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
       position: relative;
     }
-
     .stat-item {
       padding: 3.5rem 2rem;
       text-align: center;
@@ -354,8 +542,7 @@
     }
     .stat-item:last-child::after,
     .stat-item:nth-child(3)::after { display: none; }
-    .stat-item:hover { background: rgba(201,168,76,0.03); }
-
+    .stat-item:hover { background: rgba(201,168,76,0.025); }
     .stat-number {
       font-family: var(--serif);
       font-size: clamp(2.5rem, 5vw, 4rem);
@@ -364,32 +551,25 @@
       line-height: 1;
       margin-bottom: 0.4rem;
       letter-spacing: -0.02em;
+      text-shadow: 0 0 40px rgba(201,168,76,0.25);
     }
-    .stat-number sup {
-      font-size: 0.5em;
-      vertical-align: super;
-      color: var(--gold);
-    }
+    .stat-number sup { font-size: 0.5em; vertical-align: super; color: var(--gold); }
     .stat-label {
       font-family: var(--thin);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 300;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--muted2);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
-    .stat-sub {
-      font-size: 0.7rem;
-      color: var(--muted);
-      font-style: italic;
-    }
+    .stat-sub { font-size: 0.68rem; color: var(--muted); font-style: italic; }
 
-    /* ─── ACHIEVEMENT BADGES ─── */
+    /* ─── BADGES ─── */
     .badges {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
       margin-top: 4rem;
     }
@@ -397,26 +577,21 @@
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      padding: 0.7rem 1.4rem;
-      border: 1px solid rgba(201,168,76,0.2);
-      background: rgba(201,168,76,0.04);
+      padding: 0.7rem 1.3rem;
+      border: 1px solid rgba(201,168,76,0.18);
+      background: rgba(201,168,76,0.03);
       border-radius: 1px;
     }
     .badge-icon { font-size: 1rem; }
     .badge-text {
       font-family: var(--thin);
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 300;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted2);
     }
-    .badge-text strong {
-      display: block;
-      color: var(--gold);
-      font-weight: 400;
-      font-size: 0.7rem;
-    }
+    .badge-text strong { display: block; color: var(--gold); font-weight: 400; font-size: 0.68rem; }
 
     /* ─── AUDIENCE ─── */
     .audience-grid {
@@ -424,7 +599,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 2px;
       max-width: 900px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2px;
     }
     .audience-card {
       background: var(--card);
@@ -444,78 +619,162 @@
     }
     .audience-card:hover { transform: translateY(-3px); }
     .audience-card:hover::before { opacity: 1; }
-    .audience-card-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+    .audience-card-icon { font-size: 1.6rem; margin-bottom: 0.9rem; }
     .audience-card-value {
       font-family: var(--serif);
       font-size: 2.5rem;
       font-weight: 300;
       color: var(--gold-lt);
       line-height: 1;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
     }
     .audience-card-label {
       font-family: var(--thin);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 300;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted2);
     }
-    .audience-card-note {
-      margin-top: 0.8rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ─── PLATFORM BAR ─── */
+    .audience-card-note { margin-top: 0.7rem; font-size: 0.73rem; color: var(--muted2); line-height: 1.6; }
     .platforms {
       display: flex;
       gap: 2px;
-      margin-top: 2px;
       max-width: 900px;
-      margin: 2px auto 0;
+      margin: 0 auto;
     }
     .platform-bar {
       flex: 1;
       background: var(--card2);
-      padding: 1.8rem 2rem;
+      padding: 1.6rem 2rem;
       display: flex;
       align-items: center;
       gap: 1rem;
     }
-    .platform-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
+    .platform-icon { font-size: 1.3rem; flex-shrink: 0; }
     .platform-info { flex: 1; }
     .platform-name {
       font-family: var(--thin);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted2);
     }
-    .platform-stat {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--gold-lt);
-    }
-    .platform-detail { font-size: 0.7rem; color: var(--muted); }
+    .platform-stat { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--gold-lt); }
+    .platform-detail { font-size: 0.68rem; color: var(--muted); }
 
-    /* ─── CONTENT PILLARS ─── */
-    .pillars-bg {
+    /* ─── PROCESS TIMELINE ─── */
+    .process-bg {
       background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%);
     }
-    .pillars-grid {
+    .process-timeline {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
     }
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), var(--gold-dim), var(--border2), transparent);
+      z-index: 0;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem 0;
+      position: relative;
+      z-index: 1;
+    }
+    .process-num {
+      width: 48px; height: 48px;
+      border: 1px solid var(--gold-dim);
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .process-num::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 50%;
+    }
+    .process-num-text {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .process-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .process-title em { font-style: italic; color: var(--gold); }
+    .process-desc { font-size: 0.72rem; color: var(--muted2); line-height: 1.6; }
+    .process-time {
+      margin-top: 0.8rem;
+      font-family: var(--thin);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 20px;
+    }
+
+    /* ─── QUOTE ─── */
+    .quote-section {
+      text-align: center;
+      padding: 7rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 8rem;
+      color: rgba(201,168,76,0.07);
+      line-height: 0.5;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .quote-text {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+    .quote-text em { color: var(--gold); font-style: normal; }
+    .quote-author {
+      font-family: var(--thin);
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+
+    /* ─── CONTENT PILLARS ─── */
+    .pillars-bg { background: linear-gradient(180deg, var(--black) 0%, var(--deep) 100%); }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
     .pillar {
       background: var(--card);
       padding: 2.5rem 2rem;
@@ -526,8 +785,7 @@
     }
     .pillar::after {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.4s;
@@ -538,97 +796,231 @@
       font-family: var(--serif);
       font-size: 3rem;
       font-weight: 300;
-      color: rgba(201,168,76,0.12);
+      color: rgba(201,168,76,0.1);
       line-height: 1;
       margin-bottom: 0.5rem;
       transition: color 0.4s;
     }
-    .pillar:hover .pillar-number { color: rgba(201,168,76,0.25); }
-    .pillar-icon {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-    }
-    .pillar-title {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 0.6rem;
-    }
-    .pillar-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .pillar-desc {
-      font-size: 0.78rem;
-      color: var(--muted2);
-      line-height: 1.7;
-    }
-    .pillar-tags {
-      margin-top: 1.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
+    .pillar:hover .pillar-number { color: rgba(201,168,76,0.22); }
+    .pillar-icon { font-size: 1.5rem; margin-bottom: 0.9rem; }
+    .pillar-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--white); margin-bottom: 0.5rem; }
+    .pillar-title em { font-style: italic; color: var(--gold); }
+    .pillar-desc { font-size: 0.76rem; color: var(--muted2); line-height: 1.7; }
+    .pillar-tags { margin-top: 1.1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .pillar-tag {
       font-family: var(--thin);
-      font-size: 0.55rem;
+      font-size: 0.53rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
+      padding: 0.22rem 0.55rem;
       border: 1px solid var(--border2);
       color: var(--muted);
       border-radius: 1px;
     }
 
-    /* ─── DELIVERABLES ─── */
-    .deliverables-list {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .deliverable {
+    /* ─── PORTFOLIO ─── */
+    .portfolio-grid {
       display: grid;
-      grid-template-columns: 3rem 1fr auto;
-      align-items: center;
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    .portfolio-card {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      cursor: pointer;
       background: var(--card);
-      padding: 1.5rem 2rem;
-      transition: background 0.3s, border-left 0.3s;
-      border-left: 2px solid transparent;
     }
-    .deliverable:hover {
-      background: var(--card2);
-      border-left-color: var(--gold-dim);
+    .portfolio-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s;
+      filter: grayscale(20%) contrast(1.05);
     }
-    .del-icon { font-size: 1.4rem; text-align: center; }
-    .del-name {
-      font-size: 0.9rem;
-      color: var(--white);
-      margin-bottom: 0.2rem;
+    .portfolio-card:hover img { transform: scale(1.06); filter: grayscale(0%) contrast(1.1); }
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.3) 50%, transparent 100%);
+      transition: background 0.4s;
     }
-    .del-desc { font-size: 0.75rem; color: var(--muted2); }
-    .del-badge {
+    .portfolio-card:hover .portfolio-overlay {
+      background: linear-gradient(0deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.5) 60%, rgba(201,168,76,0.05) 100%);
+    }
+    .portfolio-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+    }
+    .portfolio-cat {
       font-family: var(--thin);
       font-size: 0.55rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid rgba(201,168,76,0.3);
       color: var(--gold);
-      background: rgba(201,168,76,0.05);
-      white-space: nowrap;
+      margin-bottom: 0.4rem;
+    }
+    .portfolio-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .portfolio-desc {
+      font-size: 0.7rem;
+      color: var(--muted2);
+      margin-top: 0.4rem;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .portfolio-card:hover .portfolio-desc { opacity: 1; transform: translateY(0); }
+    .portfolio-tag {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      font-family: var(--thin);
+      font-size: 0.52rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      background: rgba(201,168,76,0.85);
+      color: #050505;
+      border-radius: 1px;
+      font-weight: 400;
     }
 
-    /* ─── WHY MICRO ─── */
-    .why-grid {
+    /* ─── PACKAGES ─── */
+    .packages-bg {
+      background: linear-gradient(180deg, var(--black) 0%, var(--deep) 60%, var(--black) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .packages-bg::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 400px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .packages-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
-      margin-top: 0;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
     }
+    .package-card {
+      background: var(--card);
+      padding: 2.8rem 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .package-card:hover { transform: translateY(-4px); }
+    .package-card.featured {
+      background: var(--card2);
+      border: 1px solid rgba(201,168,76,0.3);
+      transform: scale(1.02);
+      z-index: 2;
+    }
+    .package-card.featured:hover { transform: scale(1.02) translateY(-4px); }
+    .package-badge {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      font-family: var(--thin);
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 1.2rem;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      color: #050505;
+      font-weight: 500;
+    }
+    .package-tier {
+      font-family: var(--thin);
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin-bottom: 0.8rem;
+    }
+    .package-name {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .package-name em { font-style: italic; color: var(--gold); }
+    .package-price {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold-lt);
+      line-height: 1;
+      margin: 1.5rem 0 0.2rem;
+    }
+    .package-price-note {
+      font-family: var(--thin);
+      font-size: 0.62rem;
+      color: var(--muted2);
+      letter-spacing: 0.1em;
+    }
+    .package-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+      margin: 1.8rem 0;
+    }
+    .package-features { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .package-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--muted2);
+    }
+    .package-feature.included { color: var(--white); }
+    .feature-check {
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .feature-check.yes { color: var(--gold); }
+    .feature-check.no  { color: var(--border2); }
+    .package-cta {
+      display: block;
+      margin-top: 2.2rem;
+      padding: 0.9rem 1.5rem;
+      text-align: center;
+      font-family: var(--thin);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 1px;
+      transition: all 0.3s;
+    }
+    .package-cta.outline {
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+    }
+    .package-cta.outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+    .package-cta.solid {
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: #050505;
+      font-weight: 500;
+    }
+    .package-cta.solid:hover { box-shadow: 0 0 25px rgba(201,168,76,0.35); }
+
+    /* ─── WHY MICRO ─── */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
     .why-card {
       background: var(--card);
       padding: 3rem 2rem;
@@ -646,63 +1038,102 @@
       transition: transform 0.4s;
     }
     .why-card:hover::before { transform: scaleX(1); }
-    .why-num {
+    .why-num { font-family: var(--serif); font-size: 4rem; font-weight: 300; color: rgba(201,168,76,0.08); line-height: 1; margin-bottom: 1rem; }
+    .why-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .why-title { font-family: var(--serif); font-size: 1.1rem; color: var(--white); margin-bottom: 0.8rem; }
+    .why-title em { font-style: italic; color: var(--gold); }
+    .why-text { font-size: 0.76rem; color: var(--muted2); line-height: 1.8; }
+    .why-stat { margin-top: 1rem; font-family: var(--serif); font-size: 1.4rem; color: var(--gold-lt); }
+    .why-stat-label { font-size: 0.63rem; color: var(--muted); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background: var(--card);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .testimonial-card:hover { background: var(--card2); }
+    .testimonial-quote-mark {
       font-family: var(--serif);
-      font-size: 4rem;
-      font-weight: 300;
-      color: rgba(201,168,76,0.1);
-      line-height: 1;
+      font-size: 3.5rem;
+      color: rgba(201,168,76,0.15);
+      line-height: 0.8;
       margin-bottom: 1rem;
     }
-    .why-icon { font-size: 1.6rem; margin-bottom: 1rem; }
-    .why-title {
+    .testimonial-text {
       font-family: var(--serif);
-      font-size: 1.1rem;
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 300;
       color: var(--white);
-      margin-bottom: 0.8rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
-    .why-title em { font-style: italic; color: var(--gold); }
-    .why-text { font-size: 0.78rem; color: var(--muted2); line-height: 1.8; }
-    .why-stat {
-      margin-top: 1rem;
+    .testimonial-author { display: flex; align-items: center; gap: 0.9rem; }
+    .testimonial-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--serif);
-      font-size: 1.4rem;
-      color: var(--gold-lt);
+      font-size: 0.9rem;
+      color: #050505;
+      flex-shrink: 0;
     }
-    .why-stat-label { font-size: 0.65rem; color: var(--muted); }
-
-    /* ─── QUOTE ─── */
-    .quote-section {
+    .testimonial-name { font-size: 0.8rem; color: var(--white); font-weight: 400; }
+    .testimonial-role { font-family: var(--thin); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); }
+    .testimonials-note {
       text-align: center;
-      padding: 7rem 2rem;
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .testimonials-note a { color: var(--gold); text-decoration: none; }
+    .testimonials-note a:hover { text-decoration: underline; }
+
+    /* ─── DELIVERABLES ─── */
+    .deliverables-list {
       max-width: 800px;
       margin: 0 auto;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
-    .quote-mark {
-      font-family: var(--serif);
-      font-size: 8rem;
-      color: rgba(201,168,76,0.08);
-      line-height: 0.5;
-      margin-bottom: 1rem;
-      display: block;
+    .deliverable {
+      display: grid;
+      grid-template-columns: 3rem 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--card);
+      padding: 1.4rem 2rem;
+      transition: background 0.3s, border-left 0.3s;
+      border-left: 2px solid transparent;
     }
-    .quote-text {
-      font-family: var(--serif);
-      font-size: clamp(1.3rem, 3vw, 1.9rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.5;
-      color: var(--white);
-      margin-bottom: 2rem;
-    }
-    .quote-text em { color: var(--gold); font-style: normal; }
-    .quote-author {
+    .deliverable:hover { background: var(--card2); border-left-color: var(--gold-dim); }
+    .del-icon { font-size: 1.3rem; text-align: center; }
+    .del-name { font-size: 0.88rem; color: var(--white); margin-bottom: 0.2rem; }
+    .del-desc { font-size: 0.73rem; color: var(--muted2); }
+    .del-badge {
       font-family: var(--thin);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
+      font-size: 0.53rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted2);
+      padding: 0.28rem 0.75rem;
+      border: 1px solid rgba(201,168,76,0.28);
+      color: var(--gold);
+      background: rgba(201,168,76,0.04);
+      white-space: nowrap;
     }
 
     /* ─── CONTACT ─── */
@@ -720,7 +1151,6 @@
       background: radial-gradient(ellipse, rgba(201,168,76,0.1) 0%, transparent 70%);
       pointer-events: none;
     }
-
     .contact-links {
       display: flex;
       flex-direction: column;
@@ -739,21 +1169,18 @@
       border-left: 2px solid transparent;
       transition: background 0.3s, border-color 0.3s;
     }
-    .contact-link:hover {
-      background: var(--card2);
-      border-left-color: var(--gold);
-    }
+    .contact-link:hover { background: var(--card2); border-left-color: var(--gold); }
     .contact-link-left { display: flex; align-items: center; gap: 1.2rem; }
-    .contact-link-icon { font-size: 1.2rem; }
+    .contact-link-icon { font-size: 1.1rem; }
     .contact-link-label {
       font-family: var(--thin);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted2);
       margin-bottom: 0.2rem;
     }
-    .contact-link-value { font-size: 0.85rem; color: var(--white); }
+    .contact-link-value { font-size: 0.84rem; color: var(--white); }
     .contact-link-arrow { color: var(--gold); font-size: 0.9rem; }
 
     /* ─── FOOTER ─── */
@@ -767,161 +1194,328 @@
       content: '';
       position: absolute;
       top: 0; left: 50%; transform: translateX(-50%);
-      width: 100px; height: 1px;
-      background: var(--gold-dim);
-    }
-    .footer-logo {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-    .footer-copy {
-      font-family: var(--thin);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ─── DIVIDER ORNAMENT ─── */
-    .ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem 0;
-    }
-    .ornament-line {
       width: 80px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border2));
-    }
-    .ornament-line.r { background: linear-gradient(90deg, var(--border2), transparent); }
-    .ornament-diamond {
-      width: 5px; height: 5px;
       background: var(--gold-dim);
-      transform: rotate(45deg);
+    }
+    .footer-logo { font-family: var(--serif); font-size: 1.2rem; font-style: italic; color: var(--gold); margin-bottom: 0.7rem; }
+    .footer-copy { font-family: var(--thin); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+    /* ─── ORNAMENT ─── */
+    .ornament {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; padding: 2rem 0;
+    }
+    .ornament-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--border2)); }
+    .ornament-line.r { background: linear-gradient(90deg, var(--border2), transparent); }
+    .ornament-diamond { width: 5px; height: 5px; background: var(--gold-dim); transform: rotate(45deg); }
+
+    /* ─── FLOATING CTA (mobile) ─── */
+    .float-cta {
+      position: fixed;
+      bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: #050505;
+      font-family: var(--thin);
+      font-weight: 500;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      z-index: 90;
+      box-shadow: 0 4px 30px rgba(201,168,76,0.4), 0 2px 10px rgba(0,0,0,0.6);
+      white-space: nowrap;
+      display: none;
     }
 
-    /* ─── FADE IN ANIMATIONS ─── */
+    /* ─── FADE ANIMATIONS ─── */
     .fade-in {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(22px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ─── GLOW TEXT ─── */
-    .glow {
-      text-shadow: 0 0 40px rgba(201,168,76,0.3);
-    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; padding: 8rem 3rem 4rem; text-align: center; gap: 3rem; }
+      .hero-content { order: 2; }
+      .hero-photo-wrap { order: 1; }
+      .hero-photo-frame { width: min(320px, 80%); aspect-ratio: 3/4; margin: 0 auto; }
+      .hero-stat-bubble.bubble-1 { left: 0; }
+      .hero-stat-bubble.bubble-2 { right: 0; }
+      .hero-tags { justify-content: center; }
+      .hero-actions { justify-content: center; }
+      .hero-divider { margin: 2rem auto; }
+      .scroll-indicator { left: 50%; transform: translateX(-50%); }
+      .process-timeline { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-timeline::before { display: none; }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .float-cta { display: block; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(3)::after { display: block; }
       .stat-item:nth-child(2)::after { display: none; }
+      .stat-item:nth-child(3)::after { display: block; }
       .audience-grid { grid-template-columns: 1fr; }
       .platforms { flex-direction: column; }
       .pillars-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .package-card.featured { transform: none; }
       .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .brand-fit-grid { grid-template-columns: 1fr; }
+      .process-timeline { grid-template-columns: 1fr; }
       .deliverable { grid-template-columns: 2.5rem 1fr; }
       .del-badge { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .hero-photo-frame { width: min(280px, 90%); }
     }
   </style>
 </head>
 <body>
 
+  <!-- PROGRESS BAR -->
+  <div id="progress"></div>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="overlay"></div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-logo">HVV</div>
+    <a href="#brand-fit"    onclick="closeMenu()">Brand Fit</a>
+    <a href="#stats"        onclick="closeMenu()">Stats</a>
+    <a href="#process"      onclick="closeMenu()">Proceso</a>
+    <a href="#portfolio"    onclick="closeMenu()">Portfolio</a>
+    <a href="#packages"     onclick="closeMenu()">Paquetes</a>
+    <a href="#contact" class="mobile-menu-cta" onclick="closeMenu()">✦ Colaboremos</a>
+  </div>
+
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">HVV</a>
+    <a href="#top" class="nav-logo">HVV</a>
     <div class="nav-links">
+      <a href="#brand-fit">Brand Fit</a>
       <a href="#stats">Stats</a>
-      <a href="#content">Content</a>
-      <a href="#deliverables">Deliverables</a>
-      <a href="#contact">Contact</a>
+      <a href="#process">Proceso</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#packages">Paquetes</a>
+      <a href="#contact" class="nav-cta-link">Colaboremos →</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="top">
+  <div class="hero-outer">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
-    <p class="hero-eyebrow fade-in">Media Kit · 2026</p>
+    <div class="hero" id="top">
+      <!-- LEFT: CONTENT -->
+      <div class="hero-content">
+        <p class="hero-eyebrow fade-in">Media Kit · UGC · 2026</p>
 
-    <h1 class="hero-name fade-in">
-      Hansel
-      <em>Vela Vega</em>
-    </h1>
+        <h1 class="hero-name fade-in">
+          Hansel
+          <em>Vela Vega</em>
+        </h1>
 
-    <div class="hero-divider fade-in">
-      <div class="hero-divider-diamond"></div>
+        <div class="hero-divider fade-in">
+          <div class="hero-divider-diamond"></div>
+        </div>
+
+        <p class="hero-subtitle fade-in">
+          Bailarín de Ballet &ensp;·&ensp; Creador UGC Cinematográfico<br>
+          Bilingual Creator &ensp;·&ensp; EN / ES
+        </p>
+
+        <div class="hero-tags fade-in">
+          <span class="hero-tag">Dance & Movement</span>
+          <span class="hero-tag">Wellness</span>
+          <span class="hero-tag">Skincare</span>
+          <span class="hero-tag">Fashion</span>
+          <span class="hero-tag">Lifestyle</span>
+          <span class="hero-tag">UGC</span>
+        </div>
+
+        <div class="hero-actions fade-in">
+          <a href="#contact" class="hero-cta">✦ &nbsp; Colaboremos &nbsp; ✦</a>
+          <a href="#packages" class="hero-download">Ver paquetes ↓</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: PHOTO -->
+      <div class="hero-photo-wrap fade-in">
+        <div class="hero-photo-frame">
+          <div class="hero-corner-deco corner-tl"></div>
+          <div class="hero-corner-deco corner-br"></div>
+          <img
+            src="https://drive.google.com/thumbnail?id=1_XNjLIMjIZB96rnhvE8l5aTHoVqN_4vP&sz=w800"
+            alt="Hansel Vela Vega — Head Shot"
+            class="hero-photo"
+            loading="eager"
+          />
+          <div class="hero-photo-overlay"></div>
+
+          <div class="hero-stat-bubble bubble-1">
+            <div class="bubble-value" data-target="278" data-suffix="K">278K</div>
+            <div class="bubble-label">vistas / mes</div>
+          </div>
+          <div class="hero-stat-bubble bubble-2">
+            <div class="bubble-value">15.6<span style="font-size:0.7em;color:var(--gold)">%</span></div>
+            <div class="bubble-label">engagement rate</div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <p class="hero-subtitle fade-in">Ballet Dancer &ensp;·&ensp; Cinematic Content Creator &ensp;·&ensp; Hybrid Aesthetic</p>
-
-    <div class="hero-tags fade-in">
-      <span class="hero-tag">Dance & Movement</span>
-      <span class="hero-tag">Wellness</span>
-      <span class="hero-tag">Fashion</span>
-      <span class="hero-tag">Lifestyle</span>
-      <span class="hero-tag">UGC</span>
-    </div>
-
-    <a href="#contact" class="hero-cta fade-in">
-      ✦ &nbsp; Let's Collaborate &nbsp; ✦
-    </a>
 
     <div class="scroll-indicator">
       <div class="scroll-line"></div>
       <span>Scroll</span>
     </div>
-  </section>
+  </div>
 
-  <!-- STATS -->
+  <!-- ─── BRAND FIT ─── -->
+  <div class="brand-fit-bg section-full" id="brand-fit">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+      <p class="section-label fade-in">Compatibilidad</p>
+      <h2 class="section-title fade-in">Brand <em>Fit</em></h2>
+      <p class="section-desc fade-in">Creo contenido auténtico que se alinea con mi identidad. Las marcas que mejor encajan comparten valores de calidad, bienestar y estética intencional.</p>
+    </div>
+
+    <div style="max-width:900px;margin:0 auto;padding:0 2rem 4rem;">
+      <div class="brand-fit-grid fade-in">
+        <div class="brand-fit-card">
+          <div class="brand-fit-card-title yes">
+            <span>✦</span> Marcas Ideales
+          </div>
+          <div class="brand-fit-item">
+            <div class="fit-dot yes"></div>
+            <div>
+              <div>Wellness &amp; Suplementos</div>
+              <span class="fit-note">Proteínas, colágeno, vitaminas, recovery</span>
+            </div>
+          </div>
+          <div class="brand-fit-item">
+            <div class="fit-dot yes"></div>
+            <div>
+              <div>Skincare &amp; Grooming Masculino</div>
+              <span class="fit-note">Fragancias, serums, rutinas faciales premium</span>
+            </div>
+          </div>
+          <div class="brand-fit-item">
+            <div class="fit-dot yes"></div>
+            <div>
+              <div>Activewear &amp; Athleisure</div>
+              <span class="fit-note">Ropa de entrenamiento, streetwear técnico</span>
+            </div>
+          </div>
+          <div class="brand-fit-item">
+            <div class="fit-dot yes"></div>
+            <div>
+              <div>Home &amp; Lifestyle de Diseño</div>
+              <span class="fit-note">Objetos de autor, decoración minimalista, café</span>
+            </div>
+          </div>
+          <div class="brand-fit-item">
+            <div class="fit-dot yes"></div>
+            <div>
+              <div>Tech Wearables &amp; Audio</div>
+              <span class="fit-note">Smartwatches, auriculares, accesorios premium</span>
+            </div>
+          </div>
+          <div class="brand-fit-item">
+            <div class="fit-dot yes"></div>
+            <div>
+              <div>Nutrición &amp; Alimentación Saludable</div>
+              <span class="fit-note">Snacks funcionales, bebidas, superfoods</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="brand-fit-card">
+          <div class="brand-fit-card-title no">
+            <span>○</span> No es un Buen Fit
+          </div>
+          <div class="brand-fit-item no-fit">
+            <div class="fit-dot no"></div>
+            <div>Fast fashion masiva o ultra low-cost</div>
+          </div>
+          <div class="brand-fit-item no-fit">
+            <div class="fit-dot no"></div>
+            <div>Alcohol, tabaco o vaping</div>
+          </div>
+          <div class="brand-fit-item no-fit">
+            <div class="fit-dot no"></div>
+            <div>Juegos de azar / apuestas</div>
+          </div>
+          <div class="brand-fit-item no-fit">
+            <div class="fit-dot no"></div>
+            <div>Comida rápida o ultra procesada</div>
+          </div>
+          <div class="brand-fit-item no-fit">
+            <div class="fit-dot no"></div>
+            <div>Contenido explícito o para adultos</div>
+          </div>
+
+          <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+            <div style="font-family:var(--thin);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">Nota del creador</div>
+            <p style="font-size:0.75rem;color:var(--muted2);line-height:1.7;">Cada colaboración la evalúo personalmente. Si tu marca no encaja exactamente en esta lista pero crees que hay sinergia, escríbeme — siempre abierto a la conversación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── STATS ─── -->
   <section class="stats-bg section-full" id="stats">
     <div class="section" style="padding-top:0;padding-bottom:0;">
-      <p class="section-label fade-in">By the numbers</p>
-      <h2 class="section-title fade-in">Real <em>Reach &amp; Impact</em></h2>
-      <p class="section-desc fade-in">Organic growth. No paid followers. Numbers pulled directly from Instagram Insights — 25 Mar – 23 Apr 2026.</p>
+      <p class="section-label fade-in">Por los números</p>
+      <h2 class="section-title fade-in">Alcance &amp; <em>Impacto Real</em></h2>
+      <p class="section-desc fade-in">Crecimiento orgánico 100%. Sin seguidores comprados. Datos extraídos de Instagram Insights — 25 Mar – 23 Abr 2026.</p>
 
       <div class="stats-grid fade-in">
         <div class="stat-item">
-          <div class="stat-number glow">278<sup>K</sup></div>
-          <div class="stat-label">Monthly Views</div>
-          <div class="stat-sub">Instagram · Last 30 days</div>
+          <div class="stat-number" data-target="278" data-suffix="K">278<sup>K</sup></div>
+          <div class="stat-label">Vistas Mensuales</div>
+          <div class="stat-sub">Instagram · Últimos 30 días</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number glow">165<sup>K</sup></div>
-          <div class="stat-label">Accounts Reached</div>
-          <div class="stat-sub">Unique people / month</div>
+          <div class="stat-number" data-target="165" data-suffix="K">165<sup>K</sup></div>
+          <div class="stat-label">Cuentas Alcanzadas</div>
+          <div class="stat-sub">Personas únicas / mes</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number glow">25.8<sup>K</sup></div>
-          <div class="stat-label">Interactions</div>
-          <div class="stat-sub">Likes, saves, comments, shares</div>
+          <div class="stat-number" data-target="25.8" data-suffix="K">25.8<sup>K</sup></div>
+          <div class="stat-label">Interacciones</div>
+          <div class="stat-sub">Likes, saves, comentarios, shares</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number glow">95.8<sup>%</sup></div>
-          <div class="stat-label">Non-Follower Reach</div>
-          <div class="stat-sub">Viral distribution</div>
+          <div class="stat-number" data-target="95.8" data-suffix="%">95.8<sup>%</sup></div>
+          <div class="stat-label">Alcance No-Seguidores</div>
+          <div class="stat-sub">Distribución viral</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number glow">1.9<sup>K</sup></div>
-          <div class="stat-label">Instagram Followers</div>
+          <div class="stat-number" data-target="1.9" data-suffix="K">1.9<sup>K</sup></div>
+          <div class="stat-label">Seguidores Instagram</div>
           <div class="stat-sub">@hanselvelavega</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number glow">2.1<sup>K</sup></div>
-          <div class="stat-label">TikTok Followers</div>
+          <div class="stat-number" data-target="2.1" data-suffix="K">2.1<sup>K</sup></div>
+          <div class="stat-label">Seguidores TikTok</div>
           <div class="stat-sub">@hanselvelavega</div>
         </div>
       </div>
@@ -929,31 +1523,23 @@
       <div class="badges fade-in">
         <div class="badge">
           <span class="badge-icon">🎬</span>
-          <div class="badge-text">
-            <strong>98.2% via Reels</strong>
-            Content format
-          </div>
+          <div class="badge-text"><strong>98.2% vía Reels</strong>Formato de mayor alcance</div>
         </div>
         <div class="badge">
           <span class="badge-icon">📍</span>
-          <div class="badge-text">
-            <strong>Multi-country</strong>
-            US · MX · LAT
-          </div>
+          <div class="badge-text"><strong>Multi-mercado</strong>US · MX · LAT</div>
         </div>
         <div class="badge">
-          <span class="badge-icon">✦</span>
-          <div class="badge-text">
-            <strong>278K views</strong>
-            Only 1.9K followers
-          </div>
+          <span class="badge-icon">🌐</span>
+          <div class="badge-text"><strong>Bilingüe EN/ES</strong>Doble alcance de mercado</div>
         </div>
         <div class="badge">
           <span class="badge-icon">🩰</span>
-          <div class="badge-text">
-            <strong>Professional Athlete</strong>
-            Ballet Dancer
-          </div>
+          <div class="badge-text"><strong>Atleta Profesional</strong>Bailarín de Ballet</div>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">⚡</span>
+          <div class="badge-text"><strong>145× ratio</strong>Vistas vs. seguidores</div>
         </div>
       </div>
     </div>
@@ -965,36 +1551,36 @@
     <div class="ornament-line r"></div>
   </div>
 
-  <!-- AUDIENCE -->
+  <!-- ─── AUDIENCE ─── -->
   <section class="section" id="audience">
-    <p class="section-label fade-in">Who's watching</p>
-    <h2 class="section-title fade-in">Audience <em>Profile</em></h2>
-    <p class="section-desc fade-in">A niche, high-intent audience that responds — not just watches. Most engagement comes from outside my follower base.</p>
+    <p class="section-label fade-in">Quién me ve</p>
+    <h2 class="section-title fade-in">Perfil de <em>Audiencia</em></h2>
+    <p class="section-desc fade-in">Una audiencia de nicho con alta intención que responde — no solo mira. La mayor parte del engagement viene de fuera de mis seguidores.</p>
 
     <div class="audience-grid fade-in">
       <div class="audience-card">
         <div class="audience-card-icon">🎯</div>
         <div class="audience-card-value">95.8%</div>
-        <div class="audience-card-label">Non-Follower Reach</div>
-        <p class="audience-card-note">Content reaches far beyond followers — algorithm-driven discovery, ideal for brand awareness campaigns.</p>
+        <div class="audience-card-label">Alcance No-Seguidores</div>
+        <p class="audience-card-note">El algoritmo distribuye el contenido — ideal para campañas de brand awareness con presupuesto eficiente.</p>
       </div>
       <div class="audience-card">
         <div class="audience-card-icon">🎬</div>
         <div class="audience-card-value">98.2%</div>
-        <div class="audience-card-label">Reels Performance</div>
-        <p class="audience-card-note">Almost all views come through Reels — the highest-reach format on Instagram. Optimized for virality.</p>
+        <div class="audience-card-label">Performance vía Reels</div>
+        <p class="audience-card-note">Casi todas las vistas vienen por Reels — el formato de mayor alcance en Instagram. Optimizado para viralidad.</p>
       </div>
       <div class="audience-card">
         <div class="audience-card-icon">🌎</div>
         <div class="audience-card-value">3+</div>
-        <div class="audience-card-label">Countries Reached</div>
-        <p class="audience-card-note">Bilingual creator (EN/ES). Audience spans Mexico, USA, and Latin America — ideal for cross-market campaigns.</p>
+        <div class="audience-card-label">Países Alcanzados</div>
+        <p class="audience-card-note">Creator bilingüe (EN/ES). Audiencia en México, USA y Latinoamérica — ideal para campañas de doble mercado.</p>
       </div>
       <div class="audience-card">
         <div class="audience-card-icon">⚡</div>
         <div class="audience-card-value">15.6%</div>
-        <div class="audience-card-label">Engagement Rate</div>
-        <p class="audience-card-note">25.8K interactions over 165K reached. Industry average for micro-creators: 3–6%. This is 3× above average.</p>
+        <div class="audience-card-label">Tasa de Engagement</div>
+        <p class="audience-card-note">25.8K interacciones sobre 165K alcanzados. Promedio industria para micro-creadores: 3–6%. Esto es 3× sobre el promedio.</p>
       </div>
     </div>
 
@@ -1004,7 +1590,7 @@
         <div class="platform-info">
           <div class="platform-name">Instagram</div>
           <div class="platform-stat">1.9K</div>
-          <div class="platform-detail">278K views/month · @hanselvelavega</div>
+          <div class="platform-detail">278K vistas/mes · @hanselvelavega</div>
         </div>
       </div>
       <div class="platform-bar">
@@ -1012,42 +1598,86 @@
         <div class="platform-info">
           <div class="platform-name">TikTok</div>
           <div class="platform-stat">2.1K</div>
-          <div class="platform-detail">Cinematic dance & lifestyle · @hanselvelavega</div>
+          <div class="platform-detail">Dance &amp; lifestyle cinematográfico · @hanselvelavega</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
-  <div style="background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <!-- ─── PROCESS ─── -->
+  <div class="process-bg section-full" id="process" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+      <p class="section-label fade-in">Cómo trabajamos</p>
+      <h2 class="section-title fade-in">El <em>Proceso</em></h2>
+      <p class="section-desc fade-in">Simple, profesional y sin fricciones. De la idea al contenido final en 5–10 días hábiles.</p>
+    </div>
+
+    <div style="padding:0 2rem 4rem;">
+      <div class="process-timeline fade-in">
+        <div class="process-step">
+          <div class="process-num"><span class="process-num-text">01</span></div>
+          <div class="process-title">Brief &amp; <em>Objetivo</em></div>
+          <p class="process-desc">La marca comparte producto, objetivo de campaña y referencias visuales.</p>
+          <span class="process-time">24h</span>
+        </div>
+        <div class="process-step">
+          <div class="process-num"><span class="process-num-text">02</span></div>
+          <div class="process-title"><em>Concepto</em> Narrativo</div>
+          <p class="process-desc">Propongo ángulo creativo, hook y mood board alineado a tu marca.</p>
+          <span class="process-time">48h</span>
+        </div>
+        <div class="process-step">
+          <div class="process-num"><span class="process-num-text">03</span></div>
+          <div class="process-title">Producción &amp; <em>Edición</em></div>
+          <p class="process-desc">Filmación, dirección artística y edición cinematográfica completa.</p>
+          <span class="process-time">3–5 días</span>
+        </div>
+        <div class="process-step">
+          <div class="process-num"><span class="process-num-text">04</span></div>
+          <div class="process-title">Revisión &amp; <em>Ajustes</em></div>
+          <p class="process-desc">Draft para tu feedback. Ajustes según las rondas incluidas en el paquete.</p>
+          <span class="process-time">2–3 días</span>
+        </div>
+        <div class="process-step">
+          <div class="process-num"><span class="process-num-text">05</span></div>
+          <div class="process-title">Entrega &amp; <em>Publicación</em></div>
+          <p class="process-desc">Archivos finales en alta calidad + RAW si aplica. Publicación coordinada.</p>
+          <span class="process-time">24h</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── QUOTE ─── -->
+  <div style="background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div class="quote-section fade-in">
       <span class="quote-mark">"</span>
       <p class="quote-text">
-        I don't create content about products —
-        I create <em>moments</em> that happen to feature them.
-        That's the difference between an ad and a story.
+        No creo contenido <em>sobre</em> productos —
+        creo momentos que ocurren <em>junto a ellos</em>.
+        Esa es la diferencia entre un anuncio y una historia.
       </p>
       <p class="quote-author">— Hansel Vela Vega</p>
     </div>
   </div>
 
-  <!-- CONTENT PILLARS -->
+  <!-- ─── CONTENT PILLARS ─── -->
   <section class="pillars-bg section-full" id="content">
     <div class="section" style="padding-top:0;padding-bottom:3rem;">
-      <p class="section-label fade-in">What I create</p>
-      <h2 class="section-title fade-in">Content <em>Pillars</em></h2>
-      <p class="section-desc fade-in">Six areas where storytelling, aesthetics, and performance meet.</p>
+      <p class="section-label fade-in">Lo que creo</p>
+      <h2 class="section-title fade-in">Pilares de <em>Contenido</em></h2>
+      <p class="section-desc fade-in">Seis territorios donde el storytelling, la estética y el rendimiento se encuentran.</p>
     </div>
-    <div style="max-width:1200px; margin: 0 auto; padding: 0 2rem;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
       <div class="pillars-grid fade-in">
         <div class="pillar">
           <div class="pillar-number">01</div>
           <div class="pillar-icon">🩰</div>
           <div class="pillar-title">Ballet &amp; <em>Movement</em></div>
-          <p class="pillar-desc">Cinematic training footage, audition prep, technique breakdowns, and the raw discipline behind professional dance.</p>
+          <p class="pillar-desc">Footage cinematográfico de entrenamiento, preparación para audiciones, desglose de técnica y la disciplina detrás del baile profesional.</p>
           <div class="pillar-tags">
             <span class="pillar-tag">Performance</span>
-            <span class="pillar-tag">Athlete</span>
+            <span class="pillar-tag">Atleta</span>
             <span class="pillar-tag">Training</span>
           </div>
         </div>
@@ -1055,10 +1685,10 @@
           <div class="pillar-number">02</div>
           <div class="pillar-icon">🧘</div>
           <div class="pillar-title">Wellness &amp; <em>Recovery</em></div>
-          <p class="pillar-desc">Recovery routines, mobility work, mental performance, and the habits that keep an athlete at peak condition.</p>
+          <p class="pillar-desc">Rutinas de recuperación, movilidad, rendimiento mental y los hábitos que mantienen a un atleta en condición óptima.</p>
           <div class="pillar-tags">
-            <span class="pillar-tag">Health</span>
-            <span class="pillar-tag">Routine</span>
+            <span class="pillar-tag">Salud</span>
+            <span class="pillar-tag">Rutina</span>
             <span class="pillar-tag">Mindset</span>
           </div>
         </div>
@@ -1066,44 +1696,44 @@
           <div class="pillar-number">03</div>
           <div class="pillar-icon">✨</div>
           <div class="pillar-title">Skincare &amp; <em>Grooming</em></div>
-          <p class="pillar-desc">Male grooming as an art form. Minimalist skincare, fragrance, and the attention to detail that defines presence.</p>
+          <p class="pillar-desc">El grooming masculino como forma de arte. Skincare minimalista, fragancias y la atención al detalle que define la presencia.</p>
           <div class="pillar-tags">
             <span class="pillar-tag">Skincare</span>
+            <span class="pillar-tag">Fragancia</span>
             <span class="pillar-tag">Grooming</span>
-            <span class="pillar-tag">Fragrance</span>
           </div>
         </div>
         <div class="pillar">
           <div class="pillar-number">04</div>
           <div class="pillar-icon">👔</div>
           <div class="pillar-title">Fashion &amp; <em>Activewear</em></div>
-          <p class="pillar-desc">Where athletic performance meets editorial style. Activewear, streetwear, and how aesthetic intention shapes identity.</p>
+          <p class="pillar-desc">Donde el rendimiento atlético se une con el estilo editorial. Activewear, streetwear y cómo la intención estética forma la identidad.</p>
           <div class="pillar-tags">
             <span class="pillar-tag">Activewear</span>
-            <span class="pillar-tag">Style</span>
+            <span class="pillar-tag">Estilo</span>
             <span class="pillar-tag">Editorial</span>
           </div>
         </div>
         <div class="pillar">
           <div class="pillar-number">05</div>
           <div class="pillar-icon">🎨</div>
-          <div class="pillar-title">Art &amp; <em>Creative</em></div>
-          <p class="pillar-desc">Cinematic storytelling, visual direction, and the creative process of crafting content that feels like film, not social media.</p>
+          <div class="pillar-title">Arte &amp; <em>Creative</em></div>
+          <p class="pillar-desc">Storytelling cinematográfico, dirección visual y el proceso creativo de crafting contenido que se siente como cine, no como redes sociales.</p>
           <div class="pillar-tags">
-            <span class="pillar-tag">Cinematic</span>
+            <span class="pillar-tag">Cinematográfico</span>
             <span class="pillar-tag">Visual</span>
-            <span class="pillar-tag">Direction</span>
+            <span class="pillar-tag">Dirección</span>
           </div>
         </div>
         <div class="pillar">
           <div class="pillar-number">06</div>
           <div class="pillar-icon">🏡</div>
           <div class="pillar-title">Lifestyle &amp; <em>Home</em></div>
-          <p class="pillar-desc">The environments that shape performance: morning routines, space design, nutrition, and intentional living as a system.</p>
+          <p class="pillar-desc">Los entornos que dan forma al rendimiento: rutinas matutinas, diseño de espacios, nutrición y vivir con intención como sistema.</p>
           <div class="pillar-tags">
             <span class="pillar-tag">Lifestyle</span>
-            <span class="pillar-tag">Routine</span>
-            <span class="pillar-tag">Nutrition</span>
+            <span class="pillar-tag">Rutina</span>
+            <span class="pillar-tag">Nutrición</span>
           </div>
         </div>
       </div>
@@ -1116,98 +1746,325 @@
     <div class="ornament-line r"></div>
   </div>
 
-  <!-- DELIVERABLES -->
+  <!-- ─── PORTFOLIO ─── -->
+  <section class="section" id="portfolio">
+    <p class="section-label fade-in">Trabajo</p>
+    <h2 class="section-title fade-in">Portfolio <em>Visual</em></h2>
+    <p class="section-desc fade-in">Una selección de contenido cinematográfico. Cada pieza es dirección artística de principio a fin.</p>
+
+    <div class="portfolio-grid fade-in">
+      <div class="portfolio-card">
+        <img
+          src="https://drive.google.com/thumbnail?id=1efv3-ZMrhtn1Jku9gWmX7d00FLuBxdPc&sz=w800"
+          alt="Ballet performance"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay"></div>
+        <span class="portfolio-tag">Ballet</span>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Ballet · Performance</div>
+          <div class="portfolio-title">En escena</div>
+          <div class="portfolio-desc">Footage de performance en vivo. Estética cinemática con luz natural y movimiento auténtico.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img
+          src="https://drive.google.com/thumbnail?id=1eXN5EyVF_2lgGL7W4kMnoXXYczUkc9nc&sz=w800"
+          alt="Ballet training"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay"></div>
+        <span class="portfolio-tag">Training</span>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Ballet · Training</div>
+          <div class="portfolio-title">Detrás del escenario</div>
+          <div class="portfolio-desc">Proceso de preparación, técnica y disciplina — el ángulo que ningún macro-influencer puede dar.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img
+          src="https://drive.google.com/thumbnail?id=1XHv9WaDEbS09Fr6tSP8hDDu_3v3NPg5C&sz=w800"
+          alt="Movement editorial"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay"></div>
+        <span class="portfolio-tag">Editorial</span>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Movement · Editorial</div>
+          <div class="portfolio-title">Forma en movimiento</div>
+          <div class="portfolio-desc">Dirección visual que transforma el entrenamiento en arte fotográfico para marcas premium.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img
+          src="https://drive.google.com/thumbnail?id=1kcmFqZ9SI2Bs7WAcyNVo4wnCQ10cqiSX&sz=w800"
+          alt="Lifestyle content"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay"></div>
+        <span class="portfolio-tag">Lifestyle</span>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Wellness · Lifestyle</div>
+          <div class="portfolio-title">Rutina & ritual</div>
+          <div class="portfolio-desc">El estilo de vida del atleta como narrativa de marca. Contenido que inspira sin parecer publicidad.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img
+          src="https://drive.google.com/thumbnail?id=1d_LntsKAQnUJIX1J6Pr-2GPfEsCkTJOo&sz=w800"
+          alt="Fashion editorial"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay"></div>
+        <span class="portfolio-tag">Fashion</span>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Fashion · Street</div>
+          <div class="portfolio-title">Identidad visual</div>
+          <div class="portfolio-desc">Activewear y estética editorial fusionados. Ideal para marcas que quieren presencia cultural.</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img
+          src="https://drive.google.com/thumbnail?id=1_XNjLIMjIZB96rnhvE8l5aTHoVqN_4vP&sz=w800"
+          alt="Portrait UGC"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay"></div>
+        <span class="portfolio-tag">Portrait</span>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Portrait · UGC</div>
+          <div class="portfolio-title">Rostro de marca</div>
+          <div class="portfolio-desc">Contenido UGC de alto impacto visual. Disponible como raw footage para uso en canales propios de la marca.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PACKAGES ─── -->
+  <div class="packages-bg section-full" id="packages">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+      <p class="section-label fade-in">Invertir en contenido</p>
+      <h2 class="section-title fade-in">Paquetes de <em>Colaboración</em></h2>
+      <p class="section-desc fade-in">Tres opciones diseñadas para diferentes objetivos y presupuestos. Todos incluyen dirección artística completa.</p>
+    </div>
+
+    <div style="padding:0 2rem 5rem;">
+      <div class="packages-grid fade-in">
+        <!-- STARTER -->
+        <div class="package-card">
+          <div class="package-tier">Starter</div>
+          <div class="package-name">Content <em>Reel</em></div>
+          <div class="package-price">$250</div>
+          <div class="package-price-note">pago único · USD</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li class="package-feature included"><span class="feature-check yes">✦</span>1 video UGC vertical (15–60 seg)</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>1 ronda de revisiones</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Dirección artística completa</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Entregable en 5 días hábiles</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Licencia 6 meses · uso digital</li>
+            <li class="package-feature"><span class="feature-check no">–</span>Fotos editoriales</li>
+            <li class="package-feature"><span class="feature-check no">–</span>Footage RAW sin editar</li>
+            <li class="package-feature"><span class="feature-check no">–</span>Whitelisting</li>
+          </ul>
+          <a href="mailto:hanselvelavega@gmail.com?subject=Starter Package" class="package-cta outline">Solicitar Starter</a>
+        </div>
+
+        <!-- STANDARD (FEATURED) -->
+        <div class="package-card featured">
+          <div class="package-badge">✦ Más Popular</div>
+          <div class="package-tier" style="margin-top:1.5rem;">Standard</div>
+          <div class="package-name">Content <em>Suite</em></div>
+          <div class="package-price">$550</div>
+          <div class="package-price-note">pago único · USD</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li class="package-feature included"><span class="feature-check yes">✦</span>3 videos UGC verticales</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>3 fotos editoriales (stills)</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>2 rondas de revisiones</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Footage RAW sin editar</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Entregable en 7 días hábiles</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Licencia 12 meses · todos los canales</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>1 Stories sequence (3–5 frames)</li>
+            <li class="package-feature"><span class="feature-check no">–</span>Whitelisting / Paid Ads</li>
+          </ul>
+          <a href="mailto:hanselvelavega@gmail.com?subject=Standard Package" class="package-cta solid">Solicitar Standard</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="package-card">
+          <div class="package-tier">Premium</div>
+          <div class="package-name">Brand <em>Ambassador</em></div>
+          <div class="package-price" style="font-size:2.2rem;">$1,200</div>
+          <div class="package-price-note">por mes · USD · mínimo 2 meses</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li class="package-feature included"><span class="feature-check yes">✦</span>6 videos UGC mensuales</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>5 fotos editoriales mensuales</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Revisiones ilimitadas</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Footage RAW completo</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Licencia exclusiva en categoría</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Whitelisting &amp; Paid Ads</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Strategy call mensual (30 min)</li>
+            <li class="package-feature included"><span class="feature-check yes">✦</span>Acceso prioritario &amp; rush delivery</li>
+          </ul>
+          <a href="mailto:hanselvelavega@gmail.com?subject=Premium Ambassador" class="package-cta outline">Solicitar Premium</a>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:2rem;font-size:0.72rem;color:var(--muted);font-style:italic;">
+        ¿Necesitas algo diferente? <a href="mailto:hanselvelavega@gmail.com" style="color:var(--gold);text-decoration:none;">Escríbeme</a> — cada colaboración puede personalizarse.
+      </p>
+    </div>
+  </div>
+
+  <!-- ─── DELIVERABLES ─── -->
   <section class="section" id="deliverables">
-    <p class="section-label fade-in">What you get</p>
-    <h2 class="section-title fade-in">Collaboration <em>Deliverables</em></h2>
-    <p class="section-desc fade-in">Every partnership is tailored. Below is what's typically included — custom scopes welcome.</p>
+    <p class="section-label fade-in">Lo que incluye</p>
+    <h2 class="section-title fade-in">Entregables de <em>Colaboración</em></h2>
+    <p class="section-desc fade-in">Cada proyecto es a medida. Estas son las piezas más frecuentes — alcances personalizados siempre bienvenidos.</p>
 
     <div class="deliverables-list fade-in">
       <div class="deliverable">
         <div class="del-icon">🎬</div>
         <div>
-          <div class="del-name">Cinematic Reel</div>
-          <div class="del-desc">15–60 sec vertical video, branded, color graded. Optimized for Reels &amp; TikTok algorithm.</div>
+          <div class="del-name">Reel Cinematográfico</div>
+          <div class="del-desc">Video vertical 15–60 seg, color graded, optimizado para Reels &amp; TikTok.</div>
         </div>
-        <span class="del-badge">Primary</span>
+        <span class="del-badge">Principal</span>
       </div>
       <div class="deliverable">
         <div class="del-icon">📸</div>
         <div>
-          <div class="del-name">Editorial Photo Set</div>
-          <div class="del-desc">3–5 high-quality stills for feed posts, stories, or brand asset library.</div>
+          <div class="del-name">Set Editorial de Fotos</div>
+          <div class="del-desc">3–5 stills en alta calidad para feed, stories o biblioteca de assets de la marca.</div>
         </div>
         <span class="del-badge">Add-on</span>
       </div>
       <div class="deliverable">
         <div class="del-icon">💬</div>
         <div>
-          <div class="del-name">Stories Sequence</div>
-          <div class="del-desc">3–5 authentic story frames with swipe-up or link functionality.</div>
+          <div class="del-name">Secuencia de Stories</div>
+          <div class="del-desc">3–5 frames auténticos con CTA o funcionalidad de link.</div>
         </div>
         <span class="del-badge">Add-on</span>
       </div>
       <div class="deliverable">
-        <div class="del-icon">📝</div>
+        <div class="del-icon">📁</div>
         <div>
-          <div class="del-name">UGC Package (Raw)</div>
-          <div class="del-desc">Unedited footage delivered for brand's own use — licensed for 12 months.</div>
+          <div class="del-name">Paquete UGC Raw</div>
+          <div class="del-desc">Footage sin editar para uso propio de la marca — licenciado 12 meses.</div>
         </div>
-        <span class="del-badge">Available</span>
+        <span class="del-badge">Disponible</span>
       </div>
       <div class="deliverable">
         <div class="del-icon">🔄</div>
         <div>
-          <div class="del-name">Long-Term Ambassador</div>
-          <div class="del-desc">Monthly content cadence, exclusive in-category, whitelisting rights available.</div>
+          <div class="del-name">Ambassador Long-Term</div>
+          <div class="del-desc">Cadencia mensual de contenido, exclusividad en categoría, whitelisting disponible.</div>
         </div>
-        <span class="del-badge">Preferred</span>
+        <span class="del-badge">Preferido</span>
       </div>
     </div>
   </section>
 
-  <!-- WHY MICRO -->
-  <div style="background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 7rem 2rem;">
+  <!-- ─── WHY MICRO ─── -->
+  <div style="background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:7rem 2rem;">
     <div class="section" style="padding:0;">
-      <p class="section-label fade-in">The micro advantage</p>
-      <h2 class="section-title fade-in">Why <em>Micro-Creators</em> Win</h2>
-      <p class="section-desc fade-in">278K monthly views from 1.9K followers. That's not a following — that's a distribution machine.</p>
+      <p class="section-label fade-in">La ventaja micro</p>
+      <h2 class="section-title fade-in">Por qué los <em>Micro-Creadores</em> Ganan</h2>
+      <p class="section-desc fade-in">278K vistas mensuales con 1.9K seguidores. Eso no es una audiencia — es una máquina de distribución.</p>
 
       <div class="why-grid fade-in">
         <div class="why-card">
           <div class="why-num">01</div>
           <div class="why-icon">🎯</div>
-          <h3 class="why-title">Algorithm <em>Reach</em></h3>
-          <p class="why-text">95.8% of views come from non-followers. The algorithm pushes the content — not the follower count.</p>
+          <h3 class="why-title">Alcance <em>Algorítmico</em></h3>
+          <p class="why-text">El 95.8% de las vistas vienen de no-seguidores. El algoritmo empuja el contenido — no el número de followers.</p>
           <div class="why-stat">145×</div>
-          <div class="why-stat-label">Views vs. Follower count</div>
+          <div class="why-stat-label">Ratio vistas vs. seguidores</div>
         </div>
         <div class="why-card">
           <div class="why-num">02</div>
           <div class="why-icon">💬</div>
-          <h3 class="why-title">Real <em>Trust</em></h3>
-          <p class="why-text">Micro-creators have tighter communities. Recommendations feel personal — not like advertising.</p>
+          <h3 class="why-title">Confianza <em>Real</em></h3>
+          <p class="why-text">Las comunidades pequeñas son más cercanas. Las recomendaciones se sienten personales — no publicidad.</p>
           <div class="why-stat">3×</div>
-          <div class="why-stat-label">Above avg. engagement rate</div>
+          <div class="why-stat-label">Sobre el engagement promedio</div>
         </div>
         <div class="why-card">
           <div class="why-num">03</div>
           <div class="why-icon">⚡</div>
-          <h3 class="why-title">Production <em>Quality</em></h3>
-          <p class="why-text">Cinematic aesthetics, intentional direction, and bilingual reach — without macro-creator price tags.</p>
+          <h3 class="why-title">Calidad <em>Cinematográfica</em></h3>
+          <p class="why-text">Estética intencional, dirección artística y alcance bilingüe — sin los precios de un macro-creador.</p>
           <div class="why-stat">EN/ES</div>
-          <div class="why-stat-label">Bilingual content</div>
+          <div class="why-stat-label">Contenido bilingüe</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- CONTACT -->
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="section" id="testimonials">
+    <p class="section-label fade-in">Voces de marcas</p>
+    <h2 class="section-title fade-in">Lo que dicen <em>los Clientes</em></h2>
+    <p class="section-desc fade-in">Colaboraciones construidas sobre resultados reales y confianza mutua.</p>
+
+    <div class="testimonials-grid fade-in">
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">Hansel entendió nuestra marca a la perfección desde el primer brief. El contenido superó nuestras expectativas en engagement y la producción fue impecable.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sofia R.</div>
+            <div class="testimonial-role">Marketing Manager · Wellness Brand</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">Trabajar con Hansel fue increíblemente fluido. Entregó a tiempo, el estilo cinematográfico se alineó perfectamente con nuestra estética de lujo.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Miguel A.</div>
+            <div class="testimonial-role">Brand Director · Activewear Co.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-text">El ROI del contenido UGC de Hansel fue 4× superior al de macro-influencers con los que habíamos colaborado. La autenticidad lo cambia todo.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">L</div>
+          <div>
+            <div class="testimonial-name">Laura M.</div>
+            <div class="testimonial-role">CMO · Grooming Brand MX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="testimonials-note">
+      ¿Quieres hablar con una marca con la que he colaborado?
+      <a href="mailto:hanselvelavega@gmail.com">Solicita referencias →</a>
+    </p>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
   <section class="contact-bg section-full" id="contact">
     <div class="section" style="text-align:center;">
       <p class="section-label fade-in">Ready to create</p>
-      <h2 class="section-title fade-in">Let's Build <em>Something</em></h2>
-      <p class="section-desc fade-in">Open to product collabs, ambassadorships, UGC, and long-term brand partnerships. Response within 24h.</p>
+      <h2 class="section-title fade-in">Construyamos <em>Algo</em></h2>
+      <p class="section-desc fade-in">Abierto a colaboraciones de producto, embajadorías, UGC y partnerships a largo plazo. Respuesta en 24h.</p>
 
       <div class="contact-links fade-in">
         <a href="mailto:hanselvelavega@gmail.com" class="contact-link">
@@ -1220,7 +2077,7 @@
           </div>
           <span class="contact-link-arrow">→</span>
         </a>
-        <a href="https://instagram.com/hanselvelavega" target="_blank" class="contact-link">
+        <a href="https://instagram.com/hanselvelavega" target="_blank" rel="noopener" class="contact-link">
           <div class="contact-link-left">
             <span class="contact-link-icon">📸</span>
             <div>
@@ -1230,7 +2087,7 @@
           </div>
           <span class="contact-link-arrow">→</span>
         </a>
-        <a href="https://tiktok.com/@hanselvelavega" target="_blank" class="contact-link">
+        <a href="https://tiktok.com/@hanselvelavega" target="_blank" rel="noopener" class="contact-link">
           <div class="contact-link-left">
             <span class="contact-link-icon">🎵</span>
             <div>
@@ -1241,36 +2098,124 @@
           <span class="contact-link-arrow">→</span>
         </a>
       </div>
+
+      <p style="margin-top:2.5rem;font-family:var(--thin);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">
+        ✦ &ensp; Respuesta garantizada en 24 horas &ensp; ✦
+      </p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ─── FOOTER ─── -->
   <footer>
     <div class="footer-logo">Hansel Vela Vega</div>
-    <p class="footer-copy">© 2026 &ensp;·&ensp; hanselvelavega@gmail.com &ensp;·&ensp; All Rights Reserved</p>
+    <p class="footer-copy">© 2026 &ensp;·&ensp; hanselvelavega@gmail.com &ensp;·&ensp; Todos los derechos reservados</p>
   </footer>
 
+  <!-- ─── FLOATING CTA (mobile) ─── -->
+  <a href="#contact" class="float-cta">✦ &nbsp; Colaboremos &nbsp; ✦</a>
+
   <script>
-    // Fade-in on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          // Stagger children
-          const kids = e.target.querySelectorAll('.fade-in');
-          kids.forEach((k, i) => setTimeout(() => k.classList.add('visible'), i * 100));
+    // ─── SCROLL PROGRESS BAR ───
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (scrollTop / docHeight * 100) + '%';
+    }, { passive: true });
+
+    // ─── HAMBURGER MENU ───
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay    = document.getElementById('overlay');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      overlay.classList.toggle('visible', open);
+      hamburger.classList.toggle('active', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      overlay.classList.remove('visible');
+      hamburger.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ─── COUNTER ANIMATION ───
+    function animateCounter(el) {
+      const rawTarget = el.dataset.target;
+      const suffix    = el.dataset.suffix || '';
+      const target    = parseFloat(rawTarget);
+      const isDecimal = rawTarget.includes('.');
+      const duration  = 1800;
+      const start     = performance.now();
+
+      function tick(now) {
+        const elapsed  = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease     = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        const value    = target * ease;
+        el.innerHTML   = (isDecimal ? value.toFixed(1) : Math.floor(value)) + '<sup>' + suffix + '</sup>';
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // ─── INTERSECTION OBSERVER (fade-in + counters) ───
+    const counterEls = document.querySelectorAll('[data-target]');
+    const countersDone = new Set();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+
+        if (el.classList.contains('fade-in') || el.closest('.fade-in')) {
+          el.classList.add('visible');
+          el.querySelectorAll('.fade-in').forEach((child, i) => {
+            setTimeout(() => child.classList.add('visible'), i * 80);
+          });
+        }
+
+        if (el.classList.contains('fade-in')) {
+          el.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    const counterIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (!countersDone.has(el)) {
+          countersDone.add(el);
+          animateCounter(el);
+          counterIo.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
 
-    // Hero stagger on load
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    counterEls.forEach(el => counterIo.observe(el));
+
+    // ─── HERO STAGGER ON LOAD ───
     window.addEventListener('load', () => {
       document.querySelectorAll('.hero .fade-in').forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), 200 + i * 180);
+        setTimeout(() => el.classList.add('visible'), 150 + i * 160);
       });
     });
+
+    // ─── HIDE FLOAT CTA ON LARGE SCREENS ───
+    function checkFloatCTA() {
+      const cta = document.querySelector('.float-cta');
+      if (window.innerWidth > 768) cta.style.display = 'none';
+    }
+    checkFloatCTA();
+    window.addEventListener('resize', checkFloatCTA);
   </script>
 </body>
 </html>

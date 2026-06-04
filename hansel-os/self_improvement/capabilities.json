@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "last_assessed": "2026-06-04",
+  "description": "Estado actual de capacidades de CloudCode en el contexto de Hansel-OS",
+
+  "capacidades_actuales": {
+    "memoria": {
+      "nivel": 3,
+      "max": 10,
+      "descripcion": "Memoria básica via CLAUDE.md + archivos JSON/MD. Sin embeddings ni búsqueda semántica.",
+      "limitaciones": [
+        "La memoria depende de que los archivos se lean al inicio de sesión",
+        "Sin búsqueda semántica entre documentos",
+        "El contexto se comprime en conversaciones largas",
+        "Sin memoria de episodios (qué se hizo en sesiones previas)"
+      ],
+      "mejoras_planeadas": ["knowledge_base estructurada", "watchlist activa", "decisions log"]
+    },
+    "busqueda": {
+      "nivel": 5,
+      "max": 10,
+      "descripcion": "WebSearch disponible pero sin Deep Search estructurado. Sin indexación de fuentes confiables.",
+      "limitaciones": [
+        "Búsquedas genéricas, sin fanout inteligente",
+        "Sin comparación sistemática de herramientas",
+        "Sin cache de resultados de búsquedas anteriores",
+        "Sin evaluación automática de credibilidad de fuentes"
+      ],
+      "mejoras_planeadas": ["deep_research skill", "structured search queries", "source credibility scoring"]
+    },
+    "razonamiento": {
+      "nivel": 7,
+      "max": 10,
+      "descripcion": "Razonamiento de propósito general del modelo base. Sin frameworks especializados.",
+      "limitaciones": [
+        "Sin frameworks de decisión explícitos para contexto de Hansel",
+        "Sin evaluación de calidad de respuestas anterior",
+        "Sin A/B testing de diferentes enfoques"
+      ],
+      "mejoras_planeadas": ["filtros de decisión explícitos", "quality scoring", "decision trees"]
+    },
+    "ejecucion": {
+      "nivel": 6,
+      "max": 10,
+      "descripcion": "Puede ejecutar acciones vía MCP tools, git, bash, pero sin orquestación multi-agente.",
+      "limitaciones": [
+        "Single-agent: no puede paralelizar trabajo real",
+        "Sin verificación automática de éxito post-ejecución",
+        "Sin rollback automático en caso de fallo"
+      ],
+      "mejoras_planeadas": ["sub-agents para tareas paralelas", "success verification", "git-based rollback"]
+    },
+    "autonomia": {
+      "nivel": 4,
+      "max": 10,
+      "descripcion": "Puede actuar sin permiso en operaciones de bajo riesgo. Pero requiere inicio manual de sesión.",
+      "limitaciones": [
+        "No puede iniciarse a sí mismo (depende de que Hansel abra sesión)",
+        "Sin scheduling autónomo de tareas",
+        "Sin monitoreo continuo de sistemas externos"
+      ],
+      "mejoras_planeadas": ["sesiones programadas", "webhooks de activación", "monitoring via Make/n8n"]
+    },
+    "optimizacion_tokens": {
+      "nivel": 5,
+      "max": 10,
+      "descripcion": "Manejo básico de contexto. Sin prompt compression ni token budgeting explícito.",
+      "limitaciones": [
+        "Sin compresión de prompts larga",
+        "Sin priorización de qué contexto incluir",
+        "Sin medición de uso real de tokens por tarea"
+      ],
+      "mejoras_planeadas": ["token budget tracking", "prompt compression", "tiered context loading"]
+    },
+    "calidad": {
+      "nivel": 5,
+      "max": 10,
+      "descripcion": "Sin sistema formal de evaluación de calidad de outputs.",
+      "limitaciones": [
+        "Sin métricas de calidad definidas",
+        "Sin feedback loop automático",
+        "Sin comparación de outputs contra estándares"
+      ],
+      "mejoras_planeadas": ["quality rubrics", "feedback logging", "output scoring"]
+    },
+    "coordinacion_multiagente": {
+      "nivel": 2,
+      "max": 10,
+      "descripcion": "Puede lanzar sub-agentes via Agent tool pero sin coordinación sofisticada.",
+      "limitaciones": [
+        "Sin comunicación bidireccional con sub-agentes",
+        "Sin estado compartido entre agentes",
+        "Sin paralelismo real coordinado"
+      ],
+      "mejoras_planeadas": ["watchlist WL-006 — activar cuando sistema base sea estable"]
+    }
+  },
+
+  "score_global": {
+    "puntuacion": 4.6,
+    "max": 10,
+    "calculado": "promedio de capacidades",
+    "objetivo_30_dias": 6.0,
+    "objetivo_90_dias": 7.5
+  },
+
+  "proximas_mejoras_prioritarias": [
+    {
+      "area": "memoria",
+      "mejora": "Protocolo de lectura estructurada al inicio de sesión",
+      "impacto_esperado": "+2 puntos",
+      "esfuerzo": "bajo",
+      "estado": "implementado_en_v1.0"
+    },
+    {
+      "area": "autonomia",
+      "mejora": "Telegram bot para notificaciones + aprobaciones",
+      "impacto_esperado": "+1.5 puntos",
+      "esfuerzo": "medio",
+      "estado": "pendiente"
+    },
+    {
+      "area": "busqueda",
+      "mejora": "Deep Research skill estructurado",
+      "impacto_esperado": "+1 punto",
+      "esfuerzo": "bajo",
+      "estado": "pendiente"
+    },
+    {
+      "area": "ejecucion",
+      "mejora": "Verificación post-implementación automática",
+      "impacto_esperado": "+1 punto",
+      "esfuerzo": "medio",
+      "estado": "pendiente"
+    }
+  ]
+}

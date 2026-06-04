@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-04",
+  "description": "Historial de upgrades aplicados al propio CloudCode. Qué funcionó, qué no, por qué.",
+  "upgrades": [
+    {
+      "id": "UH-001",
+      "fecha": "2026-06-04",
+      "nombre": "Protocolo de Inicio de Sesión Estructurado",
+      "descripcion": "Definir orden explícito de lectura de archivos al inicio de cada sesión para garantizar contexto completo",
+      "tipo": "memoria",
+      "clasificacion": "CRITICA",
+      "aplicado_en": "CLAUDE.md — sección PROTOCOLO DE INICIO DE SESIÓN",
+      "resultado": "exitoso",
+      "impacto_medido": null,
+      "notas": "Primera versión. Necesita validación en sesiones reales para medir si reduce preguntas repetidas.",
+      "revertible": true,
+      "como_revertir": "Eliminar sección de CLAUDE.md"
+    },
+    {
+      "id": "UH-002",
+      "fecha": "2026-06-04",
+      "nombre": "Filtros de Decisión Explícitos",
+      "descripcion": "Criterios formales para decidir qué herramientas instalar, qué poner en watchlist, qué descartar",
+      "tipo": "razonamiento",
+      "clasificacion": "CRITICA",
+      "aplicado_en": "CLAUDE.md — sección FASE 3, FASE 5, Self-Improvement Engine filtros",
+      "resultado": "exitoso",
+      "impacto_medido": null,
+      "notas": "Los filtros están definidos. Necesitan validarse con casos reales.",
+      "revertible": true,
+      "como_revertir": "Eliminar secciones de filtros en CLAUDE.md"
+    },
+    {
+      "id": "UH-003",
+      "fecha": "2026-06-04",
+      "nombre": "Registry de Workflows + Pain Points",
+      "descripcion": "Documentación estructurada de todos los workflows de Hansel con pain points explícitos para el Daily Scan",
+      "tipo": "memoria",
+      "clasificacion": "CRITICA",
+      "aplicado_en": "hansel-os/workflows/registry.json",
+      "resultado": "exitoso",
+      "impacto_medido": null,
+      "notas": "Basado en información del perfil inicial. Requiere validación de Hansel para confirmar datos.",
+      "revertible": true,
+      "como_revertir": "Eliminar registry.json"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "description": "Filtros formales de decisión del sistema Hansel-OS. Estos criterios son la ley.",
+
+  "tool_installation_filter": {
+    "name": "Filtro de Instalación de Herramientas",
+    "criteria_for_INSTALAR_AHORA": {
+      "description": "TODOS deben cumplirse",
+      "criteria": [
+        "Resuelve un problema activo detectado en Fase 1",
+        "El workflow que mejora está en registry.json y está activo HOY",
+        "Riesgo bajo: no puede romper nada que funciona",
+        "Hansel puede usarlo sin cambiar radicalmente su workflow actual",
+        "El beneficio es visible en menos de 7 días",
+        "No requiere setup complejo desproporcionado al beneficio"
+      ]
+    },
+    "criteria_for_PROBAR_SANDBOX": {
+      "description": "CUALQUIERA aplica",
+      "criteria": [
+        "Parece útil pero no está 100% verificado en el contexto de Hansel",
+        "El riesgo es medio (podría afectar algo que funciona)",
+        "Requiere configuración específica que no está documentada aún",
+        "Depende de datos o contexto de Hansel que no se tienen"
+      ]
+    },
+    "criteria_for_WATCHLIST": {
+      "description": "CUALQUIERA aplica",
+      "criteria": [
+        "La herramienta es útil pero Hansel NO está en ese flujo ahora",
+        "Requiere madurez del sistema que aún no se tiene",
+        "Hay prioridades más importantes ahora",
+        "Depende de algo que aún no está implementado como prerequisito"
+      ],
+      "required_fields": ["trigger_de_activacion", "potencial", "fecha_de_revision"]
+    },
+    "criteria_for_DESCARTAR": {
+      "description": "CUALQUIERA aplica",
+      "criteria": [
+        "No conecta con NINGÚN flujo activo ni futuro realista de Hansel",
+        "Es moda sin sustancia técnica verificada",
+        "Duplica algo que Hansel ya tiene y que funciona bien",
+        "Costo no justifica el beneficio en el contexto de Hansel",
+        "La herramienta está abandonada o tiene mala reputación documentada"
+      ],
+      "required_fields": ["razon_descarte"]
+    }
+  },
+
+  "self_improvement_filter": {
+    "name": "Filtro de Auto-Mejora de CloudCode",
+    "description": "TODOS deben cumplirse para clasificar como CRITICA. Al menos 5 para UTIL.",
+    "criteria": [
+      "¿Hace a CloudCode más inteligente?",
+      "¿Lo hace más autónomo?",
+      "¿Lo hace más útil PARA HANSEL específicamente?",
+      "¿Mejora memoria, búsqueda, planeación o ejecución?",
+      "¿Reduce errores o trabajo repetido?",
+      "¿No rompe workflows actuales de Hansel?",
+      "¿Puede probarse primero en sandbox?",
+      "¿Tiene beneficio real a largo plazo (3+ meses)?"
+    ],
+    "classifications": {
+      "CRITICA": "Cumple todos los criterios. Aplicar o testear hoy.",
+      "UTIL": "Cumple 5-7 criterios. Implementar en próxima sesión disponible.",
+      "EXPERIMENTAL": "Cumple 3-4 criterios. Solo en sandbox, no tocar producción.",
+      "IRRELEVANTE": "Cumple 0-2 criterios. Descartar con log de razón."
+    }
+  },
+
+  "risk_assessment": {
+    "bajo": {
+      "criteria": [
+        "Solo crea nuevos archivos (no modifica existentes)",
+        "No afecta flujos P1 activos",
+        "Es completamente reversible con git revert",
+        "No involucra credenciales ni datos de clientes"
+      ],
+      "action": "Implementar directamente"
+    },
+    "medio": {
+      "criteria": [
+        "Modifica archivos existentes del sistema",
+        "Podría afectar flujos P2 o P3",
+        "Requiere configuración en herramientas externas (Make/n8n)",
+        "Involucra integraciones con APIs externas"
+      ],
+      "action": "Sandbox primero, luego producción con monitoreo"
+    },
+    "alto": {
+      "criteria": [
+        "Modifica datos de producción reales",
+        "Afecta flujos P1 críticos",
+        "Involucra credenciales o datos financieros",
+        "Puede tener impacto irreversible",
+        "Afecta cuentas de redes sociales o CRM con datos reales de clientes"
+      ],
+      "action": "NUNCA sin aprobación explícita de Hansel"
+    }
+  },
+
+  "no_touch_list": {
+    "description": "Cosas que NUNCA se tocan sin aprobación explícita de Hansel",
+    "items": [
+      "API keys o credenciales de cualquier servicio",
+      "Datos reales de clientes en cualquier CRM",
+      "Configuración de Make/n8n en producción con flujos activos",
+      "Acceso o permisos de cuentas de redes sociales",
+      "Datos financieros o de facturación",
+      "Contenido ya publicado en plataformas",
+      "Configuración de dominio o DNS",
+      "Backups o archivos marcados como 'no tocar'"
+    ]
+  },
+
+  "approval_format": {
+    "telegram_template": "HANSEL-OS | APPROVAL REQUEST [{id}]\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nENCONTRÉ: {herramienta}\n\nMEJORA: {que_mejora}\n\nRIESGO: {riesgo_especifico}\n\nREVERSIBLE: {si_no_como}\n\nCOSTO: {costo_si_hay}\n\nRECOMENDACIÓN: {recomendar}\n\n¿APRUEBAS?\n[Sí] [Sandbox] [No] [Después]"
+  }
+}

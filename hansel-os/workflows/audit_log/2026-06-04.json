@@ -1,0 +1,147 @@
+{
+  "fecha": "2026-06-04",
+  "sesion": 1,
+  "tipo_scan": "inicializacion",
+  "nota": "Este primer audit no es un scan normal. Es el resultado del análisis inicial del perfil de Hansel. Los datos son basados en la información proporcionada, no en monitoring real. A partir de la sesión 2, los scans serán basados en datos reales.",
+  "workflows_revisados": [
+    "audiciones", "colaboraciones_ugc", "edicion_video", "contenido_automatizado",
+    "telegram", "google_photos", "obsidian", "ruflo", "n8n_make", "drive",
+    "gmail", "coaching", "deteccion_fugas", "crm", "cotizaciones", "tiktok_instagram"
+  ],
+  "hallazgos": [
+    {
+      "id": "SCAN-20260604-001",
+      "workflow": "crm",
+      "tipo": "duplicacion",
+      "descripcion": "Datos de contactos probablemente duplicados entre Zoho CRM, Apollo y Close CRM. Sin definición de CRM primario.",
+      "evidencia": "Análisis de perfil inicial — 3 CRMs activos sin estrategia de integración documentada",
+      "impacto": "Contactos duplicados, seguimientos perdidos, datos inconsistentes entre sistemas",
+      "prioridad": "P1",
+      "accion_recomendada": "Definir Zoho como fuente de verdad. Apollo solo para prospección. Close para secuencias activas. Crear plan de consolidación.",
+      "fase_siguiente": "4_plan_directo"
+    },
+    {
+      "id": "SCAN-20260604-002",
+      "workflow": "n8n_make",
+      "tipo": "error",
+      "descripcion": "Workflows activos sin documentación y sin monitoring de errores. Fallos silenciosos posibles.",
+      "evidencia": "Análisis de perfil — pain point documentado: 'errores silenciosos, sin monitoring'",
+      "impacto": "Flujos de negocio pueden fallar sin que Hansel lo sepa. Pérdida de oportunidades.",
+      "prioridad": "P1",
+      "accion_recomendada": "1) Listar todos los scenarios de Make activos. 2) Listar todos los workflows de n8n. 3) Añadir error notification a cada uno.",
+      "fase_siguiente": "2_buscar_solucion"
+    },
+    {
+      "id": "SCAN-20260604-003",
+      "workflow": "telegram",
+      "tipo": "falta_integracion",
+      "descripcion": "No existe bot de Telegram para notificaciones del sistema Hansel-OS.",
+      "evidencia": "Análisis de perfil — Telegram es canal primario pero no hay bot configurado",
+      "impacto": "Hansel no puede recibir reportes o alertas del sistema automáticamente",
+      "prioridad": "P1",
+      "accion_recomendada": "Crear bot de Telegram básico que reciba mensajes del sistema. Configurar con Make o n8n para enviar daily reports.",
+      "fase_siguiente": "4_plan_directo"
+    },
+    {
+      "id": "SCAN-20260604-004",
+      "workflow": "audiciones",
+      "tipo": "repeticion_manual",
+      "descripcion": "Seguimiento de estados de audiciones completamente manual. Sin pipeline en CRM.",
+      "evidencia": "Pain point documentado: 'seguimiento manual de estados'",
+      "impacto": "Oportunidades perdidas por falta de seguimiento. Tiempo malgastado recordando estados manualmente.",
+      "prioridad": "P1",
+      "accion_recomendada": "Crear pipeline de Audiciones en Zoho CRM con stages: Aplicado → Vista → Entrevista → Callback → Contratado/Rechazado",
+      "fase_siguiente": "4_plan_directo"
+    },
+    {
+      "id": "SCAN-20260604-005",
+      "workflow": "cotizaciones",
+      "tipo": "repeticion_manual",
+      "descripcion": "Cotizaciones hechas a mano sin templates. Sin tracking de conversión.",
+      "evidencia": "Pain point documentado: 'proceso 100% manual, sin templates estándar'",
+      "impacto": "Tiempo perdido recreando cotizaciones. Sin datos para optimizar precios y propuestas.",
+      "prioridad": "P1",
+      "accion_recomendada": "Crear 2-3 templates de cotización para servicios principales. Añadir pipeline de Propuestas en Zoho.",
+      "fase_siguiente": "4_plan_directo"
+    },
+    {
+      "id": "SCAN-20260604-006",
+      "workflow": "obsidian",
+      "tipo": "falta_integracion",
+      "descripcion": "Vault de Obsidian completamente aislado. No conectado a ningún flujo operativo.",
+      "evidencia": "Estado documentado como 'activo_pero_aislado' en registry",
+      "impacto": "Notas valiosas inaccesibles desde otros sistemas. CloudCode no puede acceder a knowledge base personal de Hansel.",
+      "prioridad": "P2",
+      "accion_recomendada": "Investigar Make integration con Obsidian. Definir estructura de notas (PARA method). Automatizar captura desde Gmail/Telegram.",
+      "fase_siguiente": "2_buscar_solucion"
+    },
+    {
+      "id": "SCAN-20260604-007",
+      "workflow": "gmail",
+      "tipo": "falta_organizacion",
+      "descripcion": "Inbox sin clasificación. Todo mezclado sin etiquetas ni filtros.",
+      "evidencia": "Pain point documentado: 'inbox sin clasificar, todo mezclado'",
+      "impacto": "Correos de oportunidades perdidos. Tiempo extra buscando emails importantes.",
+      "prioridad": "P2",
+      "accion_recomendada": "Crear sistema de etiquetas: Audiciones / Colaboraciones / Coaching / Facturas / Sistema. Añadir filtros automáticos.",
+      "fase_siguiente": "5_implementar_directo"
+    },
+    {
+      "id": "SCAN-20260604-008",
+      "workflow": "edicion_video",
+      "tipo": "repeticion_manual",
+      "descripcion": "Cada video se edita desde cero. Sin sistema de repropósito ni templates de hooks.",
+      "evidencia": "Pain point: 'Sin flujo de repropósito: cada video se edita desde cero, subtítulos manuales'",
+      "impacto": "Tiempo masivo en edición. 1 video donde podría haber 3 con el mismo contenido.",
+      "prioridad": "P2",
+      "accion_recomendada": "Investigar: Whisper para auto-subtítulos, CapCut templates, flujo 1→3 formatos (TikTok/Reels/Shorts)",
+      "fase_siguiente": "2_buscar_solucion"
+    },
+    {
+      "id": "SCAN-20260604-009",
+      "workflow": "deteccion_fugas",
+      "tipo": "sistema_inexistente",
+      "descripcion": "No existe un sistema formal de detección de fugas de tiempo/dinero/energía.",
+      "evidencia": "Estado documentado como 'incompleto', automatización: 'ninguna'",
+      "impacto": "Fugas continúan sin detectarse. Sin datos para tomar decisiones de optimización.",
+      "prioridad": "P2",
+      "accion_recomendada": "Diseñar sistema básico de tracking semanal. Dashboard simple con métricas clave.",
+      "fase_siguiente": "2_buscar_solucion"
+    },
+    {
+      "id": "SCAN-20260604-010",
+      "workflow": "cloudcode_self",
+      "tipo": "debilidad_sistema",
+      "descripcion": "CloudCode no tiene autonomía de inicio (depende de que Hansel abra sesión manualmente).",
+      "evidencia": "capabilities.json — autonomía: 4/10",
+      "impacto": "El sistema no puede mejorar proactivamente sin intervención de Hansel.",
+      "prioridad": "P2",
+      "accion_recomendada": "Explorar: Make/n8n webhook para iniciar sesiones programadas. Telegram bot como trigger.",
+      "fase_siguiente": "2_buscar_solucion"
+    }
+  ],
+  "resumen": "10 hallazgos en el primer análisis. 5 P1 críticos (CRM duplicado, n8n/Make sin monitoring, Telegram sin bot, audiciones sin pipeline, cotizaciones manuales). 5 P2 altos. El sistema base está funcional pero los flujos operativos de Hansel tienen gaps importantes de automatización.",
+  "prioridades_del_dia": [
+    "SCAN-20260604-001 — CRM consolidación",
+    "SCAN-20260604-002 — n8n/Make monitoring",
+    "SCAN-20260604-003 — Telegram bot",
+    "SCAN-20260604-004 — Audiciones pipeline",
+    "SCAN-20260604-005 — Cotizaciones templates"
+  ],
+  "pasa_a_fase2": [
+    "SCAN-20260604-002 — buscar solución de error monitoring para Make/n8n",
+    "SCAN-20260604-006 — buscar integración Obsidian + Make",
+    "SCAN-20260604-008 — buscar stack de edición de video automático",
+    "SCAN-20260604-009 — buscar herramientas de tracking de fugas",
+    "SCAN-20260604-010 — buscar solución de autonomía para CloudCode"
+  ],
+  "pasa_a_fase4": [
+    "SCAN-20260604-001 — plan de consolidación CRM",
+    "SCAN-20260604-003 — plan de bot Telegram",
+    "SCAN-20260604-004 — plan de pipeline audiciones en Zoho",
+    "SCAN-20260604-005 — plan de templates de cotizaciones"
+  ],
+  "pasa_a_fase5": [
+    "SCAN-20260604-007 — implementar filtros Gmail directamente (riesgo bajo)"
+  ]
+}

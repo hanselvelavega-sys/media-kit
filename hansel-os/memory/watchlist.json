@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-04",
+  "description": "Herramientas, skills, agentes y frameworks útiles pero no relevantes ahora. Se revisan cuando aparece el trigger correspondiente.",
+  "items": [
+    {
+      "id": "WL-001",
+      "nombre": "Sistema de Trading Automatizado",
+      "tipo": "workflow",
+      "descripcion": "Bots, signals, automatización de trading crypto/forex",
+      "razon_watchlist": "Hansel no está trabajando trading actualmente",
+      "trigger_para_activar": "Hansel menciona o empieza flujo de trading",
+      "potencial": "alto",
+      "fecha_added": "2026-06-04",
+      "fuente": "perfil inicial",
+      "ultima_revision": "2026-06-04"
+    },
+    {
+      "id": "WL-002",
+      "nombre": "Podcast Automation Stack",
+      "tipo": "workflow",
+      "descripcion": "RSS, distribución automática, notas de episodio con IA, transcripción",
+      "razon_watchlist": "No tiene podcast activo aún",
+      "trigger_para_activar": "Hansel menciona podcast o empieza a grabar episodios",
+      "potencial": "alto",
+      "fecha_added": "2026-06-04",
+      "fuente": "perfil inicial",
+      "ultima_revision": "2026-06-04"
+    },
+    {
+      "id": "WL-003",
+      "nombre": "E-commerce Automation (Shopify/WooCommerce + Make)",
+      "tipo": "workflow",
+      "descripcion": "Automatización de pedidos, inventario, emails transaccionales, reviews",
+      "razon_watchlist": "No tiene tienda online activa",
+      "trigger_para_activar": "Hansel menciona vender productos físicos o digitales en tienda",
+      "potencial": "medio",
+      "fecha_added": "2026-06-04",
+      "fuente": "perfil inicial",
+      "ultima_revision": "2026-06-04"
+    },
+    {
+      "id": "WL-004",
+      "nombre": "Curso Online Automation Stack",
+      "tipo": "workflow",
+      "descripcion": "LMS automatizado, emails de onboarding, progreso de estudiantes, certificados",
+      "razon_watchlist": "No tiene curso online activo",
+      "trigger_para_activar": "Hansel menciona crear o lanzar un curso",
+      "potencial": "alto",
+      "fecha_added": "2026-06-04",
+      "fuente": "perfil inicial",
+      "ultima_revision": "2026-06-04"
+    },
+    {
+      "id": "WL-005",
+      "nombre": "AgentBench / LLM Eval Frameworks",
+      "tipo": "self_improvement",
+      "descripcion": "Frameworks para evaluar calidad de respuestas de LLMs de forma automatizada",
+      "razon_watchlist": "El sistema aún no tiene suficientes datos para evaluar contra benchmarks",
+      "trigger_para_activar": "El sistema lleva 30+ días corriendo y necesita evaluar calidad",
+      "potencial": "alto_para_self_improvement",
+      "fecha_added": "2026-06-04",
+      "fuente": "self_improvement_engine_init",
+      "ultima_revision": "2026-06-04"
+    },
+    {
+      "id": "WL-006",
+      "nombre": "Multi-Agent Coordination (CrewAI/LangGraph)",
+      "tipo": "self_improvement",
+      "descripcion": "Sistemas donde múltiples agentes coordinan trabajo en paralelo",
+      "razon_watchlist": "El sistema actual es single-agent. Multi-agent requiere más madurez del sistema base.",
+      "trigger_para_activar": "El sistema base está estable 30+ días Y hay tareas que claramente se beneficiarían de paralelismo",
+      "potencial": "muy_alto",
+      "fecha_added": "2026-06-04",
+      "fuente": "self_improvement_engine_init",
+      "ultima_revision": "2026-06-04"
+    },
+    {
+      "id": "WL-007",
+      "nombre": "Vector Embeddings / RAG para Obsidian",
+      "tipo": "memoria",
+      "descripcion": "Indexar vault de Obsidian con embeddings para búsqueda semántica desde CloudCode",
+      "razon_watchlist": "Requiere setup técnico específico de Obsidian. Útil pero no urgente.",
+      "trigger_para_activar": "El vault de Obsidian tiene 100+ notas O Hansel se queja de no encontrar notas",
+      "potencial": "alto",
+      "fecha_added": "2026-06-04",
+      "fuente": "obsidian_gap_analysis",
+      "ultima_revision": "2026-06-04"
+    }
+  ],
+  "revision_schedule": {
+    "frecuencia": "semanal",
+    "dia": "miercoles",
+    "accion": "revisar triggers de cada item y evaluar si activar"
+  }
+}

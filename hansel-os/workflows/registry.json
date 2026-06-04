@@ -1,0 +1,360 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-04",
+  "description": "Registro de todos los workflows activos de Hansel. La fuente de verdad para el Daily System Scan.",
+  "total_workflows": 16,
+  "workflows": {
+    "audiciones": {
+      "id": "WF-001",
+      "nombre": "Audiciones y Castings",
+      "estado": "activo",
+      "criticidad": "P1_critico",
+      "descripcion": "Búsqueda, aplicación y seguimiento de castings y audiciones",
+      "herramientas": ["Gmail", "Telegram", "Google Drive", "Zoho CRM"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "metricas": {
+        "aplicaciones_por_semana": null,
+        "tasa_de_respuesta": null,
+        "tasa_de_conversion": null
+      },
+      "pain_points_activos": [
+        "Seguimiento de estados manual (aplicado/vista/entrevista/rechazado)",
+        "Sin sistema de recordatorios para deadlines",
+        "Sin tracking de qué tipo de castings funcionan mejor",
+        "Historial de comunicación disperso entre Gmail y Telegram"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Auto-categorizar emails de audiciones, recordatorios de seguimiento, tracking de estados en CRM",
+      "prioridad_mejora": 1
+    },
+    "colaboraciones_ugc": {
+      "id": "WF-002",
+      "nombre": "Colaboraciones UGC con Marcas",
+      "estado": "activo",
+      "criticidad": "P1_critico",
+      "descripcion": "Gestión completa de proyectos UGC: brief, cotización, producción, entrega, pago",
+      "herramientas": ["Gmail", "Google Drive", "Telegram", "Zoho CRM", "Stripe"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "metricas": {
+        "proyectos_activos": null,
+        "valor_promedio_proyecto": null,
+        "tasa_de_cierre": null
+      },
+      "pain_points_activos": [
+        "Cotizaciones hechas a mano sin template estándar",
+        "Sin tracking de qué marcas responden vs las que no",
+        "Seguimiento de entregas manual",
+        "Facturación y cobro manual"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Template de cotización automático, pipeline en CRM, recordatorios de entrega, facturación automática",
+      "prioridad_mejora": 1
+    },
+    "edicion_video": {
+      "id": "WF-003",
+      "nombre": "Edición de Video para Redes",
+      "estado": "activo",
+      "criticidad": "P2_alto",
+      "descripcion": "Grabación, edición y preparación de contenido para TikTok/Reels/Shorts",
+      "herramientas": ["CapCut", "Adobe Premiere", "Google Drive", "Google Photos"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "metricas": {
+        "videos_por_semana": null,
+        "tiempo_promedio_edicion": null,
+        "tasa_de_repropósito": null
+      },
+      "pain_points_activos": [
+        "Sin flujo de repropósito: cada video se edita desde cero",
+        "Subtítulos manuales",
+        "Sin template de hooks por formato",
+        "Assets dispersos entre Drive y Photos"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Auto-transcripción y subtítulos, templates de hooks, repropósito 1→3 formatos",
+      "prioridad_mejora": 2
+    },
+    "contenido_automatizado": {
+      "id": "WF-004",
+      "nombre": "Automatización de Contenido",
+      "estado": "parcialmente_automatizado",
+      "criticidad": "P2_alto",
+      "descripcion": "Flujos de publicación programada y distribución multi-plataforma",
+      "herramientas": ["Make", "n8n", "TikTok", "Instagram", "Google Drive"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "metricas": {
+        "posts_automatizados_semana": null,
+        "tasa_de_fallo_automatizacion": null
+      },
+      "pain_points_activos": [
+        "Gaps en la automatización (partes aún manuales)",
+        "Sin monitoring de fallos — errores silenciosos",
+        "Sin analytics unificados entre plataformas"
+      ],
+      "automatizacion_actual": "parcial",
+      "automatizacion_deseada": "Pipeline completo: Drive → formato → publicación → analytics",
+      "prioridad_mejora": 2
+    },
+    "telegram": {
+      "id": "WF-005",
+      "nombre": "Telegram — Comunicación y Notificaciones",
+      "estado": "activo",
+      "criticidad": "P1_critico",
+      "descripcion": "Canal primario de comunicación y notificaciones del sistema Hansel-OS",
+      "herramientas": ["Telegram", "Make", "n8n"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "metricas": {
+        "mensajes_no_respondidos": null,
+        "notificaciones_del_sistema": "0_actualmente"
+      },
+      "pain_points_activos": [
+        "Sin bot de notificaciones del sistema Hansel-OS",
+        "Mensajes mezclados sin clasificación",
+        "Sin automatización de respuestas frecuentes"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Bot de notificaciones del sistema, clasificación de mensajes, respuestas automáticas a preguntas frecuentes",
+      "prioridad_mejora": 1
+    },
+    "google_photos": {
+      "id": "WF-006",
+      "nombre": "Google Photos — Organización Visual",
+      "estado": "activo",
+      "criticidad": "P3_medio",
+      "descripcion": "Almacenamiento, organización y búsqueda de assets visuales",
+      "herramientas": ["Google Photos", "Google Drive"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Organización manual por álbumes",
+        "Búsqueda lenta de assets específicos",
+        "Duplicados entre Photos y Drive"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Auto-organización por fecha/proyecto/tipo, deduplicación, integración con flujo de edición",
+      "prioridad_mejora": 3
+    },
+    "obsidian": {
+      "id": "WF-007",
+      "nombre": "Obsidian — Knowledge Base Personal",
+      "estado": "activo_pero_aislado",
+      "criticidad": "P2_alto",
+      "descripcion": "Vault de notas personales, ideas, proyectos, aprendizajes",
+      "herramientas": ["Obsidian"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Totalmente aislado: no conectado a ningún otro sistema",
+        "Estructura de notas inconsistente",
+        "Búsqueda limitada (no semántica)",
+        "Sin captura automática desde otros flujos"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Captura automática desde Gmail/Telegram, estructura PARA, integración con Make para crear notas desde otros sistemas",
+      "prioridad_mejora": 2
+    },
+    "ruflo": {
+      "id": "WF-008",
+      "nombre": "Ruflo — Sistema Propio",
+      "estado": "activo",
+      "criticidad": "P2_alto",
+      "descripcion": "Sistema/plataforma propio de gestión de Hansel",
+      "herramientas": ["Ruflo"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Integración limitada con otros sistemas",
+        "Flujos manuales dentro del sistema",
+        "Detalles técnicos del sistema a confirmar"
+      ],
+      "automatizacion_actual": "interna",
+      "automatizacion_deseada": "Conectar con Make/n8n, integrar con CRM, automatizar reportes",
+      "prioridad_mejora": 2,
+      "nota": "Requiere más información de Hansel sobre qué es Ruflo exactamente para analizar mejor"
+    },
+    "n8n_make": {
+      "id": "WF-009",
+      "nombre": "n8n / Make — Motor de Automatizaciones",
+      "estado": "activo",
+      "criticidad": "P1_critico",
+      "descripcion": "Infraestructura de automatización de todos los demás flujos",
+      "herramientas": ["n8n", "Make"],
+      "frecuencia": "continuo",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Workflows sin documentar — nadie sabe qué hay activo",
+        "Errores silenciosos — fallos que no se notifican",
+        "Sin monitoring ni alertas",
+        "Posible duplicación entre n8n y Make haciendo lo mismo"
+      ],
+      "automatizacion_actual": "es_la_automatizacion",
+      "mejoras_deseadas": "Documentar todos los scenarios/workflows, añadir monitoring de errores, centralizar en una sola plataforma donde sea posible",
+      "prioridad_mejora": 1
+    },
+    "drive": {
+      "id": "WF-010",
+      "nombre": "Google Drive — Almacenamiento y Organización",
+      "estado": "activo",
+      "criticidad": "P3_medio",
+      "descripcion": "Almacenamiento centralizado de archivos de trabajo",
+      "herramientas": ["Google Drive"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Estructura de carpetas inconsistente o sin estándar",
+        "Archivos sin etiquetar o con nombres inconsistentes",
+        "Búsqueda lenta cuando el volumen es alto"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Estructura de carpetas automática por proyecto/fecha, naming convention automatizado",
+      "prioridad_mejora": 3
+    },
+    "gmail": {
+      "id": "WF-011",
+      "nombre": "Gmail — Correo Profesional",
+      "estado": "activo",
+      "criticidad": "P2_alto",
+      "descripcion": "Gestión de correo entrante y saliente para todos los flujos de negocio",
+      "herramientas": ["Gmail", "Make", "Zapier"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Inbox sin clasificación — todo mezclado",
+        "Respuestas manuales a preguntas frecuentes (precios, disponibilidad)",
+        "Sin sistema de seguimiento de correos importantes",
+        "Oportunidades perdidas por correos no vistos a tiempo"
+      ],
+      "automatizacion_actual": "ninguna_o_minima",
+      "automatizacion_deseada": "Clasificación automática (audiciones/colaboraciones/coaching/facturas), respuestas automáticas a FAQs, alertas de correos urgentes a Telegram",
+      "prioridad_mejora": 2
+    },
+    "coaching": {
+      "id": "WF-012",
+      "nombre": "Coaching — Gestión de Clientes",
+      "estado": "activo",
+      "criticidad": "P2_alto",
+      "descripcion": "Gestión de sesiones, seguimiento de clientes de coaching, materiales",
+      "herramientas": ["Zoho CRM", "Gmail", "Telegram", "Google Calendar", "Google Drive"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Notas de sesión manuales, sin template",
+        "Seguimiento entre sesiones manual",
+        "Sin recordatorios automáticos para clientes",
+        "Facturación manual"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Template de notas de sesión, recordatorios automáticos, seguimiento en CRM, facturación automática",
+      "prioridad_mejora": 2
+    },
+    "deteccion_fugas": {
+      "id": "WF-013",
+      "nombre": "Detección de Fugas (Tiempo/Dinero/Energía)",
+      "estado": "incompleto",
+      "criticidad": "P2_alto",
+      "descripcion": "Sistema para identificar dónde se pierde tiempo, dinero o energía sin retorno",
+      "herramientas": ["Obsidian", "Make", "Dashboard (pendiente)"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "No existe un sistema formal aún",
+        "Detección reactiva, no proactiva",
+        "Sin métricas de seguimiento",
+        "Sin alertas cuando se detecta una fuga"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Dashboard de métricas de tiempo/ingresos, alertas automáticas de anomalías, reporte semanal de fugas detectadas",
+      "prioridad_mejora": 2
+    },
+    "crm": {
+      "id": "WF-014",
+      "nombre": "CRM — Gestión de Relaciones y Leads",
+      "estado": "activo",
+      "criticidad": "P1_critico",
+      "descripcion": "Gestión de contactos, leads, oportunidades y pipeline de ventas",
+      "herramientas": ["Zoho CRM", "Apollo", "Close CRM"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "DATOS DUPLICADOS entre Zoho + Apollo + Close — problema crítico",
+        "Sin definición clara de cuál es el CRM primario",
+        "Actualización manual de estados",
+        "Sin automatización de seguimiento"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Definir CRM primario (Zoho), sincronizar datos, automatizar seguimientos, alertas de deals próximos a cerrar",
+      "prioridad_mejora": 1
+    },
+    "cotizaciones": {
+      "id": "WF-015",
+      "nombre": "Cotizaciones y Propuestas",
+      "estado": "activo",
+      "criticidad": "P1_critico",
+      "descripcion": "Creación, envío y seguimiento de cotizaciones para servicios",
+      "herramientas": ["Gmail", "Google Drive", "Zoho CRM", "Stripe"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Sin templates estándar de cotización",
+        "Proceso 100% manual",
+        "Sin tracking de tasa de conversión por tipo de servicio",
+        "Sin seguimiento automático de cotizaciones enviadas"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Templates dinámicos, envío desde CRM, seguimiento automático a los 3/7/14 días, tracking de conversión",
+      "prioridad_mejora": 1
+    },
+    "tiktok_instagram": {
+      "id": "WF-016",
+      "nombre": "TikTok / Instagram — Publicación y Analytics",
+      "estado": "activo",
+      "criticidad": "P2_alto",
+      "descripcion": "Estrategia, publicación y análisis de contenido en redes sociales",
+      "herramientas": ["TikTok", "Instagram", "Make", "n8n"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "metricas": {
+        "posts_semana": null,
+        "engagement_promedio": null,
+        "crecimiento_seguidores": null
+      },
+      "pain_points_activos": [
+        "Publicación semi-manual (parcialmente automatizada)",
+        "Analytics de cada plataforma separados, sin vista unificada",
+        "Sin sistema de repropósito de contenido viral",
+        "Sin análisis de qué tipo de contenido funciona mejor"
+      ],
+      "automatizacion_actual": "parcial",
+      "automatizacion_deseada": "Dashboard unificado de analytics, repropósito automático de videos con buen rendimiento, A/B testing de hooks",
+      "prioridad_mejora": 2
+    }
+  },
+  "summary": {
+    "P1_criticos": ["audiciones", "colaboraciones_ugc", "telegram", "n8n_make", "crm", "cotizaciones"],
+    "P2_altos": ["edicion_video", "contenido_automatizado", "obsidian", "ruflo", "gmail", "coaching", "deteccion_fugas", "tiktok_instagram"],
+    "P3_medios": ["google_photos", "drive"],
+    "con_automatizacion": ["contenido_automatizado", "n8n_make", "tiktok_instagram"],
+    "sin_automatizacion": ["audiciones", "colaboraciones_ugc", "google_photos", "obsidian", "gmail", "coaching", "deteccion_fugas", "cotizaciones"],
+    "requiere_mas_info": ["ruflo"]
+  }
+}

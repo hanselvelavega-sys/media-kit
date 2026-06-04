@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-04",
+  "description": "Historial de decisiones: qué se evaluó, por qué se decidió, qué resultado tuvo.",
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "fecha": "2026-06-04",
+      "tipo": "arquitectura",
+      "titulo": "Inicialización de Hansel-OS desde cero",
+      "contexto": "El repositorio solo tenía index.html. Se necesitaba construir la arquitectura completa del sistema autónomo.",
+      "decision": "Construir sistema completo con: CLAUDE.md como cerebro, hansel-os/ como directorio de memoria/estado, 7 fases de mejora + Self-Improvement Engine",
+      "alternativas_consideradas": [
+        "Usar un framework externo como LangGraph — descartado por complejidad innecesaria en esta etapa",
+        "Usar solo CLAUDE.md sin directorio de memoria — descartado por falta de persistencia"
+      ],
+      "resultado": "pendiente_de_validacion",
+      "lecciones": [],
+      "autor": "CloudCode — sesión inicial",
+      "estado": "completado"
+    }
+  ],
+  "pending_approvals": [],
+  "schema_version": "1.0"
+}

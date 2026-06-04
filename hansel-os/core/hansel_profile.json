@@ -1,0 +1,158 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-04",
+  "persona": {
+    "nombre": "Hansel Vela Vega",
+    "email": "hanselvelavega@gmail.com",
+    "rol": "Creador de contenido, actor/modelo UGC, coach, operador de negocios digitales",
+    "sistema_operativo": "Hansel-OS",
+    "zona_horaria": "America/Mexico_City",
+    "idioma_principal": "Español"
+  },
+  "prioridades": [
+    "1. Calidad de trabajo",
+    "2. Reducir errores",
+    "3. Mejorar memoria y contexto",
+    "4. Ahorrar tiempo",
+    "5. Ahorrar tokens",
+    "6. Automatizar tareas repetitivas",
+    "7. Detectar nuevas oportunidades útiles",
+    "8. Mantener todo ordenado y escalable"
+  ],
+  "flujos_activos": {
+    "audiciones": {
+      "descripcion": "Búsqueda y aplicación a castings, audiciones, proyectos de actuación",
+      "herramientas": ["Gmail", "Telegram", "Drive", "Zoho CRM"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["seguimiento manual de estados", "olvido de deadlines", "falta de tracking de conversiones"]
+    },
+    "colaboraciones_ugc": {
+      "descripcion": "Gestión de colaboraciones con marcas para contenido UGC",
+      "herramientas": ["Gmail", "Drive", "Telegram", "Zoho CRM"],
+      "frecuencia": "semanal",
+      "estado": "activo",
+      "pain_points": ["cotizaciones manuales", "seguimiento de entregas", "tracking de pagos"]
+    },
+    "edicion_video": {
+      "descripcion": "Creación y edición de contenido para TikTok, Reels, Shorts",
+      "herramientas": ["CapCut", "Premiere", "Drive", "Google Photos"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["proceso manual de exportación", "subtítulos manuales", "repropósito de contenido lento"]
+    },
+    "contenido_automatizado": {
+      "descripcion": "Flujos de publicación automatizada y distribución de contenido",
+      "herramientas": ["Make", "n8n", "TikTok", "Instagram", "Drive"],
+      "frecuencia": "diario",
+      "estado": "parcialmente_automatizado",
+      "pain_points": ["gaps en automatización", "errores de scheduling", "falta de analytics unificados"]
+    },
+    "telegram": {
+      "descripcion": "Comunicación personal y profesional, notificaciones del sistema",
+      "herramientas": ["Telegram", "Make", "n8n"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["mensajes sin clasificar", "falta de bot de notificaciones del sistema"]
+    },
+    "google_photos": {
+      "descripcion": "Organización y backup de contenido visual",
+      "herramientas": ["Google Photos", "Drive"],
+      "frecuencia": "semanal",
+      "estado": "activo",
+      "pain_points": ["organización manual por álbumes", "búsqueda lenta de assets", "duplicados"]
+    },
+    "obsidian": {
+      "descripcion": "Knowledge base personal, notas, ideas, proyectos",
+      "herramientas": ["Obsidian", "Drive (sync)"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["estructura inconsistente", "no conectado a otros sistemas", "búsqueda limitada"]
+    },
+    "ruflo": {
+      "descripcion": "Sistema propio de gestión / plataforma personal",
+      "herramientas": ["Ruflo"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["integración limitada con otros tools", "flujos manuales"]
+    },
+    "n8n_make": {
+      "descripcion": "Automatizaciones de procesos y flujos de datos",
+      "herramientas": ["n8n", "Make"],
+      "frecuencia": "continuo",
+      "estado": "activo",
+      "pain_points": ["workflows sin documentar", "errores silenciosos", "falta de monitoring"]
+    },
+    "drive": {
+      "descripcion": "Almacenamiento y organización de archivos",
+      "herramientas": ["Google Drive"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["estructura de carpetas inconsistente", "archivos sin etiquetar", "búsqueda lenta"]
+    },
+    "gmail": {
+      "descripcion": "Gestión de correo profesional y personal",
+      "herramientas": ["Gmail", "Make"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["inbox sin clasificar", "respuestas manuales repetitivas", "seguimiento manual"]
+    },
+    "coaching": {
+      "descripcion": "Gestión de clientes de coaching, sesiones, seguimiento",
+      "herramientas": ["Zoho CRM", "Gmail", "Telegram", "Calendar"],
+      "frecuencia": "semanal",
+      "estado": "activo",
+      "pain_points": ["notas de sesión manuales", "seguimiento entre sesiones", "facturación manual"]
+    },
+    "deteccion_fugas": {
+      "descripcion": "Identificación de pérdidas de tiempo, dinero y energía",
+      "herramientas": ["Obsidian", "Make", "Dashboard"],
+      "frecuencia": "semanal",
+      "estado": "incompleto",
+      "pain_points": ["sin sistema formal", "detección reactiva no proactiva", "sin métricas claras"]
+    },
+    "crm": {
+      "descripcion": "Gestión de relaciones con leads, clientes, colaboradores",
+      "herramientas": ["Zoho CRM", "Apollo", "Close CRM"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["datos duplicados entre CRMs", "actualización manual", "falta de automatización de seguimiento"]
+    },
+    "cotizaciones": {
+      "descripcion": "Creación y seguimiento de propuestas y cotizaciones",
+      "herramientas": ["Gmail", "Drive", "Zoho CRM", "Stripe"],
+      "frecuencia": "semanal",
+      "estado": "activo",
+      "pain_points": ["proceso manual", "sin templates estándar", "falta de tracking de conversión"]
+    },
+    "tiktok_instagram": {
+      "descripcion": "Publicación, análisis y estrategia de redes sociales",
+      "herramientas": ["TikTok", "Instagram", "Make", "n8n"],
+      "frecuencia": "diario",
+      "estado": "activo",
+      "pain_points": ["publicación manual parcial", "analytics no centralizados", "repropósito lento de contenido"]
+    }
+  },
+  "flujos_en_watchlist_para_futuro": [
+    "trading",
+    "podcast",
+    "curso_online",
+    "ecommerce"
+  ],
+  "integraciones_activas": {
+    "mcp_conectados": [
+      "gmail", "google_calendar", "google_drive",
+      "notion", "make", "zapier",
+      "zoho_crm", "close_crm", "apollo",
+      "asana", "stripe", "canva",
+      "figma", "hubspot"
+    ]
+  },
+  "preferencias_de_comunicacion": {
+    "canal_primario": "Telegram",
+    "canal_secundario": "GitHub PR comments",
+    "formato_reportes": "conciso, bullet points, priorizado",
+    "idioma": "Español",
+    "nivel_autonomia": "alto — actuar sin pedir permiso cuando riesgo es bajo"
+  }
+}

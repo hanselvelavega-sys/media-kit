@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-04",
+  "description": "Upgrades candidatos para el propio CloudCode. Evaluados pero aún no aplicados.",
+  "candidates": [
+    {
+      "id": "UC-001",
+      "nombre": "Deep Research Skill Estructurado",
+      "tipo": "busqueda",
+      "descripcion": "Protocolo de búsqueda en múltiples fuentes, con fanout de queries, verificación cruzada y síntesis estructurada",
+      "que_hace_mejor": "Busca en 5-10 fuentes en lugar de 1-2, verifica claims, reduce hallucinations",
+      "comparado_con_actual": "Actual: 1-2 WebSearch calls sin estructura. Propuesta: fanout + verificación + síntesis",
+      "beneficio_para_hansel": "Investigaciones más precisas de herramientas, competidores, oportunidades",
+      "reduce_tokens": false,
+      "mejora_calidad": true,
+      "reduce_errores": true,
+      "clasificacion": "UTIL",
+      "riesgo": "bajo",
+      "pasos_implementacion": [
+        "Definir protocolo de queries en fases (broad → specific → verify)",
+        "Crear template de síntesis en knowledge_base",
+        "Documentar en CLAUDE.md sección de búsqueda"
+      ],
+      "puede_probarse_sandbox": true,
+      "estado": "pendiente",
+      "fecha_evaluacion": "2026-06-04"
+    },
+    {
+      "id": "UC-002",
+      "nombre": "Token Budget Tracking",
+      "tipo": "optimizacion_tokens",
+      "descripcion": "Sistema para estimar y trackear tokens usados por tipo de tarea, identificar tareas costosas y optimizarlas",
+      "que_hace_mejor": "Hace visible el costo real en tokens de cada operación",
+      "comparado_con_actual": "Actual: sin tracking. Propuesta: log de tokens estimados por tarea en decisions.json",
+      "beneficio_para_hansel": "Reducir costo mensual de API, identificar operaciones costosas",
+      "reduce_tokens": true,
+      "mejora_calidad": false,
+      "reduce_errores": false,
+      "clasificacion": "UTIL",
+      "riesgo": "bajo",
+      "pasos_implementacion": [
+        "Añadir campo 'tokens_estimados' a decisions.json",
+        "Añadir sección de token usage al daily report",
+        "Identificar las 3 operaciones más costosas y optimizarlas"
+      ],
+      "puede_probarse_sandbox": true,
+      "estado": "pendiente",
+      "fecha_evaluacion": "2026-06-04"
+    },
+    {
+      "id": "UC-003",
+      "nombre": "Quality Rubric para Outputs",
+      "tipo": "calidad",
+      "descripcion": "Criterios explícitos para evaluar si una respuesta/output es bueno antes de entregarlo",
+      "que_hace_mejor": "Self-evaluación antes de reportar, reduce outputs deficientes",
+      "comparado_con_actual": "Actual: sin auto-evaluación. Propuesta: checklist de calidad por tipo de output",
+      "beneficio_para_hansel": "Menos errores, menos re-trabajo, outputs más accionables",
+      "reduce_tokens": false,
+      "mejora_calidad": true,
+      "reduce_errores": true,
+      "clasificacion": "UTIL",
+      "riesgo": "bajo",
+      "pasos_implementacion": [
+        "Definir rubrics por tipo: análisis, plan de acción, reporte, implementación",
+        "Añadir como sección en CLAUDE.md",
+        "Implementar auto-check antes de cada output principal"
+      ],
+      "puede_probarse_sandbox": false,
+      "estado": "pendiente",
+      "fecha_evaluacion": "2026-06-04"
+    },
+    {
+      "id": "UC-004",
+      "nombre": "Tiered Context Loading",
+      "tipo": "memoria",
+      "descripcion": "Cargar contexto en niveles: siempre (perfil), según tema (workflows relevantes), bajo demanda (detalles específicos)",
+      "que_hace_mejor": "Reduce tokens de inicio de sesión cargando solo lo necesario",
+      "comparado_con_actual": "Actual: leer todos los archivos al inicio. Propuesta: lectura inteligente basada en la tarea",
+      "beneficio_para_hansel": "Sesiones más rápidas y baratas sin perder contexto relevante",
+      "reduce_tokens": true,
+      "mejora_calidad": false,
+      "reduce_errores": false,
+      "clasificacion": "EXPERIMENTAL",
+      "riesgo": "medio",
+      "pasos_implementacion": [
+        "Definir qué es Tier 1 (siempre), Tier 2 (por tema), Tier 3 (bajo demanda)",
+        "Probar en sandbox 3 sesiones",
+        "Medir si se pierde contexto importante",
+        "Si funciona, actualizar CLAUDE.md"
+      ],
+      "puede_probarse_sandbox": true,
+      "estado": "pendiente_sandbox",
+      "fecha_evaluacion": "2026-06-04"
+    },
+    {
+      "id": "UC-005",
+      "nombre": "CrewAI / LangGraph — Análisis de Adaptación",
+      "tipo": "coordinacion_multiagente",
+      "descripcion": "Revisar qué técnicas de coordinación multi-agente de CrewAI/LangGraph podemos adaptar sin instalar el framework completo",
+      "que_hace_mejor": "Paralelismo de investigación, roles especializados, handoffs entre agentes",
+      "comparado_con_actual": "Actual: single agent. Propuesta: adaptar patrones de CrewAI usando Agent tool nativo de Claude Code",
+      "beneficio_para_hansel": "Tareas complejas más rápidas (investigar Y implementar en paralelo)",
+      "reduce_tokens": false,
+      "mejora_calidad": true,
+      "reduce_errores": false,
+      "clasificacion": "EXPERIMENTAL",
+      "riesgo": "medio",
+      "pasos_implementacion": [
+        "Estudiar arquitectura de CrewAI (roles, tasks, crew)",
+        "Identificar 1-2 casos de uso de Hansel que se beneficien del paralelismo",
+        "Crear template de 'mini-crew' usando Agent tool",
+        "Probar en sandbox con tarea real"
+      ],
+      "puede_probarse_sandbox": true,
+      "estado": "pendiente_investigacion",
+      "fecha_evaluacion": "2026-06-04"
+    }
+  ]
+}

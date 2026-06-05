@@ -1,0 +1,120 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-06-05",
+  "description": "Historial de decisiones: qué se evaluó, por qué se decidió, qué resultado tuvo.",
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "fecha": "2026-06-04",
+      "tipo": "arquitectura",
+      "titulo": "Inicialización de Hansel-OS desde cero",
+      "contexto": "El repositorio solo tenía index.html. Se necesitaba construir la arquitectura completa del sistema autónomo.",
+      "decision": "Construir sistema completo con: CLAUDE.md como cerebro, hansel-os/ como directorio de memoria/estado, 7 fases de mejora + Self-Improvement Engine",
+      "alternativas_consideradas": [
+        "Usar un framework externo como LangGraph — descartado por complejidad innecesaria en esta etapa",
+        "Usar solo CLAUDE.md sin directorio de memoria — descartado por falta de persistencia"
+      ],
+      "resultado": "completado",
+      "lecciones": ["La arquitectura de archivos como memoria funciona bien para sesiones secuenciales"],
+      "autor": "CloudCode — sesión inicial",
+      "estado": "completado"
+    },
+    {
+      "id": "DEC-002",
+      "fecha": "2026-06-04",
+      "tipo": "stack",
+      "titulo": "Consolidación CRM: Zoho como fuente de verdad",
+      "contexto": "Se detectaron 4 CRMs activos (Zoho + Apollo + Close + HubSpot) con datos fragmentados.",
+      "decision": "Zoho = fuente de verdad para contactos/deals. Apollo = solo prospección. Close = eliminar. HubSpot = confirmar uso de email marketing.",
+      "alternativas_consideradas": [
+        "Mantener Close CRM — descartado por duplicación con Zoho",
+        "Usar HubSpot como CRM principal — descartado por costo y fragmentación"
+      ],
+      "resultado": "pendiente_implementacion",
+      "lecciones": [],
+      "autor": "CloudCode — sesión 2026-06-04",
+      "estado": "pendiente"
+    },
+    {
+      "id": "DEC-003",
+      "fecha": "2026-06-04",
+      "tipo": "stack",
+      "titulo": "n8n como motor principal de automatización",
+      "contexto": "Make.com tiene plan gratuito con 2 slots y cobra por operación. n8n tiene precio plano y nodos nativos de IA.",
+      "decision": "n8n = motor principal para todos los nuevos flows. Make = solo flows existentes que funcionan, no crear nada nuevo.",
+      "alternativas_consideradas": [
+        "Quedarse en Make — descartado por limitaciones de slots y costo por operación",
+        "Usar Zapier — descartado por precio y menos capacidades IA-nativas"
+      ],
+      "resultado": "en_progreso",
+      "lecciones": [],
+      "autor": "CloudCode — sesión 2026-06-04",
+      "estado": "en_progreso"
+    },
+    {
+      "id": "DEC-004",
+      "fecha": "2026-06-04",
+      "tipo": "arquitectura",
+      "titulo": "Ruflo como motor multi-agente de Hansel-OS",
+      "contexto": "Ruflo (ruvnet/ruflo, 57k★) ya instalado por Hansel — no un sistema de gestión personal sino un meta-harness de agentes para Claude Code con HNSW memory y self-learning.",
+      "decision": "Integrar Ruflo como el motor de ejecución paralela. Hansel-OS pone la lógica y memoria; Ruflo ejecuta con swarm de agentes especializados.",
+      "alternativas_consideradas": [
+        "CrewAI — descartado porque Ruflo ya está instalado y hace lo mismo",
+        "LangGraph — descartado por complejidad, Ruflo es más accesible en este contexto"
+      ],
+      "resultado": "pendiente_integracion",
+      "lecciones": ["Ruflo NO es un sistema de gestión de Hansel — es un motor de agentes. Error crítico evitado."],
+      "autor": "CloudCode — sesión 2026-06-04",
+      "estado": "pendiente"
+    },
+    {
+      "id": "DEC-005",
+      "fecha": "2026-06-05",
+      "tipo": "implementacion",
+      "titulo": "Activación de Make.com scenarios para Daily Loop",
+      "contexto": "Los 2 slots de Make tenían escenarios rotos (isinvalid: true). Se reutilizaron para el sistema Hansel-OS.",
+      "decision": "Reescribir blueprints de ambos escenarios con prompts de Hansel-OS. Escenario 4894578 = Daily Loop 8am. Escenario 4894562 = Content Engine 12pm.",
+      "resultado": "completado",
+      "detalles": {
+        "escenario_daily_loop": {
+          "id": 4894578,
+          "nombre": "🤖 HANSEL-OS — Daily Loop 8am",
+          "estado": "activo",
+          "proxima_ejecucion": "diario 8am"
+        },
+        "escenario_content_engine": {
+          "id": 4894562,
+          "nombre": "🎬 CONTENT ENGINE — Ideas + Carrusel 12pm",
+          "estado": "activo",
+          "proxima_ejecucion": "diario 12pm"
+        }
+      },
+      "lecciones": ["isinvalid: true en Make puede resolverse activando el escenario — no siempre indica un error real"],
+      "autor": "CloudCode — sesión 2026-06-05",
+      "estado": "completado"
+    },
+    {
+      "id": "DEC-006",
+      "fecha": "2026-06-05",
+      "tipo": "implementacion",
+      "titulo": "Creación de 4 workflows importables para n8n",
+      "contexto": "Semana 1 del roadmap requería workflows n8n para daily loop, gmail monitor, error handler y content engine.",
+      "decision": "Crear JSON blueprints importables directamente en n8n con instrucciones de setup integradas.",
+      "resultado": "completado",
+      "detalles": {
+        "workflows_creados": [
+          "01_daily_hansel_os_loop.json",
+          "02_gmail_monitor.json",
+          "03_error_monitor.json",
+          "04_content_engine.json"
+        ],
+        "ubicacion": "hansel-os/n8n_workflows/"
+      },
+      "lecciones": [],
+      "autor": "CloudCode — sesión 2026-06-05",
+      "estado": "completado"
+    }
+  ],
+  "pending_approvals": [],
+  "schema_version": "1.0"
+}

@@ -1,0 +1,143 @@
+{
+  "name": "🎬 HANSEL-OS — Content Engine 12pm",
+  "description": "12pm diario: Claude genera brief de contenido del día + 3 opciones de carrusel para Instagram/TikTok → envía por Telegram y Gmail.",
+  "nodes": [
+    {
+      "id": "schedule-trigger",
+      "name": "Schedule — 12pm Daily",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 300],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 12 * * *"
+            }
+          ]
+        },
+        "timezone": "America/Mexico_City"
+      }
+    },
+    {
+      "id": "get-day-theme",
+      "name": "Get Day Theme",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 300],
+      "parameters": {
+        "jsCode": "const now = new Date();\nconst day = now.toLocaleDateString('es-MX', { weekday: 'long', timeZone: 'America/Mexico_City' });\nconst date = now.toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Mexico_City' });\n\nconst themes = {\n  'lunes': 'Disciplina y Hábitos',\n  'martes': 'Entrenamiento y Técnica',\n  'miércoles': 'Mentalidad Atlética',\n  'jueves': 'Cuerpo y Estética',\n  'viernes': 'Transformación Personal',\n  'sábado': 'Proceso Real (sin filtros)',\n  'domingo': 'Preparación y Estrategia'\n};\n\nconst tema = themes[day.toLowerCase()] || 'Contenido General';\n\nreturn { day, date, tema };"
+      }
+    },
+    {
+      "id": "claude-content",
+      "name": "Claude — Content Brief",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [440, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "x-api-key", "value": "REEMPLAZAR_CON_API_KEY"},
+            {"name": "anthropic-version", "value": "2023-06-01"},
+            {"name": "content-type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": {
+          "model": "claude-haiku-4-5-20251001",
+          "max_tokens": 1200,
+          "messages": [
+            {
+              "role": "user",
+              "content": "=Eres el Content Engine de Hansel Vela. Marca: fitness, ballet, disciplina, mentalidad atlética, transformación. Estética: masculina, premium, cinematográfica, oscura/luxury. Tono: directo, seguro, sin clichés.\n\nHoy es {{ $json.day }} {{ $json.date }}.\nTema del día: {{ $json.tema }}.\n\nGenera en este formato EXACTO:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━\nCONTENT ENGINE — {{ $json.date }}\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🎬 REEL DEL DÍA\nHook (0-3s): [5-8 palabras]\nEstructura: apertura / desarrollo / cierre\nEstilo visual: [locación, ropa, luz]\nCaption: [2 líneas]\n\n📸 CARRUSEL INSTAGRAM\nOpción A — [ángulo]\nSlides: [7 slides, máx 8 palabras c/u]\nCTA: [texto]\n\nOpción B — [ángulo diferente]\nSlides: [7 slides]\nCTA: [texto]\n\n🏷️ HASHTAGS (30)\n[lista]\n\n⚡ ACCIÓN HOY\n[1 cosa específica a grabar/publicar ahora]\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nMáximo 400 palabras. Sin relleno."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "extract-content",
+      "name": "Extract Content Text",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 300],
+      "parameters": {
+        "jsCode": "const response = $input.item.json;\nconst text = response.content[0].text;\nreturn { contentBrief: text };"
+      }
+    },
+    {
+      "id": "telegram-content",
+      "name": "Telegram — Content Brief",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [880, 200],
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "REEMPLAZAR_CON_TU_CHAT_ID",
+        "text": "={{ $json.contentBrief }}"
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Telegram — Hansel-OS Bot"
+        }
+      }
+    },
+    {
+      "id": "gmail-content",
+      "name": "Gmail — Content Backup",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [880, 420],
+      "parameters": {
+        "operation": "send",
+        "sendTo": "hanselvelavega@gmail.com",
+        "subject": "=🎬 CONTENT ENGINE — {{ $('Get Day Theme').item.json.date }}",
+        "message": "={{ $json.contentBrief }}",
+        "options": {}
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Gmail — Hansel-OS"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule — 12pm Daily": {
+      "main": [
+        [{"node": "Get Day Theme", "type": "main", "index": 0}]
+      ]
+    },
+    "Get Day Theme": {
+      "main": [
+        [{"node": "Claude — Content Brief", "type": "main", "index": 0}]
+      ]
+    },
+    "Claude — Content Brief": {
+      "main": [
+        [{"node": "Extract Content Text", "type": "main", "index": 0}]
+      ]
+    },
+    "Extract Content Text": {
+      "main": [
+        [
+          {"node": "Telegram — Content Brief", "type": "main", "index": 0},
+          {"node": "Gmail — Content Backup", "type": "main", "index": 0}
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Mexico_City"
+  },
+  "tags": ["hansel-os", "content", "tiktok", "instagram"]
+}

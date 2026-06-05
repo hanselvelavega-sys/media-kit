@@ -1,0 +1,151 @@
+{
+  "version": "1.0.0",
+  "fecha_decision": "2026-06-04",
+  "meta": "Sistema que aprende solo, mejora diariamente, sin límites.",
+  "principio": "La inteligencia no viene de más herramientas. Viene del loop. Cada ciclo el sistema aprende y mejora el siguiente.",
+
+  "THE_LOOP": {
+    "descripcion": "El ciclo de mejora continua que hace que todo se vuelva más inteligente",
+    "ciclo": [
+      "1. n8n dispara el scan diario automáticamente (sin que Hansel haga nada)",
+      "2. Claude Code + CLAUDE.md ejecuta las 7 fases",
+      "3. Ruflo coordina agentes especializados en paralelo (researcher, planner, analyst, executor)",
+      "4. AgentDB HNSW guarda qué funcionó y qué no",
+      "5. Telegram envía reporte a Hansel (2 minutos de lectura)",
+      "6. Hansel aprueba/rechaza solo lo que requiere P.Alto",
+      "7. El sistema implementa, aprende y vuelve al paso 1 más inteligente"
+    ],
+    "resultado": "Cada ciclo, el sistema sabe más. Comete menos errores. Encuentra mejores soluciones más rápido."
+  },
+
+  "stack_final": {
+    "CEREBRO": {
+      "herramienta": "Ruflo (ruvnet/ruflo)",
+      "rol": "Motor de multi-agentes. Swarm de agentes especializados. HNSW memory self-learning.",
+      "por_que": "84.8% SWE-bench. 30-50% menos tokens. El sistema aprende con cada ejecución via AgentDB. No empieza de cero nunca más.",
+      "estado_actual": "instalado, necesita integración con Hansel-OS",
+      "decision": "INTEGRAR — prioridad absoluta"
+    },
+    "SISTEMA_NERVIOSO": {
+      "herramienta": "n8n",
+      "rol": "Motor de automatización IA-nativa. Dispara el loop diario. Conecta todo.",
+      "por_que": "Único motor con nodos nativos de IA (LangChain, RAG, vector stores). MCP support nativo con Claude Code. Precio plano, ejecuciones ilimitadas. Evaluación de workflows para detectar degradación.",
+      "decision": "MOTOR PRINCIPAL — todos los nuevos flows aquí"
+    },
+    "MAKE": {
+      "rol": "Flows existentes que ya funcionan — NO TOCAR",
+      "decision": "Mantener solo lo que ya funciona. No crear nada nuevo aquí. Migrar gradualmente a n8n."
+    },
+    "MEMORIA_ESTRUCTURADA": {
+      "herramienta": "Hansel-OS files (CLAUDE.md + knowledge_base + registry)",
+      "rol": "Instrucciones, memoria entre sesiones, decisiones, watchlist",
+      "decision": "MANTENER — es la capa de lógica sobre Ruflo"
+    },
+    "CONOCIMIENTO_COLABORATIVO": {
+      "herramienta": "Notion",
+      "rol": "Bases de datos estructuradas, docs de proyectos, templates de trabajo, información que se comparte con clientes",
+      "decision": "MANTENER para datos estructurados y colaboración"
+    },
+    "CONOCIMIENTO_PERSONAL": {
+      "herramienta": "Obsidian",
+      "rol": "Notas profundas personales, ideas, reflexiones, conocimiento que no se comparte",
+      "decision": "MANTENER — propósito diferente a Notion, no compiten"
+    },
+    "CRM": {
+      "herramienta": "Zoho CRM",
+      "rol": "Fuente de verdad de todos los contactos, deals, pipeline de ventas",
+      "decision": "CRM PRINCIPAL — único con visión completa"
+    },
+    "PROSPECCION": {
+      "herramienta": "Apollo",
+      "rol": "Encontrar leads nuevos ÚNICAMENTE. Exportar a Zoho.",
+      "decision": "HERRAMIENTA DE ENTRADA — no es CRM, es buscador de prospects"
+    },
+    "CLOSE_CRM": {
+      "decision": "ELIMINAR — duplica Zoho. Migrar datos a Zoho.",
+      "razon": "Dos CRMs de deals = datos fragmentados = oportunidades perdidas"
+    },
+    "HUBSPOT": {
+      "decision": "REDUCIR — solo para email marketing masivo si lo usa. Si no tiene campañas activas: ELIMINAR.",
+      "razon": "Como CRM es redundante. Como email marketing puede tener valor si hay campañas."
+    },
+    "COMUNICACION": {
+      "herramienta": "Gmail + Telegram",
+      "gmail": "Correo externo. MCP conectado. Clasificar con filtros automáticos.",
+      "telegram": "Canal de Hansel con el sistema. Reportes, alertas, aprobaciones.",
+      "decision": "AMBOS MANTENER — roles distintos y complementarios"
+    },
+    "ARCHIVOS": {
+      "herramienta": "Google Drive",
+      "rol": "Almacenamiento de assets de trabajo",
+      "decision": "MANTENER — ya integrado con flujos de contenido"
+    },
+    "DISEÑO": {
+      "herramienta": "Canva",
+      "rol": "Assets visuales para contenido y propuestas",
+      "decision": "MANTENER — MCP conectado, útil para automatizar resize de assets"
+    },
+    "PROYECTOS": {
+      "herramienta": "Asana",
+      "rol": "Gestión de tareas y proyectos",
+      "decision": "MANTENER si lo usa activamente. Conectar a n8n para auto-crear tareas desde Gmail."
+    },
+    "PAGOS": {
+      "herramienta": "Stripe",
+      "rol": "Cobros, links de pago, facturas",
+      "decision": "MANTENER — automatizar con n8n: cotización aprobada → link de pago automático"
+    }
+  },
+
+  "herramientas_eliminadas": ["Close CRM", "HubSpot (si no tiene email marketing activo)"],
+  "herramientas_reducidas": ["Make (solo flows existentes)", "HubSpot (solo email marketing si aplica)"],
+
+  "arquitectura_del_loop": {
+    "diagrama": "n8n (trigger diario) → Claude Code + Hansel-OS → Ruflo Swarm → AgentDB aprende → Telegram notifica → Hansel aprueba P.Alto → loop reinicia más inteligente",
+    "frecuencia": "diario automático",
+    "intervención_de_hansel": "máximo 5 minutos al día — solo aprobar P.Alto",
+    "sin_hansel": "el loop corre igual, solo omite las acciones P.Alto hasta próxima aprobación"
+  },
+
+  "roadmap_implementacion": {
+    "semana_1": {
+      "titulo": "Encender el loop base",
+      "tareas": [
+        "Auditar configuración actual de Ruflo de Hansel",
+        "Crear webhook en n8n que dispare sesión diaria de Hansel-OS",
+        "Crear bot de Telegram para reportes del sistema",
+        "Configurar filtros de Gmail → alertas en Telegram"
+      ]
+    },
+    "semana_2": {
+      "titulo": "Integrar Ruflo con Hansel-OS",
+      "tareas": [
+        "Mapear workflows de Hansel a agentes especializados de Ruflo",
+        "Conectar HNSW memory de Ruflo con knowledge_base.md",
+        "Primer swarm de agentes para Daily System Scan"
+      ]
+    },
+    "semana_3": {
+      "titulo": "Consolidar CRM y automatizar seguimientos",
+      "tareas": [
+        "Migrar datos de Close a Zoho",
+        "Decidir sobre HubSpot",
+        "Pipeline de audiciones en Zoho + recordatorios automáticos",
+        "Templates de cotizaciones + seguimiento automático 3/7/14 días"
+      ]
+    },
+    "semana_4": {
+      "titulo": "Automatizar contenido y pagos",
+      "tareas": [
+        "Auto-subtítulos para video (Whisper via n8n)",
+        "Flujo de repropósito 1→3 formatos",
+        "Cotización aprobada → link Stripe automático",
+        "Dashboard unificado de analytics"
+      ]
+    },
+    "mes_2_3": {
+      "titulo": "El sistema se mejora solo",
+      "estado": "Para este punto el loop está corriendo. Ruflo aprende de cada ciclo. n8n detecta y alerta errores. CloudCode evoluciona solo."
+    }
+  }
+}

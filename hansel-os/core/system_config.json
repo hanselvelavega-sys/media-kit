@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "created": "2026-06-04",
+  "system_name": "Hansel-OS",
+  "agent_identity": "CloudCode — CTO/Arquitecto de Automatizaciones de Hansel",
+  "repository": "hanselvelavega-sys/media-kit",
+  "branch": "claude/hansel-os-autonomous-improvement-hFvFr",
+
+  "scan_schedule": {
+    "daily_scan": "inicio_de_sesion",
+    "deep_scan": "semanal_lunes",
+    "self_improvement_scan": "diario",
+    "watchlist_review": "semanal_miercoles"
+  },
+
+  "risk_thresholds": {
+    "auto_implement": "bajo",
+    "sandbox_first": "medio",
+    "require_hansel_approval": "alto",
+    "never_touch": ["produccion_sin_backup", "credenciales", "datos_clientes_reales"]
+  },
+
+  "token_optimization": {
+    "max_tokens_per_scan": 50000,
+    "prefer_cached_context": true,
+    "batch_similar_searches": true,
+    "summarize_long_outputs": true
+  },
+
+  "memory_settings": {
+    "max_knowledge_base_size": "500kb",
+    "archive_reports_after_days": 30,
+    "prune_watchlist_after_days": 90,
+    "decisions_retention": "permanente"
+  },
+
+  "self_improvement": {
+    "enabled": true,
+    "auto_apply_critical": true,
+    "sandbox_experimental": true,
+    "compare_against_systems": [
+      "CrewAI", "LangGraph", "AutoGPT", "OpenDevin",
+      "SWE-agent", "Agentless", "MetaGPT", "AgentBench"
+    ]
+  },
+
+  "report_format": {
+    "language": "es",
+    "style": "bullet_points_conciso",
+    "include_metrics": true,
+    "include_self_improvement": true,
+    "delivery": ["github_commit", "telegram_cuando_disponible"]
+  },
+
+  "workflow_categories": [
+    "audiciones", "colaboraciones_ugc", "edicion_video",
+    "contenido_automatizado", "telegram", "google_photos",
+    "obsidian", "ruflo", "n8n_make", "drive", "gmail",
+    "coaching", "deteccion_fugas", "crm", "cotizaciones",
+    "tiktok_instagram"
+  ]
+}

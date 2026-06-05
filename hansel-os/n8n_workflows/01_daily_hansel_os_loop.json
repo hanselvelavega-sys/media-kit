@@ -1,0 +1,181 @@
+{
+  "name": "🤖 HANSEL-OS — Daily Loop Trigger",
+  "description": "Trigger diario a las 8am Mexico City. Llama a Claude para ejecutar el Daily System Scan y envía reporte por Telegram y Gmail.",
+  "nodes": [
+    {
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger — 8am Daily",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 300],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        },
+        "timezone": "America/Mexico_City"
+      }
+    },
+    {
+      "id": "set-context",
+      "name": "Set Daily Context",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [220, 300],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "date",
+              "name": "today",
+              "value": "={{ $now.setZone('America/Mexico_City').toFormat('cccc d MMMM yyyy') }}",
+              "type": "string"
+            },
+            {
+              "id": "dateShort",
+              "name": "todayShort",
+              "value": "={{ $now.setZone('America/Mexico_City').toFormat('d MMM yyyy') }}",
+              "type": "string"
+            },
+            {
+              "id": "phase",
+              "name": "phase",
+              "value": "daily_scan",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "claude-scan",
+      "name": "Claude — Daily System Scan",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [440, 300],
+      "parameters": {
+        "model": "claude-haiku-4-5-20251001",
+        "options": {
+          "maxTokensToSample": 1500,
+          "temperature": 0.3
+        }
+      },
+      "credentials": {
+        "anthropicApi": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Anthropic — Hansel-OS"
+        }
+      }
+    },
+    {
+      "id": "prompt-node",
+      "name": "Hansel-OS Prompt",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [440, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "Eres CloudCode — el CTO/Arquitecto de Automatizaciones de Hansel Vela Vega. Ejecutas el Daily System Scan de Hansel-OS.\n\nHoy: {{ $json.today }}.\n\nWORKFLOWS P1 CRITICOS (actuar hoy):\n- CRM: 4 CRMs activos (Zoho+Apollo+Close+HubSpot) — datos fragmentados\n- Make/n8n: sin monitoring de errores, fallos silenciosos\n- Telegram: sin bot de notificaciones del sistema\n- Audiciones: seguimiento 100% manual, sin pipeline en CRM\n- Cotizaciones: sin templates, proceso manual\n- Ruflo: instalado pero no integrado con Hansel-OS\n\nWORKFLOWS P2 (esta semana):\n- Obsidian: aislado, no conectado a ningún flujo\n- Gmail: inbox sin clasificación, oportunidades perdidas\n- Edición video: sin repropósito automatizado, subtítulos manuales\n- Coaching: notas y facturación manuales\n- Detección fugas: sistema no existe\n\nSTACK: Ruflo, n8n, Zoho CRM, Apollo, Gmail, Telegram, Notion, Obsidian, Drive, Canva, Asana, Stripe, Make.\n\nGenera el reporte en este formato EXACTO:\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nHANSEL-OS DAILY REPORT — {{ $json.todayShort }}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🔴 P1 HOY\n[máx 3 items con acción concreta cada uno]\n\n🟡 P2 ESTA SEMANA\n[máx 3 items]\n\n✅ MEJORA RECOMENDADA\n[1 mejora específica con pasos exactos]\n\n🤖 CLOUDCODE SE MEJORA\n[1 upgrade detectado para el propio sistema]\n\n⏭️ PRÓXIMO PASO\n[1 sola acción a hacer hoy]\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nMáximo 300 palabras. Directo. Accionable. Sin relleno.",
+        "hasOutputParser": false
+      }
+    },
+    {
+      "id": "telegram-report",
+      "name": "Telegram — Enviar Reporte",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [700, 200],
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "REEMPLAZAR_CON_TU_CHAT_ID",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Telegram — Hansel-OS Bot"
+        }
+      }
+    },
+    {
+      "id": "gmail-report",
+      "name": "Gmail — Backup por Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [700, 400],
+      "parameters": {
+        "operation": "send",
+        "sendTo": "hanselvelavega@gmail.com",
+        "subject": "=🤖 HANSEL-OS — {{ $('Set Daily Context').item.json.todayShort }}",
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Gmail — Hansel-OS"
+        }
+      }
+    },
+    {
+      "id": "error-handler",
+      "name": "Error → Telegram Alert",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [700, 600],
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "REEMPLAZAR_CON_TU_CHAT_ID",
+        "text": "=⚠️ HANSEL-OS ERROR\\n\\nFlujo: Daily Loop\\nHora: {{ $now.toISO() }}\\nError: {{ $json.error.message }}\\n\\nRevisa n8n para detalles."
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Telegram — Hansel-OS Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger — 8am Daily": {
+      "main": [
+        [{"node": "Set Daily Context", "type": "main", "index": 0}]
+      ]
+    },
+    "Set Daily Context": {
+      "main": [
+        [{"node": "Hansel-OS Prompt", "type": "main", "index": 0}]
+      ]
+    },
+    "Hansel-OS Prompt": {
+      "main": [
+        [
+          {"node": "Telegram — Enviar Reporte", "type": "main", "index": 0},
+          {"node": "Gmail — Backup por Email", "type": "main", "index": 0}
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Mexico_City",
+    "errorWorkflow": "REEMPLAZAR_CON_ID_DEL_WORKFLOW_DE_ERROR"
+  },
+  "tags": ["hansel-os", "daily-loop", "automation"],
+  "_instrucciones_importacion": {
+    "paso_1": "En n8n, ir a Workflows → Import from JSON → pegar este archivo",
+    "paso_2": "Crear credencial Anthropic con tu API key (Settings → Credentials → Add)",
+    "paso_3": "Crear credencial Telegram Bot con tu token de BotFather",
+    "paso_4": "Crear credencial Gmail OAuth2 con tu cuenta hanselvelavega@gmail.com",
+    "paso_5": "Reemplazar todos los REEMPLAZAR_CON_TU_... con los IDs reales",
+    "paso_6": "Obtener tu Telegram Chat ID enviando /start al bot y usando https://api.telegram.org/bot<TOKEN>/getUpdates",
+    "paso_7": "Activar el workflow"
+  }
+}

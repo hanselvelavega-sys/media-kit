@@ -2,7 +2,8 @@
   "version": "1.0.0",
   "last_updated": "2026-06-04",
   "description": "Registro de todos los workflows activos de Hansel. La fuente de verdad para el Daily System Scan.",
-  "total_workflows": 16,
+  "total_workflows": 21,
+  "nota_version": "v1.1 — Ruflo corregido + 5 workflows nuevos detectados por MCPs conectadas",
   "workflows": {
     "audiciones": {
       "id": "WF-001",
@@ -166,23 +167,36 @@
     },
     "ruflo": {
       "id": "WF-008",
-      "nombre": "Ruflo — Sistema Propio",
-      "estado": "activo",
-      "criticidad": "P2_alto",
-      "descripcion": "Sistema/plataforma propio de gestión de Hansel",
-      "herramientas": ["Ruflo"],
-      "frecuencia": "diario",
+      "nombre": "Ruflo — Motor de Multi-Agentes para Claude Code",
+      "estado": "instalado_subutilizado",
+      "criticidad": "P1_critico",
+      "github": "https://github.com/ruvnet/ruflo",
+      "estrellas_github": "57,800+",
+      "descripcion": "Meta-harness de agentes para Claude Code. Convierte a CloudCode en un swarm coordinado de agentes especializados con memoria compartida, auto-aprendizaje y RAG. Antes se llamaba Claude Flow (renombrado en enero 2026). Es la base técnica que puede potenciar a Hansel-OS.",
+      "que_hace_exactamente": {
+        "swarm_intelligence": "Orquesta 100+ agentes especializados (coder, researcher, planner, reviewer, etc.) en paralelo",
+        "memoria_compartida": "HNSW vector index — búsqueda 150x-12,500x más rápida que brute force. Agentes comparten contexto sin copiar manualmente",
+        "self_learning": "Aprende de cada ejecución. Previene olvidar patrones exitosos. Rutea trabajo a expertos.",
+        "topologias": "Hierarchical (desarrollo), Mesh (contexto continuo), Ring (pipeline secuencial), Star (coordinador único)",
+        "mcp_tools": "314 herramientas MCP para memoria, coordinación, embeddings, seguridad y más",
+        "federacion": "Múltiples instancias Ruflo en diferentes máquinas comunicándose sin exponer datos"
+      },
+      "herramientas": ["Ruflo (ruvnet/ruflo)", "Claude Code", "MCP Tools (314)", "HNSW Vector Store"],
+      "frecuencia": "continuo",
       "ultima_ejecucion": null,
       "ultimo_error": null,
       "pain_points_activos": [
-        "Integración limitada con otros sistemas",
-        "Flujos manuales dentro del sistema",
-        "Detalles técnicos del sistema a confirmar"
+        "Ruflo está instalado pero probablemente subutilizado — no está integrado al flujo de Hansel-OS",
+        "Sin configuración de agentes especializados para los workflows de Hansel",
+        "La memoria HNSW de Ruflo no está conectada a knowledge_base.md de Hansel-OS",
+        "No se están usando las topologías de swarm para tareas paralelas"
       ],
-      "automatizacion_actual": "interna",
-      "automatizacion_deseada": "Conectar con Make/n8n, integrar con CRM, automatizar reportes",
-      "prioridad_mejora": 2,
-      "nota": "Requiere más información de Hansel sobre qué es Ruflo exactamente para analizar mejor"
+      "oportunidad_critica": "Ruflo ES el motor que puede hacer a Hansel-OS verdaderamente autónomo. Usar su swarm para ejecutar las 7 fases en paralelo, su memoria vectorial para indexar todo el conocimiento de Hansel, y sus agentes especializados para cada dominio (audiciones, UGC, video, CRM).",
+      "automatizacion_actual": "subutilizado",
+      "automatizacion_deseada": "Integrar Ruflo como motor de Hansel-OS: swarm para fases paralelas, HNSW para memoria semántica, agentes especializados por workflow",
+      "relacion_con_hansel_os": "Ruflo POTENCIA a Hansel-OS. Hansel-OS es la lógica/memoria. Ruflo es el motor de ejecución multi-agente.",
+      "prioridad_mejora": 1,
+      "siguiente_paso": "Auditar configuración actual de Ruflo de Hansel. Identificar qué agentes tiene activos. Diseñar integración con el sistema Hansel-OS."
     },
     "n8n_make": {
       "id": "WF-009",
@@ -323,6 +337,111 @@
       "automatizacion_deseada": "Templates dinámicos, envío desde CRM, seguimiento automático a los 3/7/14 días, tracking de conversión",
       "prioridad_mejora": 1
     },
+    "canva_design": {
+      "id": "WF-017",
+      "nombre": "Canva — Diseño de Assets Visuales",
+      "estado": "activo_detectado_por_mcp",
+      "criticidad": "P3_medio",
+      "descripcion": "Creación de thumbnails, banners, plantillas para redes sociales, materiales de coaching y propuestas",
+      "herramientas": ["Canva (MCP conectado)"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Diseño de assets manual uno por uno",
+        "Sin templates reutilizables conectados a flujos de contenido",
+        "Sin automatización de resize para diferentes formatos"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Templates de marca consistentes, resize automático para TikTok/Reels/Stories/Thumbnails desde un solo diseño",
+      "prioridad_mejora": 3,
+      "requiere_confirmacion": true,
+      "nota": "Detectado porque Canva MCP está conectado. Confirmar si Hansel lo usa activamente."
+    },
+    "pagos_stripe": {
+      "id": "WF-018",
+      "nombre": "Stripe — Pagos y Facturación",
+      "estado": "activo_detectado_por_mcp",
+      "criticidad": "P2_alto",
+      "descripcion": "Cobros de servicios de coaching, UGC y audiciones. Facturas, links de pago, historial de transacciones.",
+      "herramientas": ["Stripe (MCP conectado)", "Gmail"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Probablemente cobros manuales sin automatización",
+        "Sin recordatorios automáticos de pagos pendientes",
+        "Sin reporte mensual de ingresos automático"
+      ],
+      "automatizacion_actual": "ninguna_o_manual",
+      "automatizacion_deseada": "Links de pago automáticos al aprobar cotización, recordatorios de facturas vencidas, reporte mensual de ingresos",
+      "prioridad_mejora": 2,
+      "requiere_confirmacion": true,
+      "nota": "Detectado por Stripe MCP conectado. Actualmente en WF-015 (cotizaciones) pero merece su propio workflow."
+    },
+    "asana_proyectos": {
+      "id": "WF-019",
+      "nombre": "Asana — Gestión de Proyectos",
+      "estado": "activo_detectado_por_mcp",
+      "criticidad": "P2_alto",
+      "descripcion": "Gestión de tareas y proyectos de contenido, coaching y colaboraciones",
+      "herramientas": ["Asana (MCP conectado)"],
+      "frecuencia": "diario",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Sin conexión entre Asana y CRM — tareas y deals no están vinculados",
+        "Sin automatización de creación de tareas desde emails o Telegram",
+        "Posible duplicación con Obsidian para tracking de proyectos"
+      ],
+      "automatizacion_actual": "desconocido",
+      "automatizacion_deseada": "Auto-crear tareas en Asana desde emails de audiciones/colaboraciones, vincular con CRM, sincronizar con Calendar",
+      "prioridad_mejora": 2,
+      "requiere_confirmacion": true,
+      "nota": "Detectado por Asana MCP conectado. Confirmar si es el gestor de proyectos principal o secundario."
+    },
+    "notion_notas": {
+      "id": "WF-020",
+      "nombre": "Notion — Base de Conocimiento / Docs",
+      "estado": "activo_detectado_por_mcp",
+      "criticidad": "P3_medio",
+      "descripcion": "Documentación de proyectos, bases de datos de contenido, templates de trabajo",
+      "herramientas": ["Notion (MCP conectado)"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "Posible duplicación con Obsidian — dos sistemas de notas activos",
+        "Sin definición clara de qué va en Notion vs qué va en Obsidian",
+        "Sin conexión entre Notion y los flujos operativos"
+      ],
+      "automatizacion_actual": "ninguna",
+      "automatizacion_deseada": "Definir división clara: Notion para docs colaborativos/bases de datos, Obsidian para notas personales",
+      "prioridad_mejora": 3,
+      "requiere_confirmacion": true,
+      "nota": "Detectado por Notion MCP conectado. IMPORTANTE: Si tiene tanto Notion como Obsidian activos, hay duplicación que resolver."
+    },
+    "hubspot_crm": {
+      "id": "WF-021",
+      "nombre": "HubSpot — CRM Marketing",
+      "estado": "activo_detectado_por_mcp",
+      "criticidad": "P1_critico",
+      "descripcion": "CRM con foco en marketing, email campaigns, contactos y analytics de ventas",
+      "herramientas": ["HubSpot (MCP conectado)", "Gmail"],
+      "frecuencia": "semanal",
+      "ultima_ejecucion": null,
+      "ultimo_error": null,
+      "pain_points_activos": [
+        "CUARTO CRM detectado — ahora son: Zoho + Apollo + Close + HubSpot",
+        "Datos de contactos probablemente en 4 sistemas distintos",
+        "Sin estrategia clara de cuál usar para qué"
+      ],
+      "automatizacion_actual": "desconocido",
+      "automatizacion_deseada": "Consolidar: definir qué hace cada CRM o eliminar los redundantes",
+      "prioridad_mejora": 1,
+      "requiere_confirmacion": true,
+      "nota": "ALERTA P1: Tener 4 CRMs activos (Zoho + Apollo + Close + HubSpot) es un problema crítico de duplicación. Esta es la prioridad #1 a resolver con Hansel."
+    },
     "tiktok_instagram": {
       "id": "WF-016",
       "nombre": "TikTok / Instagram — Publicación y Analytics",
@@ -350,11 +469,14 @@
     }
   },
   "summary": {
-    "P1_criticos": ["audiciones", "colaboraciones_ugc", "telegram", "n8n_make", "crm", "cotizaciones"],
-    "P2_altos": ["edicion_video", "contenido_automatizado", "obsidian", "ruflo", "gmail", "coaching", "deteccion_fugas", "tiktok_instagram"],
-    "P3_medios": ["google_photos", "drive"],
+    "P1_criticos": ["audiciones", "colaboraciones_ugc", "telegram", "n8n_make", "crm", "cotizaciones", "ruflo", "hubspot_crm"],
+    "P2_altos": ["edicion_video", "contenido_automatizado", "obsidian", "gmail", "coaching", "deteccion_fugas", "tiktok_instagram", "pagos_stripe", "asana_proyectos"],
+    "P3_medios": ["google_photos", "drive", "canva_design", "notion_notas"],
     "con_automatizacion": ["contenido_automatizado", "n8n_make", "tiktok_instagram"],
-    "sin_automatizacion": ["audiciones", "colaboraciones_ugc", "google_photos", "obsidian", "gmail", "coaching", "deteccion_fugas", "cotizaciones"],
-    "requiere_mas_info": ["ruflo"]
+    "sin_automatizacion": ["audiciones", "colaboraciones_ugc", "google_photos", "obsidian", "gmail", "coaching", "deteccion_fugas", "cotizaciones", "canva_design"],
+    "requiere_confirmacion": ["canva_design", "pagos_stripe", "asana_proyectos", "notion_notas", "hubspot_crm"],
+    "alerta_critica_crm": "4 CRMs detectados: Zoho + Apollo + Close + HubSpot. Prioridad #1 consolidar.",
+    "alerta_critica_notas": "2 sistemas de notas detectados: Obsidian + Notion. Definir cuál para qué.",
+    "ruflo_es_clave": "Ruflo (ruvnet/ruflo, 57k★) es el motor multi-agente que puede potenciar Hansel-OS. Actualmente subutilizado."
   }
 }

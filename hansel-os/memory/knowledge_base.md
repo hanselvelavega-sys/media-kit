@@ -24,10 +24,30 @@ Hansel es creador de contenido UGC, actor/modelo, coach y operador de negocios d
 
 ### 2026-06-04 — Sesión de Inicialización
 - El sistema parte desde cero con solo `index.html` en el repo.
-- Se detectaron 16 flujos activos de Hansel.
-- Los pain points más críticos transversales son: seguimiento manual, falta de memoria entre sistemas, datos duplicados en múltiples CRMs.
-- **Integración pendiente clave:** Telegram bot para notificaciones del sistema (no existe aún).
-- **Gap de memoria crítico:** Obsidian no está conectado a ningún otro sistema — es una isla.
+- Se detectaron 16 flujos activos inicialmente, ampliado a 21 tras análisis de MCPs conectadas.
+- Los pain points más críticos transversales: seguimiento manual, datos duplicados en múltiples CRMs, herramientas subutilizadas.
+- **Integración pendiente clave:** Telegram bot para notificaciones del sistema.
+- **Gap de memoria crítico:** Obsidian no está conectado a ningún otro sistema — isla.
+
+### 2026-06-04 — Ruflo Descubierto y Clasificado
+- **Ruflo = ruvnet/ruflo** en GitHub (57,800+ estrellas, el meta-harness de agentes más adoptado para Claude Code en 2026).
+- Antes se llamaba **Claude Flow** — renombrado en enero 2026.
+- NO es un sistema de gestión de Hansel. Es un **motor de multi-agentes** que se instala sobre Claude Code.
+- **Capacidades clave:** swarm de 100+ agentes especializados, memoria vectorial HNSW (150x más rápida), self-learning, RAG, 314 MCP tools, topologías de coordinación (hierarchical/mesh/ring/star).
+- **Relación con Hansel-OS:** Ruflo ES el motor que puede convertir a Hansel-OS de single-agent a multi-agent. Hansel-OS pone la lógica y memoria; Ruflo ejecuta en paralelo con múltiples agentes especializados.
+- **Estado actual:** Instalado pero probablemente subutilizado — no integrado al flujo de Hansel-OS.
+- **Acción futura:** Auditar configuración actual de Ruflo de Hansel. Diseñar integración. Esto pasa a P1 crítico.
+
+### 2026-06-04 — Alerta: 4 CRMs Activos Detectados
+- Por MCPs conectadas se detectó **HubSpot** además de Zoho + Apollo + Close.
+- Total: **4 CRMs** con datos probablemente fragmentados.
+- Estrategia recomendada: Zoho = fuente de verdad (contactos/deals), Apollo = solo prospección, Close = secuencias activas de ventas, HubSpot = confirmar si es para email marketing o duplicado.
+- **Esta es la prioridad #1 de consolidación.**
+
+### 2026-06-04 — Alerta: 2 Sistemas de Notas Detectados
+- Notion MCP conectado + Obsidian activo = posible duplicación.
+- Definir: Notion para docs colaborativos y bases de datos, Obsidian para conocimiento personal profundo.
+- **Requiere confirmación de Hansel.**
 
 ---
 

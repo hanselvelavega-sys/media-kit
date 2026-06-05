@@ -4,6 +4,31 @@
   "description": "Upgrades candidatos para el propio CloudCode. Evaluados pero aún no aplicados.",
   "candidates": [
     {
+      "id": "UC-000",
+      "nombre": "Integrar Ruflo como Motor de Hansel-OS",
+      "tipo": "coordinacion_multiagente",
+      "descripcion": "Ruflo (ruvnet/ruflo, 57k★) ya está instalado por Hansel. Es el meta-harness de agentes para Claude Code con swarm intelligence, HNSW memory y self-learning. Integrarlo con Hansel-OS lo convierte de single-agent a multi-agent real.",
+      "que_hace_mejor": "Ruflo permite ejecutar las 7 fases de Hansel-OS EN PARALELO con agentes especializados. Cada workflow tiene su agente. La memoria HNSW es 150x más rápida que la lectura de archivos actual.",
+      "comparado_con_actual": "Actual: single-agent leyendo archivos JSON. Con Ruflo: swarm coordinado con memoria vectorial semántica y agentes especializados por dominio (audiciones, UGC, CRM, video, etc.)",
+      "beneficio_para_hansel": "Sistema 10x más autónomo, paralelo y con mejor memoria. Cada workflow tiene un agente dedicado que aprende de cada ejecución.",
+      "reduce_tokens": true,
+      "mejora_calidad": true,
+      "reduce_errores": true,
+      "clasificacion": "CRITICA",
+      "riesgo": "medio",
+      "pasos_implementacion": [
+        "Auditar configuración actual de Ruflo de Hansel (qué agentes tiene activos)",
+        "Mapear workflows de Hansel-OS a topología de Ruflo",
+        "Conectar HNSW memory de Ruflo con knowledge_base.md",
+        "Crear agentes especializados: audiciones-agent, ugc-agent, crm-agent, video-agent",
+        "Probar flujo completo en sandbox antes de producción"
+      ],
+      "puede_probarse_sandbox": true,
+      "estado": "pendiente_auditoria_ruflo",
+      "fecha_evaluacion": "2026-06-04",
+      "nota": "PRIORIDAD MÁXIMA para self-improvement. Ruflo ya existe en el sistema de Hansel — no hay que instalar nada nuevo, solo integrar."
+    },
+    {
       "id": "UC-001",
       "nombre": "Deep Research Skill Estructurado",
       "tipo": "busqueda",

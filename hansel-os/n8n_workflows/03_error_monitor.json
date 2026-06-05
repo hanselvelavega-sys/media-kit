@@ -1,0 +1,98 @@
+{
+  "name": "🚨 HANSEL-OS — Error Monitor & Alert",
+  "description": "Workflow de manejo de errores global. Se activa cuando cualquier workflow de Hansel-OS falla. Envía alerta detallada por Telegram.",
+  "nodes": [
+    {
+      "id": "error-trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [0, 300],
+      "parameters": {}
+    },
+    {
+      "id": "format-error",
+      "name": "Format Error Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 300],
+      "parameters": {
+        "jsCode": "const error = $input.item.json;\n\nconst hora = new Date().toLocaleString('es-MX', {\n  timeZone: 'America/Mexico_City',\n  dateStyle: 'short',\n  timeStyle: 'short'\n});\n\nconst mensaje = `🚨 HANSEL-OS ERROR DETECTADO\n\n📍 Workflow: ${error.workflow?.name || 'Desconocido'}\n🕐 Hora: ${hora}\n❌ Error: ${error.execution?.error?.message || 'Error desconocido'}\n🔢 Execution ID: ${error.execution?.id || 'N/A'}\n\n👉 Revisa: n8n → Executions → ${error.execution?.id}\n\n⚡ El sistema sigue corriendo. Solo este workflow falló.`;\n\nreturn { mensaje, workflowName: error.workflow?.name, errorMessage: error.execution?.error?.message };"
+      }
+    },
+    {
+      "id": "telegram-alert",
+      "name": "Telegram — Error Alert",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [440, 300],
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "REEMPLAZAR_CON_TU_CHAT_ID",
+        "text": "={{ $json.mensaje }}"
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Telegram — Hansel-OS Bot"
+        }
+      }
+    },
+    {
+      "id": "log-error",
+      "name": "Log Error to Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [440, 480],
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "create",
+        "databaseId": "REEMPLAZAR_CON_TU_DATABASE_ID",
+        "title": "=Error: {{ $('Format Error Message').item.json.workflowName }} — {{ $now.toISO() }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Estado|select",
+              "selectValue": "Error"
+            },
+            {
+              "key": "Workflow|rich_text",
+              "textContent": "={{ $('Format Error Message').item.json.workflowName }}"
+            },
+            {
+              "key": "Mensaje|rich_text",
+              "textContent": "={{ $('Format Error Message').item.json.errorMessage }}"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "notionApi": {
+          "id": "REEMPLAZAR_CON_TU_CREDENTIAL_ID",
+          "name": "Notion — Hansel-OS"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [{"node": "Format Error Message", "type": "main", "index": 0}]
+      ]
+    },
+    "Format Error Message": {
+      "main": [
+        [
+          {"node": "Telegram — Error Alert", "type": "main", "index": 0},
+          {"node": "Log Error to Notion", "type": "main", "index": 0}
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Mexico_City"
+  },
+  "tags": ["hansel-os", "error-handler", "monitor"],
+  "_instrucciones": "Este workflow debe configurarse como 'Error Workflow' en Settings de cada otro workflow. En n8n: Workflow Settings → Error Workflow → seleccionar '🚨 HANSEL-OS — Error Monitor'."
+}

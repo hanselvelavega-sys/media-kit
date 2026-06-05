@@ -44,7 +44,21 @@ Hansel es creador de contenido UGC, actor/modelo, coach y operador de negocios d
 - Estrategia recomendada: Zoho = fuente de verdad (contactos/deals), Apollo = solo prospección, Close = secuencias activas de ventas, HubSpot = confirmar si es para email marketing o duplicado.
 - **Esta es la prioridad #1 de consolidación.**
 
-### 2026-06-04 — Alerta: 2 Sistemas de Notas Detectados
+### 2026-06-05 — Make.com Loop Activado
+- **Escenario 4894578** ahora es `🤖 HANSEL-OS — Daily Loop 8am` — activo, corre cada 24h a las 8am Mexico City.
+- **Escenario 4894562** ahora es `🎬 CONTENT ENGINE — Ideas + Carrusel 12pm` — activo, corre a mediodía.
+- **Lección:** `isinvalid: true` en Make no siempre bloquea ejecución — activar el escenario lo resuelve.
+- Ambos usan `claude-haiku-4-5-20251001` y envían resultados a hanselvelavega@gmail.com.
+
+### 2026-06-05 — n8n Blueprints Listos (4 workflows)
+- `01_daily_hansel_os_loop.json` — Scan diario → Telegram + Gmail
+- `02_gmail_monitor.json` — Clasificación automática con Claude + alerta P1
+- `03_error_monitor.json` — Error handler global → Telegram
+- `04_content_engine.json` — Content brief por tema del día
+- Todos listos para importar en n8n. Requieren configuración de credenciales.
+- Setup guides creados: telegram, gmail labels, n8n quickstart.
+
+### 2026-06-05 — Alerta: 2 Sistemas de Notas Detectados
 - Notion MCP conectado + Obsidian activo = posible duplicación.
 - Definir: Notion para docs colaborativos y bases de datos, Obsidian para conocimiento personal profundo.
 - **Requiere confirmación de Hansel.**

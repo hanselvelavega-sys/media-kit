@@ -57,9 +57,11 @@ Hansel es creador de contenido UGC, actor/modelo, coach y operador de negocios d
 *(Vacío en inicio — se llenará con el tiempo)*
 
 ### Patrones Negativos (a eliminar)
-- **Duplicación CRM:** Hansel usa Zoho CRM + Apollo + Close CRM. Probable duplicación de datos de contactos.
+- **Duplicación CRM (CRÍTICO):** 4 CRMs activos: Zoho + Apollo + Close + HubSpot. Decisión: Zoho = fuente de verdad, Apollo = solo prospección, Close = eliminar, HubSpot = confirmar uso.
+- **Automatización duplicada:** Make + n8n haciendo cosas similares. Consolidar a n8n como motor IA-nativo. Make solo para flows que ya funcionan.
 - **Seguimiento manual:** La mayoría de flujos de ventas/colaboraciones depende de recordar manualmente.
 - **Obsidian como isla:** Rico en notas pero no conectado a flujos operativos.
+- **Ruflo subutilizado:** El motor multi-agente más poderoso disponible no está integrado al sistema.
 
 ### Patrones de Tokens (optimización)
 *(Se llenará tras analizar uso en sesiones)*

@@ -2,6 +2,30 @@
   "version": "1.0.0",
   "last_updated": "2026-06-04",
   "description": "Upgrades candidatos para el propio CloudCode. Evaluados pero aún no aplicados.",
+  "analysis_date": "2026-06-04",
+  "strategic_decisions": {
+    "ruflo_integracion": {
+      "decision": "INTEGRAR — máxima prioridad",
+      "datos": "84.8% SWE-bench, 30-50% reducción tokens, 75% ahorro API, +36% calidad por self-learning",
+      "como": "Ruflo como motor de ejecución. Hansel-OS como lógica y memoria estructurada.",
+      "impacto": "Pasar de single-agent secuencial a swarm paralelo con memoria que aprende"
+    },
+    "crm_consolidacion": {
+      "decision": "Zoho = fuente de verdad. Apollo = solo prospección. Close = ELIMINAR. HubSpot = solo si email marketing activo.",
+      "razon": "4 CRMs = datos fragmentados = oportunidades perdidas",
+      "accion": "Migrar datos de Close a Zoho. Evaluar HubSpot con Hansel."
+    },
+    "automatizacion_motor": {
+      "decision": "n8n como motor principal de automatización",
+      "razon": "IA-nativa (LangChain, RAG, vector stores), precio plano por ejecución, integración con Ruflo",
+      "transicion": "Mantener flows de Make que funcionan. Nuevos flows → n8n."
+    },
+    "notas_sistema": {
+      "decision": "Obsidian = conocimiento personal profundo. Notion = docs colaborativos y bases de datos compartidas.",
+      "razon": "Cada uno tiene un propósito distinto. No compiten si se usan bien.",
+      "accion": "Definir con Hansel qué tipo de contenido va en cada uno."
+    }
+  },
   "candidates": [
     {
       "id": "UC-000",

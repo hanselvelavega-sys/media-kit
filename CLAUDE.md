@@ -181,6 +181,52 @@ Este módulo corre en paralelo al flujo principal. Su trabajo: **hacer que Cloud
 
 ---
 
+## ARQUITECTURA DEL LOOP DE MEJORA CONTINUA
+
+```
+n8n (trigger diario automático)
+        ↓
+Claude Code + CLAUDE.md (instrucciones + contexto)
+        ↓
+Ruflo Swarm (agentes en paralelo)
+ ├── researcher-agent  → busca mejoras externas
+ ├── analyst-agent    → detecta problemas en workflows
+ ├── planner-agent    → crea action plans
+ └── executor-agent   → implementa cambios seguros
+        ↓
+AgentDB HNSW (guarda qué funcionó — el sistema aprende)
+        ↓
+Telegram → Hansel (reporte diario, máx 5 min de lectura)
+        ↓
+Hansel aprueba solo P.Alto (todo lo demás corre solo)
+        ↓
+Loop reinicia → más inteligente que ayer
+```
+
+**El sistema no empieza de cero nunca.** Ruflo guarda cada resultado en AgentDB con índice HNSW. La próxima vez que el sistema enfrenta un problema similar, recupera lo que funcionó antes y mejora sobre eso.
+
+## STACK FINAL — DECISIONES TOMADAS
+
+| Herramienta | Rol | Estado |
+|-------------|-----|--------|
+| **Ruflo** | Motor multi-agente, HNSW memory, self-learning | INTEGRAR — máxima prioridad |
+| **n8n** | Motor de automatización IA-nativo, trigger del loop | MOTOR PRINCIPAL |
+| **Make** | Flows existentes que ya funcionan | Solo mantener, no crear nuevos |
+| **Zoho CRM** | Fuente de verdad: contactos, deals, pipeline | CRM ÚNICO |
+| **Apollo** | Solo prospección — buscar leads, exportar a Zoho | HERRAMIENTA DE ENTRADA |
+| **Close CRM** | — | ELIMINAR (migrar a Zoho) |
+| **HubSpot** | Solo email marketing si hay campañas activas | REDUCIR o ELIMINAR |
+| **Gmail** | Correo externo, MCP conectado | MANTENER |
+| **Telegram** | Canal del sistema con Hansel | MANTENER |
+| **Notion** | Bases de datos estructuradas, docs de proyectos | MANTENER |
+| **Obsidian** | Conocimiento personal profundo | MANTENER |
+| **Google Drive** | Archivos de trabajo | MANTENER |
+| **Canva** | Assets visuales, resize automático | MANTENER |
+| **Asana** | Gestión de tareas y proyectos | MANTENER |
+| **Stripe** | Pagos, links automáticos post-cotización | MANTENER |
+
+**Ver detalles completos:** `hansel-os/core/stack_decisions.json`
+
 ## WORKFLOWS ACTIVOS DE HANSEL
 
 Ver registro completo en `hansel-os/workflows/registry.json`.

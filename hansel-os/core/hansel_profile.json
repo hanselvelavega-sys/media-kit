@@ -139,7 +139,16 @@
     "curso_online",
     "ecommerce"
   ],
-  "integraciones_activas": {
+  "stack_final_decisiones": {
+    "USAR": ["Ruflo", "n8n", "Zoho CRM", "Apollo (solo prospección)", "Gmail", "Telegram", "Notion", "Obsidian", "Google Drive", "Canva", "Asana", "Stripe"],
+    "ELIMINAR": ["Close CRM", "HubSpot (si no tiene email marketing activo)"],
+    "MANTENER_SIN_CRECER": ["Make (solo flows existentes, no crear nuevos)"],
+    "MOTOR_PRINCIPAL_AUTOMATIZACION": "n8n",
+    "MOTOR_MULTIAGENTE": "Ruflo",
+    "CRM_FUENTE_VERDAD": "Zoho",
+    "CANAL_SISTEMA": "Telegram",
+    "loop_diario": "n8n trigger → Claude Code + Hansel-OS → Ruflo Swarm → AgentDB aprende → Telegram reporte → aprobación P.Alto → loop reinicia"
+  },
     "mcp_conectados": [
       "gmail", "google_calendar", "google_drive",
       "notion", "make", "zapier",

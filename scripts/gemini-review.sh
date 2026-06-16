@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Gemini 2.5 Pro (Google) reviews the latest git diff → /tmp/.gemini-part.md
+# Usa gemini CLI en modo headless (-p)
 set -euo pipefail
 
 ROOT="$(git -C "$(dirname "$0")/.." rev-parse --show-toplevel)"
@@ -18,32 +19,23 @@ if [ -z "$DIFF" ]; then
   exit 0
 fi
 
-MODEL="gemini-2.5-pro"
-
-PROMPT="Eres un revisor de código experto enfocado en calidad web (HTML/CSS/JS). Analiza el siguiente diff de git y responde SOLO con este formato markdown:
+PROMPT="Eres un revisor de código experto enfocado en calidad web (HTML/CSS/JS). Analiza el siguiente diff y escribe una revisión en el archivo /tmp/.gemini-part.md con este formato exacto:
 
 ## Revisión Gemini 2.5 Pro — $(date '+%H:%M')
 
 ### Problemas encontrados
-- (bugs, errores de seguridad, problemas de rendimiento; escribe \"Ninguno\" si no hay)
+- (bugs, seguridad, rendimiento; escribe \"Ninguno\" si no hay)
 
 ### Mejoras de calidad
 - (accesibilidad WCAG, Core Web Vitals, semántica HTML5, CSS)
 
 ### Sugerencias opcionales
-- (ideas que mejorarían el resultado pero no son urgentes)
+- (ideas no urgentes)
 
+---
 DIFF:
-${DIFF}"
+$DIFF"
 
-PAYLOAD=$(jq -n --arg text "$PROMPT" \
-  '{"contents":[{"parts":[{"text":$text}]}],"generationConfig":{"temperature":0.2}}')
-
-RESPONSE=$(curl -s \
-  "https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d "$PAYLOAD")
-
-TEXT=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "Error: sin respuesta de Gemini"')
-echo "$TEXT" > "$OUT"
+echo "[multi-review] Gemini 2.5 Pro revisando..." >&2
+gemini -p "$PROMPT" --approval-mode yolo -m gemini-2.5-pro
 echo "[multi-review] Gemini 2.5 Pro completó la revisión." >&2

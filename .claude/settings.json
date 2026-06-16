@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /home/user/media-kit/scripts/codex-review.sh"
+            "command": "bash /home/user/media-kit/scripts/multi-review.sh"
           }
         ]
       }

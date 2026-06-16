@@ -1,36 +1,30 @@
 #!/usr/bin/env bash
-# Runs Codex to review the latest changes Claude made, saves output to .codex-review.md
+# Codex (OpenAI) reviews the latest git diff → /tmp/.codex-part.md
 set -euo pipefail
 
-REVIEW_FILE="$(git -C "$(dirname "$0")/.." rev-parse --show-toplevel)/.codex-review.md"
 ROOT="$(git -C "$(dirname "$0")/.." rev-parse --show-toplevel)"
-
+OUT="/tmp/.codex-part.md"
 cd "$ROOT"
 
 DIFF=$(git diff HEAD 2>/dev/null || git diff 2>/dev/null)
+[ -z "$DIFF" ] && { echo "# Codex: sin cambios" > "$OUT"; exit 0; }
 
-if [ -z "$DIFF" ]; then
-  echo "[codex-review] No hay cambios pendientes, saltando revisión." >&2
-  exit 0
-fi
+PROMPT="Eres un revisor de código senior. Analiza este diff y escribe una revisión en el archivo /tmp/.codex-part.md con este formato:
 
-PROMPT="Eres un revisor de código experto. Analiza este diff de git y escribe tus sugerencias de mejora en el archivo .codex-review.md usando este formato exacto:
-
-## Revisión Codex — $(date '+%Y-%m-%d %H:%M')
+## Revisión Codex (OpenAI) — $(date '+%H:%M')
 
 ### Problemas encontrados
-- (lista de bugs o errores concretos, si los hay)
+- (bugs, errores concretos; escribe \"Ninguno\" si no hay)
 
 ### Mejoras de calidad
-- (accesibilidad, rendimiento, semántica HTML, CSS)
+- (accesibilidad, rendimiento, semántica)
 
 ### Sugerencias opcionales
-- (ideas que mejorarían el resultado pero no son urgentes)
+- (ideas no urgentes)
 
 ---
-DIFF:
+DIFF A REVISAR:
 $DIFF"
 
-echo "[codex-review] Llamando a Codex para revisar los cambios..." >&2
+echo "[multi-review] Codex revisando..." >&2
 codex --approval-mode full-auto "$PROMPT"
-echo "[codex-review] Revisión guardada en .codex-review.md" >&2

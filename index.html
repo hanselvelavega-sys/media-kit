@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hansel Vela Vega — Media Kit</title>
   <meta name="description" content="Ballet dancer & cinematic content creator. 278K monthly views. Brand collaboration media kit." />
+  <meta property="og:title" content="Hansel Vela Vega — Media Kit 2026" />
+  <meta property="og:description" content="Ballet dancer & cinematic content creator. 278K monthly views · 15.6% engagement rate · US · MX · LAT. Open to brand collabs." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hansel Vela Vega — Media Kit 2026" />
+  <meta name="twitter:description" content="Ballet dancer & cinematic content creator. 278K monthly views · 15.6% engagement rate." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet" />
@@ -821,9 +827,44 @@
     }
 
     /* ─── RESPONSIVE ─── */
+    /* ─── HAMBURGER ─── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
     @media (max-width: 768px) {
       nav { padding: 1.2rem 1.5rem; }
-      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(5,5,5,0.97);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border);
+        padding: 0.5rem 0 1rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 0.9rem 2rem; font-size: 0.72rem; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-item:nth-child(3)::after { display: block; }
       .stat-item:nth-child(2)::after { display: none; }
@@ -839,21 +880,24 @@
 <body>
 
   <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">HVV</a>
-    <div class="nav-links">
-      <a href="#stats">Stats</a>
-      <a href="#content">Content</a>
-      <a href="#deliverables">Deliverables</a>
-      <a href="#contact">Contact</a>
+  <nav aria-label="Main navigation">
+    <a href="#" class="nav-logo" aria-label="Hansel Vela Vega — inicio">HVV</a>
+    <div class="nav-links" id="nav-links" role="menubar">
+      <a href="#stats" role="menuitem">Stats</a>
+      <a href="#content" role="menuitem">Content</a>
+      <a href="#deliverables" role="menuitem">Deliverables</a>
+      <a href="#contact" role="menuitem">Contact</a>
     </div>
+    <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="orb orb-3" aria-hidden="true"></div>
 
     <p class="hero-eyebrow fade-in">Media Kit · 2026</p>
 
@@ -880,7 +924,7 @@
       ✦ &nbsp; Let's Collaborate &nbsp; ✦
     </a>
 
-    <div class="scroll-indicator">
+    <div class="scroll-indicator" aria-hidden="true">
       <div class="scroll-line"></div>
       <span>Scroll</span>
     </div>
@@ -1220,7 +1264,7 @@
           </div>
           <span class="contact-link-arrow">→</span>
         </a>
-        <a href="https://instagram.com/hanselvelavega" target="_blank" class="contact-link">
+        <a href="https://instagram.com/hanselvelavega" target="_blank" rel="noopener noreferrer" class="contact-link">
           <div class="contact-link-left">
             <span class="contact-link-icon">📸</span>
             <div>
@@ -1230,7 +1274,7 @@
           </div>
           <span class="contact-link-arrow">→</span>
         </a>
-        <a href="https://tiktok.com/@hanselvelavega" target="_blank" class="contact-link">
+        <a href="https://tiktok.com/@hanselvelavega" target="_blank" rel="noopener noreferrer" class="contact-link">
           <div class="contact-link-left">
             <span class="contact-link-icon">🎵</span>
             <div>
@@ -1251,6 +1295,22 @@
   </footer>
 
   <script>
+    // Mobile hamburger
+    const burger = document.getElementById('nav-burger');
+    const navLinks = document.getElementById('nav-links');
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+      burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Abrir menú');
+      });
+    });
+
     // Fade-in on scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => {

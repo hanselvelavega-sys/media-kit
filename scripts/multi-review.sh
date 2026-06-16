@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Orquestador: lanza Codex + Gemini + Kimi en paralelo y consolida en .ai-review.md
+# Orquestador: lanza Codex + Gemini + Kimi + Ollama en paralelo → .ai-review.md
 set -euo pipefail
 
 ROOT="$(git -C "$(dirname "$0")/.." rev-parse --show-toplevel)"
@@ -14,37 +14,29 @@ if [ -z "$DIFF" ]; then
   exit 0
 fi
 
-echo "[multi-review] Lanzando 3 revisores en paralelo..." >&2
+echo "[multi-review] Lanzando 4 revisores en paralelo..." >&2
 
-# Limpiar salidas anteriores
-rm -f /tmp/.codex-part.md /tmp/.gemini-part.md /tmp/.kimi-part.md
+rm -f /tmp/.codex-part.md /tmp/.gemini-part.md /tmp/.kimi-part.md /tmp/.ollama-part.md
 
-# Ejecutar los tres en paralelo
-bash "$SCRIPTS/gemini-review.sh" &
-PID_GEMINI=$!
+bash "$SCRIPTS/gemini-review.sh" &  PID_GEMINI=$!
+bash "$SCRIPTS/kimi-review.sh"   &  PID_KIMI=$!
+bash "$SCRIPTS/ollama-review.sh" &  PID_OLLAMA=$!
+bash "$SCRIPTS/codex-review.sh"  &  PID_CODEX=$!
 
-bash "$SCRIPTS/kimi-review.sh" &
-PID_KIMI=$!
+wait $PID_GEMINI  || echo "[multi-review] Gemini: falló o saltado." >&2
+wait $PID_KIMI    || echo "[multi-review] Kimi: falló o saltado." >&2
+wait $PID_OLLAMA  || echo "[multi-review] Ollama: falló o saltado." >&2
+wait $PID_CODEX   || echo "[multi-review] Codex: falló o saltado." >&2
 
-bash "$SCRIPTS/codex-review.sh" &
-PID_CODEX=$!
-
-# Esperar a los tres
-wait $PID_GEMINI || echo "[multi-review] Gemini falló o fue saltado." >&2
-wait $PID_KIMI   || echo "[multi-review] Kimi falló o fue saltado." >&2
-wait $PID_CODEX  || echo "[multi-review] Codex falló o fue saltado." >&2
-
-# Consolidar en .ai-review.md
 {
   echo "# Revisión Multi-IA — $(date '+%Y-%m-%d %H:%M')"
   echo ""
-  echo "> Revisado por: Codex (OpenAI) · Gemini 2.5 Pro (Google) · Kimi K2 (Moonshot)"
+  echo "> Revisado por: **Codex** (OpenAI) · **Gemini 2.5 Pro** (Google) · **Kimi K2** (Moonshot) · **Ollama** (local)"
   echo ""
   echo "---"
   echo ""
-
-  for PART in /tmp/.gemini-part.md /tmp/.kimi-part.md /tmp/.codex-part.md; do
-    if [ -f "$PART" ]; then
+  for PART in /tmp/.gemini-part.md /tmp/.kimi-part.md /tmp/.ollama-part.md /tmp/.codex-part.md; do
+    if [ -f "$PART" ] && [ -s "$PART" ]; then
       cat "$PART"
       echo ""
       echo "---"
@@ -53,4 +45,4 @@ wait $PID_CODEX  || echo "[multi-review] Codex falló o fue saltado." >&2
   done
 } > "$OUT"
 
-echo "[multi-review] Revisión consolidada en .ai-review.md" >&2
+echo "[multi-review] ✓ Revisión de 4 IAs consolidada en .ai-review.md" >&2
